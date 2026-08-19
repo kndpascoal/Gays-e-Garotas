@@ -132,7 +132,14 @@
      2. RESET E BASE
      ============================================================ */
   *{ margin:0; padding:0; box-sizing:border-box; }
+
   html{ scroll-behavior:smooth; }
+
+/* Corrige o posicionamento das âncoras por causa do header fixo */
+section[id] {
+  scroll-margin-top: 60px;
+}
+
   body{
     background:var(--bg);
     color:var(--text);
@@ -435,7 +442,7 @@ header {
     height:450px;
     right:-190px;
     top:45%;
-    opacity:.99;
+    opacity: 100%;
   }
 }
 
@@ -461,7 +468,7 @@ header {
     width:450px;
     height:450px;
     right:-190px;
-    opacity:clamp(0, calc((100vw - 320px) / 300), 0.35);
+    opacity:clamp(0, calc((100vw - 320px) / 300), 0.15);
   }
 }
 
@@ -847,28 +854,66 @@ header {
   /* ============================================================
      5. MARQUEE (ticker de atrações rolando)
      ============================================================ */
-  .marquee{
-    background:var(--accent); color:#0a0a0f;
-    overflow:hidden; white-space:nowrap;
-    padding:14px 0;
-    border-top:1px solid #000; border-bottom:1px solid #000;
-  }
-  .marquee-track{
-    display:inline-flex; gap:40px;
-    animation:scroll 32s linear infinite;
-  }
-  .marquee-track span{
-    font-family:var(--font-display); font-size:18px; text-transform:uppercase;
-    display:inline-flex; align-items:center; gap:40px;
-  }
-  .marquee-track span img{
-  width:20px;
-  height:20px;
-  object-fit:contain;
+
+.marquee {
+  background: var(--accent);
+  color: #0a0a0f;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 14px 0;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
 }
 
-  @keyframes scroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
-  @media (prefers-reduced-motion: reduce){ .marquee-track{ animation:none; } }
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-infinito 120s linear infinite;
+  will-change: transform;
+}
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.marquee-track span {
+  font-family: 'BootzyTM', sans-serif !important;
+  font-size: 18px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  padding-right: 40px;
+  flex-shrink: 0;
+  color: #ffffff !important;
+}
+
+.marquee-track span img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@keyframes marquee-infinito {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 901px) {
+  .marquee {
+    position: relative;
+    top: 70px;
+    margin-bottom: 70px;
+  }
+}
 
   /* ============================================================
      6. LINE-UP
@@ -962,7 +1007,11 @@ header {
   display:block;
 }
   .stage-body{ padding:22px; }
-  .stage-body h3{ font-size:20px; margin-bottom:8px; }
+  .stage-body h3{ 
+    font-size:20px; 
+    margin-bottom:8px;
+    letter-spacing: 0.07em !important;
+  }
   .stage-body p{ color:var(--muted); font-size:14px; }
 
     /* ============================================================
@@ -990,12 +1039,13 @@ header {
 }
 
 .empreenda-text h3{
-  font-family:'BootzyTM', sans-serif !important;
-  font-size:32px;
-  letter-spacing:.06em;
-  line-height:1;
-  text-transform:uppercase;
+  font-family:'BootzyTM' !important;
+  font-size:26px;
+  letter-spacing: 0.15em !important;
+  line-height:1.3;
+  text-transform: none;
   margin-bottom:16px;
+  text-align: center;
 }
 
 .empreenda-text p{
@@ -1147,6 +1197,118 @@ header {
     .section{ padding:64px 0; }
     .footer-top{ flex-direction:column; }
   }
+
+
+/* ============================================================
+   ANIMAÇÃO SUAVE AO ENTRAR NA TELA
+   ============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s cubic-bezier(.22, 1, .36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+
+/* ============================================================
+   HERO — ENTRADA INICIAL
+   ============================================================ */
+
+.hero-entrance {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroEntrance 0.8s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+/* Cada elemento entra depois do anterior */
+.hero-title {
+  animation-delay: 0.15s;
+}
+
+.hero-description {
+  animation-delay: 0.35s;
+}
+
+.hero-buttons {
+  animation-delay: 0.55s;
+}
+
+.hero-info {
+  animation-delay: 0.75s;
+}
+
+@keyframes heroEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Quem prefere reduzir animações não recebe o efeito */
+@media (prefers-reduced-motion: reduce) {
+  .hero-entrance {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+
+
+
+/* ============================================================
+   HERO — ANIMAÇÃO INICIAL DO GLOBO
+   ============================================================ */
+
+.hero-globo {
+  animation: heroGloboEntrance 1.4s cubic-bezier(.22, 1, .36, 1) 0.1s both;
+}
+
+@keyframes heroGloboEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-globo {
+    animation: none;
+  }
+}
+
+
+
+
+
+
+
 </style>
 </head>
 <body>
@@ -1183,22 +1345,32 @@ header {
 >
   
 <div class="hero-content">
-   
-   
-<h1 class="bootzy">
-  <span style="color: #1241eb !important;">G&G</span>
+  <h1 class="bootzy hero-entrance hero-title">
+  <span style="color: #ffffff;">
+    G<span style="color: #1241eb; font-size:70%;">&</span>G
+  </span>
   <span style="color: #ffffff;">ANO</span><span style="color: #ff007f; text-transform: lowercase;">s</span><span style="color: #ff007f;">2</span><span style="color: #ffffff;">000</span>
 </h1>
-    <p class="hero-sub" style="color:#ffffff">Conectando creators, empreendedores, profissionais e marcas em um ambiente seguro. Dessa vez, no The Core e com muita nostalgia.</p>
 
-    <div class="hero-actions">
-    <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy">Garantir ingresso</a><a href="#lineup" class="btn outline bootzy">Ver line-up</a>
-    </div>
+<p class="hero-sub hero-entrance hero-description" style="color:#ffffff">
+  Conectando creators, empreendedores, profissionais e marcas em um ambiente seguro. Dessa vez, no The Core e com muita nostalgia.
+</p>
 
-    <span class="hero-dates" id="heroDates">— carregando datas —</span>
+<div class="hero-actions hero-entrance hero-buttons">
+  <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy">
+    Garantir ingresso
+  </a>
 
-    <!-- Contador regressivo (Novo formato agrupado) -->
-    <div class="countdown" id="countdown">
+  <a href="#lineup" class="btn outline bootzy">
+    Ver line-up
+  </a>
+</div>
+
+<span class="hero-dates hero-entrance hero-info" id="heroDates">
+  — carregando datas —
+</span>
+
+<div class="countdown hero-entrance hero-info" id="countdown">
       
       <!-- Bloco de Dias isolado -->
       <div class="bloco-tempo">
@@ -1278,7 +1450,7 @@ header {
       </div>
 
       <div class="empreenda-text">
-  <h3>Empreenda LGBTQIAPN+</h3>
+  <h3>Conheça o <br>Empreenda LGBTQIAPN+</h3>
 
   <p>
     Um espaço dedicado a negócios e oportunidades para a
@@ -1325,7 +1497,7 @@ header {
   <img src="img/logo2.png" alt="Gays & Garotas" class="footer-logo">
 
   <p>Nosso hub que conecta creators, empreendedores e marcas 
-    em ambientes seguros 🏳️‍🌈 Idealizado por Julio Tuschi</p>
+    em ambientes seguros.<br>🏳️‍🌈 Idealizado por Julio Tuschi</p>
 
   <div class="social-row" id="socialRow">
           <!-- ÍCONES: cada rede social usa um SVG inline abaixo (ver comentário no topo
@@ -1378,7 +1550,7 @@ const CONFIG = {
         { nome: 'Manuela Freitas', instagram: 'http://instagram.com/manuelafreitas', palco: 'IA e Diferenciação' , foto: 'img/lineup/manu.jpg'},
         { nome: 'Lyra Libero', instagram: 'http://instagram.com/lyralibero', palco: 'TikTok para fechar Negócio' , foto: 'img/lineup/lyra.jpg'},
         { nome: 'Vitor Manon', instagram: 'http://instagram.com/vitormanon', palco: 'Narrativa Visual' , foto: 'img/lineup/manon.jpg'},
-        { nome: 'Kerodrama', instagram: 'http://instagram.com/kerodramaduo', palco: 'O duo que vai animar nosso After Party' , foto: 'img/lineup/kerodrama.jpg'},
+        { nome: 'Kerodrama', instagram: 'http://instagram.com/kerodramaduo', palco: 'O duo que vai animar nosso After Party ☆' , foto: 'img/lineup/kerodrama.jpg'},
       ]
     },
 
@@ -1484,11 +1656,32 @@ setInterval(tickCountdown, 1000);
 
 // --- Marquee com nomes dos artistas ---
 (function renderMarquee(){
-  const todos = CONFIG.diasLineup.flatMap(d => d.artistas.map(a => a.nome));
+
+  const todos = CONFIG.diasLineup.flatMap(
+    d => d.artistas.map(a => a.nome)
+  );
+
   const track = document.getElementById('marqueeTrack');
-  // duplica a lista pra criar o loop contínuo do CSS (@keyframes scroll)
-  const html = [...todos, ...todos].map(nome => `<span>${nome} <img src="img/globo.webp" alt=""></span>`).join('');
-  track.innerHTML = html;
+
+  // Repete os artistas várias vezes para nunca faltar conteúdo
+  let nomes = [];
+
+  for(let i = 0; i < 8; i++){
+    nomes.push(...todos);
+  }
+
+  const grupo = nomes.map(nome => `
+    <span>
+      ${nome}
+      <img src="img/globo.webp" alt="">
+    </span>
+  `).join('');
+
+  track.innerHTML = `
+    <div class="marquee-group">${grupo}</div>
+    <div class="marquee-group">${grupo}</div>
+  `;
+
 })();
 
 // --- Line-up: abas de dia + grade de artistas ---
@@ -1657,7 +1850,7 @@ class="btn bootzy ${t.destaque ? '' : 'outline'}">Comprar</a>`      }
 (function renderSocial(){
   const redes = [
     { nome:'Instagram', url:'http://instagram.com/gaysegarotashub', svg:'<path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/>' },
-    { nome:'TikTok', url:'http://tiktok.com/@gaysegarotas', svg:'<path d="M14 3v10.5a3 3 0 11-2-2.8V3h2z"/><path d="M14 3a5 5 0 005 5"/>' },
+    { nome:'TikTok', url:'http://tiktok.com/@gaysegarotashub', svg:'<path d="M14 3v10.5a3 3 0 11-2-2.8V3h2z"/><path d="M14 3a5 5 0 005 5"/>' },
     { nome:'LinkedIn',url:'https://www.linkedin.com/company/gaysegarotashub/', svg:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v6"/><path d="M8 8v.01"/><path d="M12 17v-6"/><path d="M12 14a3 3 0 016 0v3"/>'
     },
 ];
@@ -1675,6 +1868,68 @@ document.getElementById('menuToggle').addEventListener('click', () => {
 document.querySelectorAll('#navLinks a').forEach(a => {
   a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
 });
+
+
+
+
+
+// ============================================================
+// ANIMAÇÃO GERAL AO ROLAR A PÁGINA
+// ============================================================
+
+const revealObserver = new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+
+      entry.target.classList.add('visible');
+
+      revealObserver.unobserve(entry.target);
+
+    }
+
+  });
+
+}, {
+  threshold: 0.12
+});
+
+
+function prepararReveals() {
+
+  const elementos = document.querySelectorAll(`
+    .section .eyebrow,
+    .section h2,
+    .artist-card,
+    .stage-card,
+    .empreenda-photo,
+    .empreenda-text,
+    .ticket-card,
+    .faq-item
+  `);
+
+  elementos.forEach((elemento, index) => {
+
+    elemento.classList.add('reveal');
+
+    const atraso = (index % 4) * 0.08;
+
+    elemento.style.transitionDelay = `${atraso}s`;
+
+    revealObserver.observe(elemento);
+
+  });
+
+}
+
+prepararReveals();
+
+
+
+
+
+
 </script>
 
 <!-- Fontes do Google Fonts usadas em --font-display / --font-body.
