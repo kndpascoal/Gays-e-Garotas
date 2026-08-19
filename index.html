@@ -631,7 +631,7 @@ header {
 
 @media (max-width:500px){
   .artist-name{
-    letter-spacing: 0.0em !important;
+    letter-spacing: 0.1em !important;
   }
 }
 
@@ -640,8 +640,8 @@ header {
 
   .artist-name {
     font-family: 'BootzyTM', sans-serif !important;
-    font-size: 18px !important;
-    letter-spacing: 0 !important;
+    font-size: 14px !important;
+    letter-spacing: 0.1em !important;
     word-spacing: 0 !important;
     line-height: 1 !important;
     margin: 0 !important;
@@ -988,6 +988,184 @@ header {
   color:var(--muted);
 }
 
+
+
+
+/* ============================================================
+   6.5 Experiencia
+   ============================================================ */
+
+   .titulo-anos2000 {
+  font-family: 'BootzyTM', sans-serif !important;
+  font-size: 52px !important;
+  font-weight: normal !important;
+  letter-spacing: 0 !important;
+  line-height: .92 !important;
+  text-transform: none !important;
+}
+
+.titulo-anos2000 .branco {
+  color: #ffffff !important;
+}
+
+.titulo-anos2000 .rosa {
+  color: #ff007f !important;
+}
+
+.titulo-anos2000 .rosa:nth-of-type(1) {
+  text-transform: lowercase !important;
+}
+
+.festa-content {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.festa-photo {
+  position: relative;
+  border-radius: 14px;
+  padding: 3px;
+  background: linear-gradient(
+    90deg,
+    #1241eb,
+    #ff007f
+  );
+  box-shadow: none;
+}
+
+.festa-photo::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 11px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.festa-photo img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  border-radius: 11px;
+}
+
+.festa-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.festa-text h3 {
+  font-family: 'BootzyTM', sans-serif !important;
+  font-size: 34px;
+  letter-spacing: .08em !important;
+  line-height: 1.15;
+  text-transform: none;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.festa-text p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.festa-experiencias {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.festa-experiencia {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.festa-experiencia strong {
+  display: block;
+  font-family: 'BootzyTM', sans-serif;
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+
+.festa-experiencia span {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.festa-text .btn {
+  padding: 12px 24px;
+  font-size: 13px;
+  width: fit-content;
+  align-self: flex-start;
+}
+
+/* =========================
+   CELULAR
+   ========================= */
+
+@media (max-width: 800px) {
+
+  .festa-content {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .festa-photo {
+    order: 0;
+  }
+
+  .festa-text {
+    order: 1;
+  }
+
+  .festa-text h3 {
+    font-size: 28px;
+  }
+
+  .festa-text p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+}
+
+
+/* =========================
+   CELULAR PEQUENO
+   ========================= */
+
+@media (max-width: 500px) {
+
+  .festa-experiencias {
+    grid-template-columns: 1fr;
+  }
+
+  .festa-text h3 {
+    font-size: 25px;
+  }
+
+}
+
+
+
+
+
+
+
+
   /* ============================================================
      7. Espaço
      ============================================================ */
@@ -1083,14 +1261,14 @@ header {
   /* Ingresso esgotado */
 
 .ticket-card.esgotado h3 {
-  color: #999;
+  color: #555;
 }
 
 .ticket-card.esgotado .ticket-price {
   position: relative;
   display: inline-block;
   width: fit-content;
-  color: #999;
+  color: #555;
 }
 
 .ticket-card.esgotado .ticket-price::after {
@@ -1106,7 +1284,7 @@ header {
 }
 
 .ticket-card.esgotado .ticket-price small {
-  color: #777;
+  color: #555;
 }
 
 /* Botão ESGOTADO */
@@ -1128,7 +1306,7 @@ header {
   opacity: .6;
   background: transparent;
   border-color: #555;
-  color: #888;
+  color: #999;
   box-shadow: none;
   transform: none;
 }
@@ -1140,11 +1318,11 @@ header {
 
 .ticket-card.em-breve-card .ticket-price,
 .ticket-card.em-breve-card h3{
-  color:#888;
+  color:#555;
 }
 
 .ticket-card.em-breve-card .ticket-price small{
-  color:#666;
+  color:#555;
 }
 
   /* ============================================================
@@ -1324,6 +1502,7 @@ header {
 
 <ul class="nav-links" id="navLinks">
   <li><a href="#lineup" class="bootzy">Line-up</a></li>
+  <li><a href="#experiencia" class="bootzy">experiência</a></li>
   <li><a href="#espaco" class="bootzy">Espaço</a></li>
   <li><a href="#empreenda" class="bootzy">Empreenda LGBT+</a></li>
   <li><a href="#ingressos" class="bootzy">Ingressos</a></li>
@@ -1429,6 +1608,78 @@ header {
     <div class="lineup-grid" id="lineupGrid"></div>
   </div>
 </section>
+
+
+<!-- ================= A FESTA ================= -->
+
+<section class="section section-alt" id="festa">
+  <div class="container">
+    <span class="eyebrow">experiência</span>
+<h2 class="titulo-anos2000">
+  <span class="branco">ANO</span><span class="rosa">s</span><span class="rosa">2</span><span class="branco">000</span>
+</h2>      
+
+            <!-- IMAGEM -->
+      <div class="festa-photo reveal">
+       <img 
+            src="img/experiencia/experiencia.png" 
+            alt="Gays & Garotas Ano 2000"
+>
+      </div>
+      <!-- TEXTO -->
+      <div class="festa-text reveal">
+        <h3>
+          Muito mais que uma festa.<br>Um encontro.
+        </h3>
+        <p>
+          O Gays & Garotas Anos 2000 é um encontro para celebrar,
+          conectar e criar novas experiências em comunidade.
+        </p>
+
+
+        <!-- EXPERIÊNCIAS -->
+
+        <div class="festa-experiencias">
+          <div class="festa-experiencia">
+            <strong>🎶 Música</strong>
+            <span>
+              Playlist com as mais icônicas dos anos 2000, diversão e uma pista para aproveitar a noite com a KERODRAMA.
+            </span>
+          </div>
+          <div class="festa-experiencia">
+            <strong>🤝 Conexões</strong>
+            <span>
+              Pessoas, creators, profissionais e novas conexões.
+            </span>
+          </div>
+          <div class="festa-experiencia">
+            <strong>✨ Nostalgia</strong>
+            <span>
+              Uma experiência inspirada na estética e cultura dos anos 2000.
+            </span>
+          </div>
+          <div class="festa-experiencia">
+            <strong>🏳️‍🌈 Comunidade</strong>
+            <span>
+              Um espaço seguro para celebrar nossa comunidade com liberdade.
+            </span>
+          </div>
+        </div>
+
+        <!-- BOTÃO -->
+        <a
+          href="https://pay.kiwify.com.br/bpJsI6S"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn bootzy"
+        >
+          Quero fazer parte
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ================= Espaço ================= -->
 <section class="section section-alt" id="espaco">
@@ -1579,7 +1830,7 @@ const CONFIG = {
 
   { 
     nome: 'The Core', 
-    desc: 'Seu ponto de encontro que reúne cultura e gastronomia',
+    desc: 'Ponto de encontro do G&G Anos 2000, que reúne cultura e gastronomia',
     foto: 'img/espaços/thecore.jpg'
   },
 ],
@@ -1601,8 +1852,8 @@ const CONFIG = {
     esgotado: false,
     beneficios: [
       'Incluso R$ 80 na comanda',
-      'Todas as áreas',
-      'Sorteios e workshops incriveis'
+      'Sorteios e workshops',
+      'After Party'
     ] 
   },
 
@@ -1904,6 +2155,8 @@ function prepararReveals() {
     .section h2,
     .artist-card,
     .stage-card,
+    .festa-photo,
+    .festa-text,
     .empreenda-photo,
     .empreenda-text,
     .ticket-card,
