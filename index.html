@@ -1279,21 +1279,22 @@ header {
 
 /* ============================================================
    HERO — ANIMAÇÃO INICIAL DO GLOBO
+   Mesmo ritmo dos demais elementos do Hero
    ============================================================ */
 
 .hero-globo {
-  animation: heroGloboEntrance 1.4s cubic-bezier(.22, 1, .36, 1) 0.1s both;
+  animation: heroGloboEntrance 1.2s cubic-bezier(.22, 1, .36, 1) 0.15s both;
 }
 
 @keyframes heroGloboEntrance {
   from {
     opacity: 0;
-    transform: translateY(-50%) scale(.96);
+    transform: translate(180px, -50%) scale(.92);
   }
 
   to {
     opacity: 1;
-    transform: translateY(-50%) scale(1);
+    transform: translate(0, -50%) scale(1);
   }
 }
 
