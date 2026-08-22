@@ -10,11 +10,10 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
 
 <style>
-
 /* ============================================================
-   1. VARIÁVEIS GLOBAIS E FONTES
+    1. VARIÁVEIS GLOBAIS E FONTES
+    Define as cores, fontes e medidas usadas em todo o site.
 ============================================================ */
-
 @font-face {
   font-family: 'BootzyTM';
   src: url('BootzyTM.woff2') format('woff2');
@@ -25,32 +24,27 @@
 
 :root {
   --bg: #0a0a0f;
-  --bg-alt: #121218;
+  --bg-alt: #0e0e17;
   --surface: #1a1a24;
   --line: #2a2a36;
   --text: #f4f4f7;
   --muted: #9a9aab;
   --accent: #1241eb;
   --accent-2: #ff3ea5;
-
   --font-display: 'Anton', Impact, sans-serif;
   --font-body: 'Arial', system-ui, sans-serif;
-
   --radius: 10px;
   --container: 1180px;
 
-  /* Liquid Glass */
+  /* Efeito de vidro (Liquid Glass) */
   --liquid-border: rgba(255, 255, 255, 0.18);
-  --liquid-shadow:
-    0 20px 50px rgba(0, 0, 0, .30),
-    0 5px 15px rgba(0, 0, 0, .18);
+  --liquid-shadow: 0 20px 50px rgba(0, 0, 0, .30), 0 5px 15px rgba(0, 0, 0, .18);
 }
 
-
 /* ============================================================
-   2. RESET E BASE
+    2. RESET E CONFIGURAÇÕES BASE
+    Remove margens indesejadas e padroniza o visual do navegador.
 ============================================================ */
-
 * {
   margin: 0;
   padding: 0;
@@ -70,54 +64,25 @@ body {
   overflow-x: hidden;
 }
 
-section[id] {
-  scroll-margin-top: 60px;
-}
+section[id] { scroll-margin-top: 60px; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
 
-img {
-  max-width: 100%;
-  display: block;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul {
-  list-style: none;
-}
-
-
-/* ============================================================
-   CLASSES UTILITÁRIAS
-============================================================ */
-
+/* Utilitários: Classes usadas repetidamente no site */
 .container {
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 24px;
 }
-
-.section {
-  padding: 96px 0;
-  position: relative;
-}
-
-.section-alt {
-  background: var(--bg-alt);
-}
-
-.bootzy {
-  font-family: 'BootzyTM', sans-serif !important;
-  color: inherit;
-}
-
+.section { padding: 96px 0; position: relative; }
+.section-alt { background: var(--bg-alt); }
+.bootzy { font-family: 'BootzyTM', sans-serif !important; color: inherit; }
 
 /* ============================================================
-   3. TIPOGRAFIA GERAL
+    3. TIPOGRAFIA GERAL
+    Estilização de títulos e subtítulos.
 ============================================================ */
-
 .eyebrow {
   font-size: 13px;
   letter-spacing: .18em;
@@ -128,9 +93,7 @@ ul {
   display: block;
 }
 
-h1,
-h2,
-h3 {
+h1, h2, h3 {
   font-family: var(--font-display);
   letter-spacing: .01em;
   text-transform: uppercase;
@@ -145,65 +108,43 @@ h2 {
   line-height: 1;
 }
 
-
 /* ============================================================
-   4. BOTÕES — BASE
+    4. BOTÕES
+    Estilo principal dos botões de ação (comprar, ver mais, etc).
 ============================================================ */
-
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   gap: 8px;
-
   padding: 16px 32px;
   font-weight: 700;
   font-size: 15px;
   letter-spacing: .04em;
   text-transform: uppercase;
-
   border-radius: 999px;
   border: 2px solid var(--accent);
-
   background: var(--accent);
   color: #0a0a0f;
-
   cursor: pointer;
-
-  transition:
-    transform .25s cubic-bezier(.22,1,.36,1),
-    background .25s ease,
-    border-color .25s ease,
-    box-shadow .25s ease;
+  transition: transform .25s cubic-bezier(.22,1,.36,1), background .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 
-.btn.bootzy {
-  color: #ffffff !important;
-}
-
-.btn.outline {
-  background: transparent;
-  color: var(--text);
-  border-color: var(--line);
-}
-
-.btn.outline.bootzy {
-  color: var(--text) !important;
-}
-
+.btn.bootzy { color: #ffffff !important; }
+.btn.outline { background: transparent; color: var(--text); border-color: var(--line); }
+.btn.outline.bootzy { color: var(--text) !important; }
 
 /* ============================================================
-   5. HEADER / NAVEGAÇÃO
+    5. MENU DE NAVEGAÇÃO (HEADER)
+    Fica fixo no topo da tela.
 ============================================================ */
-
 header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-
   background: #0a0a0f;
   border-bottom: 1px solid var(--line);
 }
@@ -212,11 +153,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 16px 24px;
   max-width: var(--container);
   margin: 0 auto;
-
   position: relative;
 }
 
@@ -224,97 +163,66 @@ header {
   height: 38px;
   width: auto;
   display: block;
-
   transform: scale(1.25);
   transform-origin: left center;
 }
 
 .nav-mobile-date {
   display: none;
-
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-
   font-size: 13px;
   font-family: 'BootzyTM';
   color: #c3c3c3;
   font-weight: 700;
-
   text-transform: none;
   letter-spacing: 0.05em;
-
   white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
   gap: 32px;
-
   font-size: 14px;
   font-weight: 600;
-
   text-transform: uppercase;
   letter-spacing: .04em;
 }
 
-.nav-links a {
-  color: var(--muted);
-  transition: color .15s;
-}
-
-.nav-cta {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.nav .btn {
-  padding: 11px 22px;
-  font-size: 13px;
-}
+.nav-links a { color: var(--muted); transition: color .15s; }
+.nav-cta { display: flex; align-items: center; gap: 16px; }
+.nav .btn { padding: 11px 22px; font-size: 13px; }
 
 .menu-toggle {
   display: none;
-
   background: none;
   border: none;
-
   color: var(--text);
   font-size: 28px;
-
   cursor: pointer;
 }
 
-
 /* ============================================================
-   6. HERO (Sessão Inicial)
+    6. ABERTURA (Banner Principal / Antigo Hero)
+    Primeira tela que o usuário vê ao abrir o site.
 ============================================================ */
-
-.hero {
+.abertura {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   padding-top: 150px;
   overflow: hidden;
-
   background:
-    radial-gradient(
-      ellipse 60% 50% at 30% 20%,
-      rgba(255,62,165,.18),
-      transparent
-    ),
-    radial-gradient(
-      ellipse 50% 40% at 80% 10%,
-      rgba(198,255,61,.14),
-      transparent
-    ),
+    radial-gradient(ellipse 60% 50% at 30% 20%, rgba(255,62,165,.18), transparent),
+    radial-gradient(ellipse 50% 40% at 80% 10%, rgba(198,255,61,.14), transparent),
     var(--bg);
 }
 
-.hero-content {
+.abertura-conteudo {
   z-index: 2;
   max-width: var(--container);
   margin: 0 auto;
@@ -322,12 +230,9 @@ header {
   width: 100%;
 }
 
-.hero h1 {
-  font-size: clamp(48px, 10vw, 128px);
-  line-height: .92;
-}
+.abertura h1 { font-size: clamp(48px, 10vw, 128px); line-height: .92; }
 
-.hero-sub {
+.abertura-subtitulo {
   max-width: 590px;
   margin-top: 0px;
   color: var(--muted);
@@ -335,14 +240,9 @@ header {
   line-height: 1.3;
 }
 
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  margin-top: 40px;
-  flex-wrap: wrap;
-}
+.abertura-acoes { display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
 
-.hero-dates {
+.abertura-datas {
   display: block;
   font-size: 15px;
   color: #ffffff;
@@ -352,26 +252,21 @@ header {
   margin-bottom: 10px;
 }
 
-/* Globo 3D do Hero */
-.hero-globo {
+.abertura-globo {
   position: absolute;
-  width: 750px;
-  height: 750px;
+  width: 600px;
+  height: 600px;
   object-fit: contain;
-  right: -20px;
-  top: 50%;
+  right: 160px;
+  top: 57%;
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
   opacity: .75;
-
-  transition:
-    opacity .3s ease,
-    width .3s ease,
-    right .3s ease;
+  transition: opacity .3s ease, width .3s ease, right .3s ease, top .3s ease;
 }
 
-/* Relógio (Contador) */
+/* Contador regressivo */
 .countdown {
   display: flex;
   align-items: flex-start;
@@ -382,19 +277,10 @@ header {
   z-index: 10;
 }
 
-.relogio {
-  display: flex;
-  align-items: flex-start;
-  gap: 5px;
-}
+.relogio { display: flex; align-items: flex-start; gap: 5px; }
+.bloco-tempo { text-align: center; min-width: 10px; }
 
-.bloco-tempo {
-  text-align: center;
-  min-width: 10px;
-}
-
-.separador,
-.countdown .num {
+.separador, .countdown .num {
   font-family: var(--font-display);
   font-size: clamp(32px, 4vw, 48px);
   color: #ffffff;
@@ -405,10 +291,7 @@ header {
   justify-content: center;
 }
 
-.relogio .separador {
-  margin-left: -3px;
-  margin-right: -3px;
-}
+.relogio .separador { margin-left: -3px; margin-right: -3px; }
 
 .countdown .lbl {
   font-size: 11px;
@@ -422,30 +305,25 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border: 3px solid var(--accent-2);
-  border-radius: 50%;
-  margin: 0 auto;
+  border-radius: 40%;
+  margin: 9.4px auto;
   box-shadow: 0 0 15px rgba(255, 62, 165, 0.3);
 }
 
-
 /* ============================================================
-   7. MARQUEE
+    7. FAIXA ROTATIVA (MARQUEE)
 ============================================================ */
-
 .marquee {
   position: relative;
   top: 0;
   margin-top: 50px;
-
   background: #0a0a0f;
   color: #0a0a0f;
-
   overflow: hidden;
   white-space: nowrap;
-
   border-top: 1px solid #0a0a0f;
   border-bottom: 1px solid #0a0a0f;
 }
@@ -457,24 +335,17 @@ header {
   will-change: transform;
 }
 
-.marquee-group {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-}
+.marquee-group { display: flex; flex-shrink: 0; align-items: center; }
 
 .marquee-track span {
   font-family: 'BootzyTM', sans-serif !important;
   font-size: 18px;
   text-transform: uppercase;
-
   display: inline-flex;
   align-items: center;
   gap: 40px;
-
   padding-right: 40px;
   flex-shrink: 0;
-
   color: #ffffff !important;
 }
 
@@ -486,21 +357,13 @@ header {
 }
 
 @keyframes marquee-infinito {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-
 /* ============================================================
-   8. LINE-UP / ATRAÇÕES
-   SEM VIDRO
+    8. ATRAÇÕES / LINE-UP
 ============================================================ */
-
 .day-tabs {
   display: none;
   gap: 10px;
@@ -510,18 +373,14 @@ header {
 
 .day-tab {
   padding: 10px 22px;
-
   border-radius: 999px;
   border: 1px solid var(--line);
-
   background: transparent;
   color: var(--muted);
-
   font-weight: 700;
   font-size: 14px;
   letter-spacing: .03em;
   text-transform: uppercase;
-
   cursor: pointer;
   transition: .15s;
 }
@@ -543,35 +402,20 @@ header {
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--line);
-
-  transition:
-    transform .15s ease,
-    border-color .15s ease;
+  transition: transform .15s ease, border-color .15s ease;
 }
 
-.artist-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent-2);
-}
+.artist-card:hover { transform: translateY(-4px); border-color: var(--accent-2); }
 
 .artist-photo {
   aspect-ratio: 1 / 1;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--line),
-      var(--bg-alt)
-    );
-
+  background: linear-gradient(135deg, var(--line), var(--bg-alt));
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.artist-info {
-  padding: 16px;
-}
+.artist-info { padding: 16px; }
 
 .artist-name {
   font-family: 'BootzyTM', sans-serif;
@@ -585,13 +429,12 @@ header {
   align-items: flex-start;
   gap: 7px;
   min-width: 0;
-
   font-size: 13px;
   color: var(--muted);
   margin-top: 4px;
 }
 
-.artist-meta .palco {
+.artist-meta .painel {
   font-size: 13px;
   color: var(--muted);
   min-width: 0;
@@ -599,27 +442,12 @@ header {
   word-break: break-word;
 }
 
-.artist-meta .instagram-link {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.artist-meta .separator {
-  font-size: 6px;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
+.artist-meta .instagram-link { display: flex; align-items: center; flex-shrink: 0; }
+.artist-meta .separator { font-size: 6px; line-height: 1; flex-shrink: 0; }
 
 /* ============================================================
-   9. EXPERIÊNCIA
+    9. VIVÊNCIA / EXPERIÊNCIA
 ============================================================ */
-
-/* ============================================================
-   TÍTULO ANOS 2000 — POSIÇÃO ORIGINAL
-============================================================ */
-
 .titulo-anos2000 {
   font-family: 'BootzyTM', sans-serif !important;
   font-size: 52px !important;
@@ -629,32 +457,20 @@ header {
   text-transform: none !important;
 }
 
-.titulo-anos2000 .branco {
-  color: #ffffff !important;
-}
+.titulo-anos2000 .branco { color: #ffffff !important; }
+.titulo-anos2000 .rosa { color: #ff007f !important; }
+.titulo-anos2000 .rosa:nth-of-type(1) { text-transform: lowercase !important; }
 
-.titulo-anos2000 .rosa {
-  color: #ff007f !important;
-}
-
-.titulo-anos2000 .rosa:nth-of-type(1) {
-  text-transform: lowercase !important;
-}
-
-.festa-content {
+.experiencia-conteudo {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 40px;
   align-items: center;
 }
 
-.festa-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+.experiencia-texto { display: flex; flex-direction: column; justify-content: center; }
 
-.festa-text h3 {
+.experiencia-texto h3 {
   font-family: 'BootzyTM', sans-serif !important;
   font-size: 34px;
   letter-spacing: .08em !important;
@@ -664,3079 +480,924 @@ header {
   margin-top: 30px;
 }
 
-.festa-text p {
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.2;
-  margin-bottom: 28px;
-}
+.experiencia-texto p { color: var(--muted); font-size: 16px; line-height: 1.2; margin-bottom: 28px; }
 
-.festa-experiencias {
+.experiencia-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 12px;
   margin-bottom: 30px;
 }
 
-
-/* ============================================================
-   EXPERIÊNCIAS — GLASS
-============================================================ */
-
-.festa-experiencia {
+.experiencia-card {
   position: relative;
-
   border: 1px solid var(--liquid-border);
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.075),
-      rgba(255,255,255,.025)
-    );
-
+  background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
   border-radius: var(--radius);
   padding: 18px;
   overflow: hidden;
-
-  box-shadow:
-    inset 0 1px 1px rgba(255,255,255,.16),
-    inset 0 -1px 1px rgba(255,255,255,.035),
-    var(--liquid-shadow);
-
-  backdrop-filter:
-    blur(22px)
-    saturate(145%);
-
-  -webkit-backdrop-filter:
-    blur(22px)
-    saturate(145%);
-
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), var(--liquid-shadow);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
   isolation: isolate;
-
-  transition:
-    transform .3s cubic-bezier(.22,1,.36,1),
-    border-color .3s ease,
-    background .3s ease,
-    box-shadow .3s ease;
+  transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease, box-shadow .3s ease;
 }
 
-.festa-experiencia::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 10px;
-  right: 10px;
-  height: 1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,.38),
-      rgba(255,255,255,.15),
-      transparent
-    );
-
-  opacity: .8;
-  z-index: 20;
-  pointer-events: none;
+.experiencia-card::before {
+  content: ""; position: absolute; top: 1px; left: 10px; right: 10px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), rgba(255,255,255,.15), transparent);
+  opacity: .8; z-index: 20; pointer-events: none;
 }
 
-.festa-experiencia::after {
-  content: "";
-  position: absolute;
-
-  width: 70%;
-  height: 160%;
-
-  top: -80%;
-  left: -55%;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255,255,255,.035) 45%,
-      rgba(255,255,255,.10) 50%,
-      rgba(255,255,255,.025) 55%,
-      transparent 100%
-    );
-
-  transform: rotate(18deg);
-  pointer-events: none;
-  opacity: .55;
-
-  transition:
-    transform .8s cubic-bezier(.22,1,.36,1),
-    opacity .4s ease;
-
-  z-index: 15;
+.experiencia-card::after {
+  content: ""; position: absolute; width: 70%; height: 160%; top: -80%; left: -55%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.035) 45%, rgba(255,255,255,.10) 50%, rgba(255,255,255,.025) 55%, transparent 100%);
+  transform: rotate(18deg); pointer-events: none; opacity: .55; transition: transform .8s cubic-bezier(.22,1,.36,1), opacity .4s ease; z-index: 15;
 }
 
-.festa-experiencia:hover {
-  transform: translateY(-5px);
-  border-color: rgba(255,255,255,.30);
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.12),
-      rgba(255,255,255,.045)
-    );
-
-  box-shadow:
-    inset 0 1px 1px rgba(255,255,255,.20),
-    0 25px 60px rgba(0,0,0,.38),
-    0 0 35px rgba(18,65,235,.07);
+.experiencia-card:hover {
+  transform: translateY(-5px); border-color: rgba(255,255,255,.30);
+  background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.045));
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.20), 0 25px 60px rgba(0,0,0,.38), 0 0 35px rgba(18,65,235,.07);
 }
 
-.festa-experiencia:hover::after {
-  transform: translateX(120%) rotate(18deg);
-  opacity: .85;
+.experiencia-card:hover::after { transform: translateX(120%) rotate(18deg); opacity: .85; }
+
+.experiencia-card strong {
+  position: relative; z-index: 1; display: block; font-family: 'BootzyTM', sans-serif;
+  font-size: 15px; letter-spacing: .09em !important; color: var(--text); margin-bottom: 5px; margin-top: 10px; text-transform: uppercase;
 }
 
-.festa-experiencia strong {
-  position: relative;
-  z-index: 1;
+.experiencia-card span { position: relative; z-index: 1; display: block; color: var(--muted); font-size: 13px; line-height: 1.4; }
 
-  display: block;
-  font-family: 'BootzyTM', sans-serif;
-  font-size: 15px;
-
-  letter-spacing: .09em !important;
-  color: var(--text);
-
-  margin-bottom: 5px;
-  margin-top: 10px;
-
-  text-transform: uppercase;
-}
-
-.festa-experiencia span {
-  position: relative;
-  z-index: 1;
-
-  display: block;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.4;
-}
-
-.festa-text .btn {
-  padding: 12px 24px;
-  font-size: 13px;
-  width: fit-content;
-  align-self: flex-start;
-}
-
+.experiencia-texto .btn { padding: 12px 24px; font-size: 13px; width: fit-content; align-self: flex-start; }
 
 /* ============================================================
-   10. ESPAÇO / ESTRUTURA
-   SEM VIDRO
+    10. ESTRUTURA / AMBIENTES
 ============================================================ */
-
-.stage-grid {
+.ambiente-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(auto-fit, minmax(260px, 1fr));
-
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
 }
 
-.stage-card {
+.ambiente-card {
   background: var(--surface);
   border-radius: var(--radius);
   border: 1px solid var(--line);
   overflow: hidden;
 }
 
-.stage-photo {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-.stage-body {
-  padding: 22px;
-}
-
-.stage-body h3 {
-  font-size: 15px;
-  margin-bottom: 8px;
-  letter-spacing: .07em !important;
-}
-
-.stage-body p {
-  color: var(--muted);
-  font-size: 14px;
-}
-
+.ambiente-foto { width: 100%; height: 260px; object-fit: cover; object-position: center; display: block; }
+.ambiente-info { padding: 22px; }
+.ambiente-info h3 { font-size: 15px; margin-bottom: 8px; letter-spacing: .07em !important; }
+.ambiente-info p { color: var(--muted); font-size: 14px; }
 
 /* ============================================================
-   11. EMPREENDA
+    11. EMPREENDA LGBT+
 ============================================================ */
-
-.empreenda-content {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 32px;
-  align-items: center;
-}
-
-.empreenda-photo {
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--line);
-}
-
-.empreenda-photo img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
+.empreenda-content { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; }
+.empreenda-photo { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+.empreenda-photo img { width: 100%; display: block; aspect-ratio: 16 / 9; object-fit: cover; }
 
 .empreenda-text h3 {
-  font-family: 'BootzyTM' !important;
-  font-size: 26px;
-  letter-spacing: .10em !important;
-  line-height: 1.1;
-  text-transform: none;
-  margin-bottom: 16px;
-  text-align: center;
+  font-family: 'BootzyTM' !important; font-size: 26px; letter-spacing: .10em !important; line-height: 1.1; text-transform: none; margin-bottom: 16px; text-align: center;
 }
-
-.empreenda-text p {
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.7;
-}
-
+.empreenda-text p { color: var(--muted); font-size: 16px; line-height: 1.7; }
 
 /* ============================================================
-   12. INGRESSOS — GLASS
+    12. INGRESSOS (Glass Effect)
 ============================================================ */
-
-.tickets-grid {
-  display: grid;
-  grid-template-columns:
-    repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-}
+.tickets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
 
 .ticket-card {
   position: relative;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.075),
-      rgba(255,255,255,.025)
-    );
-
+  background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
   border: 1px solid var(--liquid-border);
-  border-radius: var(--radius);
-  padding: 32px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
+  border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; gap: 16px;
   overflow: hidden;
-
-  box-shadow:
-    inset 0 1px 1px rgba(255,255,255,.16),
-    inset 0 -1px 1px rgba(255,255,255,.035),
-    var(--liquid-shadow);
-
-  backdrop-filter:
-    blur(22px)
-    saturate(145%);
-
-  -webkit-backdrop-filter:
-    blur(22px)
-    saturate(145%);
-
-  isolation: isolate;
-
-  transition:
-    transform .3s cubic-bezier(.22,1,.36,1),
-    border-color .3s ease,
-    background .3s ease,
-    box-shadow .3s ease;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), var(--liquid-shadow);
+  backdrop-filter: blur(22px) saturate(145%); -webkit-backdrop-filter: blur(22px) saturate(145%);
+  isolation: isolate; transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease, box-shadow .3s ease;
 }
 
 .ticket-card::before {
-  content: "";
-  position: absolute;
-
-  top: 1px;
-  left: 10px;
-  right: 10px;
-  height: 1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,.38),
-      rgba(255,255,255,.15),
-      transparent
-    );
-
-  opacity: .8;
-  pointer-events: none;
-  z-index: 20;
+  content: ""; position: absolute; top: 1px; left: 10px; right: 10px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), rgba(255,255,255,.15), transparent);
+  opacity: .8; pointer-events: none; z-index: 20;
 }
 
 .ticket-card::after {
-  content: "";
-  position: absolute;
-
-  width: 70%;
-  height: 160%;
-
-  top: -80%;
-  left: -55%;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255,255,255,.035) 45%,
-      rgba(255,255,255,.10) 50%,
-      rgba(255,255,255,.025) 55%,
-      transparent 100%
-    );
-
-  transform: rotate(18deg);
-  pointer-events: none;
-  opacity: .55;
-
-  transition:
-    transform .8s cubic-bezier(.22,1,.36,1),
-    opacity .4s ease;
-
-  z-index: 15;
+  content: ""; position: absolute; width: 70%; height: 160%; top: -80%; left: -55%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.035) 45%, rgba(255,255,255,.10) 50%, rgba(255,255,255,.025) 55%, transparent 100%);
+  transform: rotate(18deg); pointer-events: none; opacity: .55; transition: transform .8s cubic-bezier(.22,1,.36,1), opacity .4s ease; z-index: 15;
 }
 
 .ticket-card:hover {
-  transform: translateY(-5px);
-
-  border-color: rgba(255,255,255,.30);
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.12),
-      rgba(255,255,255,.045)
-    );
-
-  box-shadow:
-    inset 0 1px 1px rgba(255,255,255,.20),
-    0 25px 60px rgba(0,0,0,.38),
-    0 0 35px rgba(18,65,235,.07);
+  transform: translateY(-5px); border-color: rgba(255,255,255,.30);
+  background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.045));
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.20), 0 25px 60px rgba(0,0,0,.38), 0 0 35px rgba(18,65,235,.07);
 }
 
-.ticket-card:hover::after {
-  transform: translateX(120%) rotate(18deg);
-  opacity: .85;
-}
+.ticket-card:hover::after { transform: translateX(120%) rotate(18deg); opacity: .85; }
 
 .ticket-card.highlight {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(18,65,235,.22),
-      rgba(18,65,235,.075),
-      rgba(255,255,255,.035)
-    );
-
-  border:
-    1px solid rgba(80,115,255,.48);
-
-  box-shadow:
-    inset 0 1px 1px rgba(255,255,255,.17),
-    0 20px 55px rgba(18,65,235,.18),
-    0 0 35px rgba(18,65,235,.08);
+  background: linear-gradient(135deg, rgba(18,65,235,.22), rgba(18,65,235,.075), rgba(255,255,255,.035));
+  border: 1px solid rgba(80,115,255,.48);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.17), 0 20px 55px rgba(18,65,235,.18), 0 0 35px rgba(18,65,235,.08);
 }
 
-.ticket-tag {
-  font-size: 12px;
-  color: var(--accent);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-}
+.ticket-tag { font-size: 12px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.ticket-price { font-family: var(--font-display); font-size: 40px; }
+.ticket-price small { font-size: 15px; color: var(--muted); font-family: var(--font-body); }
+.ticket-card ul { display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: var(--muted); }
+.ticket-card li { display: flex; gap: 8px; align-items: flex-start; }
 
-.ticket-price {
-  font-family: var(--font-display);
-  font-size: 40px;
-}
-
-.ticket-price small {
-  font-size: 15px;
-  color: var(--muted);
-  font-family: var(--font-body);
-}
-
-.ticket-card ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-.ticket-card li {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-}
-
+.ticket-card.esgotado h3, .ticket-card.esgotado .ticket-price, .ticket-card.esgotado .ticket-price small { color: #555; }
+.ticket-card.esgotado .ticket-price { position: relative; display: inline-block; width: fit-content; }
+.ticket-card.esgotado .ticket-price::after { content: ""; position: absolute; left: -4px; right: -4px; top: 50%; height: 3px; background: #ff3030; transform: rotate(-5deg); }
+.ticket-card .btn.esgotado, .ticket-card .btn.em-breve { cursor: default; pointer-events: none; opacity: .6; background: transparent !important; border-color: #555 !important; color: #888 !important; box-shadow: none !important; transform: none !important; }
+.ticket-card.em-breve-card { opacity: .55; }
+.ticket-card.em-breve-card .ticket-price, .ticket-card.em-breve-card h3, .ticket-card.em-breve-card .ticket-price small { color: #555; }
 
 /* ============================================================
-   INGRESSOS — ESGOTADO / EM BREVE
+    13. FAQ (Perguntas Frequentes)
 ============================================================ */
-
-.ticket-card.esgotado h3,
-.ticket-card.esgotado .ticket-price,
-.ticket-card.esgotado .ticket-price small {
-  color: #555;
-}
-
-.ticket-card.esgotado .ticket-price {
-  position: relative;
-  display: inline-block;
-  width: fit-content;
-}
-
-.ticket-card.esgotado .ticket-price::after {
-  content: "";
-
-  position: absolute;
-
-  left: -4px;
-  right: -4px;
-  top: 50%;
-
-  height: 3px;
-  background: #ff3030;
-  transform: rotate(-5deg);
-}
-
-.ticket-card .btn.esgotado,
-.ticket-card .btn.em-breve {
-  cursor: default;
-  pointer-events: none;
-  opacity: .6;
-
-  background: transparent !important;
-  border-color: #555 !important;
-  color: #888 !important;
-
-  box-shadow: none !important;
-  transform: none !important;
-}
-
-.ticket-card.em-breve-card {
-  opacity: .55;
-}
-
-.ticket-card.em-breve-card .ticket-price,
-.ticket-card.em-breve-card h3,
-.ticket-card.em-breve-card .ticket-price small {
-  color: #555;
-}
-
-
-/* ============================================================
-   13. FAQ — GLASS
-============================================================ */
-
 .faq-item {
-  position: relative;
-  margin-bottom: 10px;
-
-  border: 1px solid rgba(255,255,255,.11);
-  border-radius: 14px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.065),
-      rgba(255,255,255,.025)
-    );
-
-  backdrop-filter:
-    blur(18px)
-    saturate(140%);
-
-  -webkit-backdrop-filter:
-    blur(18px)
-    saturate(140%);
-
-  overflow: hidden;
-
-  box-shadow:
-    inset 0 1px 1px rgba(255,255,255,.09),
-    0 10px 30px rgba(0,0,0,.15);
-
-  transition:
-    border-color .25s ease,
-    background .25s ease;
+  position: relative; margin-bottom: 10px; border: 1px solid rgba(255,255,255,.11); border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
+  backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); overflow: hidden;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.09), 0 10px 30px rgba(0,0,0,.15); transition: border-color .25s ease, background .25s ease;
 }
 
-.faq-item:hover {
-  border-color: rgba(255,255,255,.22);
-  background: rgba(255,255,255,.075);
-}
+.faq-item:hover { border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.075); }
 
 .faq-q {
-  width: 100%;
-  text-align: left;
-  background: none;
-  border: none;
-  color: var(--text);
-
-  padding: 22px 22px;
-  font-size: 17px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  font-family: var(--font-body);
+  width: 100%; text-align: left; background: none; border: none; color: var(--text); padding: 22px;
+  font-size: 17px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-body);
 }
 
-.faq-q .plus {
-  font-size: 22px;
-  color: var(--accent);
-  transition: transform .2s;
-}
-
-.faq-item.open .plus {
-  transform: rotate(45deg);
-}
-
-.faq-a {
-  max-height: 0;
-  overflow: hidden;
-
-  transition:
-    max-height .25s ease;
-
-  color: var(--muted);
-  font-size: 15px;
-}
-
-.faq-a p {
-  padding: 0 22px 22px;
-}
-
+.faq-q .plus { font-size: 22px; color: var(--accent); transition: transform .2s; }
+.faq-item.open .plus { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .25s ease; color: var(--muted); font-size: 15px; }
+.faq-a p { padding: 0 22px 22px; }
 
 /* ============================================================
-   14. FOOTER
+    14. RODAPÉ (FOOTER)
 ============================================================ */
+footer { background: var(--bg-alt); border-top: 1px solid var(--line); padding: 64px 0 32px; }
+.footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 48px; }
+.footer-brand h3 { font-size: 26px; margin-bottom: 12px; }
+.footer-brand p { color: var(--muted); max-width: 320px; font-size: 14px; }
+.footer-logo { width: 180px; height: auto; display: block; margin-bottom: 30px; }
 
-footer {
-  background: var(--bg-alt);
-  border-top: 1px solid var(--line);
-  padding: 64px 0 32px;
-}
+.social-row { display: flex; gap: 14px; margin-top: 20px; }
+.social-row a { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; transition: .15s; }
+.social-row a:hover { border-color: var(--accent); color: var(--accent); }
 
-.footer-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  flex-wrap: wrap;
-  margin-bottom: 48px;
-}
+.footer-links { display: flex; gap: 64px; flex-wrap: wrap; }
+.footer-col h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 16px; }
+.footer-col a { display: block; padding: 6px 0; color: var(--text); font-size: 14px; }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom { border-top: 1px solid var(--line); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--muted); font-size: 13px; }
 
-.footer-brand h3 {
-  font-size: 26px;
-  margin-bottom: 12px;
-}
-
-.footer-brand p {
-  color: var(--muted);
-  max-width: 320px;
-  font-size: 14px;
-}
-
-.footer-logo {
-  width: 180px;
-  height: auto;
-  display: block;
-  margin-bottom: 30px;
-}
-
-.social-row {
-  display: flex;
-  gap: 14px;
-  margin-top: 20px;
-}
-
-.social-row a {
-  width: 40px;
-  height: 40px;
-
+/* ============================================================
+    15. BOTÃO VOLTAR AO TOPO (FLUTUANTE NO CANTO INFERIOR DIREITO)
+============================================================ */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  border: 1px solid var(--line);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  transition: .15s;
+  background: linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.045));
+  border: 1px solid rgba(255,255,255,.28);
+  color: #fff;
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.22), inset 0 -1px 1px rgba(0,0,0,.10), 0 10px 30px rgba(0,0,0,.22);
+  cursor: pointer;
+  transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 
-.social-row a:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+.back-to-top:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,.45);
+  background: linear-gradient(135deg, rgba(132, 136, 148, 0.78), rgba(110, 116, 140, 0.32));
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 15px 40px rgba(0,0,0,.30);
 }
-
-.footer-links {
-  display: flex;
-  gap: 64px;
-  flex-wrap: wrap;
-}
-
-.footer-col h4 {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  color: var(--muted);
-  margin-bottom: 16px;
-}
-
-.footer-col a {
-  display: block;
-  padding: 6px 0;
-  color: var(--text);
-  font-size: 14px;
-}
-
-.footer-col a:hover {
-  color: var(--accent);
-}
-
-.footer-bottom {
-  border-top: 1px solid var(--line);
-  padding-top: 24px;
-
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-
-  color: var(--muted);
-  font-size: 13px;
-}
-
 
 /* ============================================================
-   15. ANIMAÇÕES
+    16. ANIMAÇÕES
 ============================================================ */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
+.abertura-animacao { opacity: 0; transform: translateY(24px); animation: animacaoAbertura .8s cubic-bezier(.22,1,.36,1) forwards; }
+.abertura-titulo { animation-delay: .15s; }
+.abertura-descricao { animation-delay: .35s; }
+.abertura-botoes { animation-delay: .55s; }
+.abertura-info { animation-delay: .75s; }
 
-  transition:
-    opacity .75s ease,
-    transform .75s cubic-bezier(.22,1,.36,1);
+@keyframes animacaoAbertura {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.abertura-globo { animation: animacaoGloboAbertura 1.2s cubic-bezier(.22,1,.36,1) .15s both; }
 
-.hero-entrance {
-  opacity: 0;
-  transform: translateY(24px);
-
-  animation:
-    heroEntrance .8s cubic-bezier(.22,1,.36,1) forwards;
-}
-
-.hero-title {
-  animation-delay: .15s;
-}
-
-.hero-description {
-  animation-delay: .35s;
-}
-
-.hero-buttons {
-  animation-delay: .55s;
-}
-
-.hero-info {
-  animation-delay: .75s;
-}
-
-@keyframes heroEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-globo {
-  animation:
-    heroGloboEntrance
-    1.2s
-    cubic-bezier(.22,1,.36,1)
-    .15s
-    both;
-}
-
-@keyframes heroGloboEntrance {
-  from {
-    opacity: 0;
-    transform:
-      translate(180px,-50%)
-      scale(.92);
-  }
-
-  to {
-    opacity: 1;
-    transform:
-      translate(0,-50%)
-      scale(1);
-  }
+@keyframes animacaoGloboAbertura {
+  from { opacity: 0; transform: translate(180px,-50%) scale(.92); }
+  to { opacity: 1; transform: translate(0,-50%) scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-
-  .reveal,
-  .hero-entrance {
-    opacity: 1;
-    transform: none;
-    transition: none;
-    animation: none;
-  }
-
-  .hero-globo {
-    animation: none;
-  }
+  .reveal, .abertura-animacao { opacity: 1; transform: none; transition: none; animation: none; }
+  .abertura-globo { animation: none; }
 }
 
-
 /* ============================================================
-   16. LIQUID GLASS — BOTÕES
-   Efeito SOMENTE em desktop
+    17. EFEITO DE BOTÃO PREMIUM (Aplicado apenas em PC)
 ============================================================ */
-
 @media (hover: hover) and (pointer: fine) {
-
   .btn {
-    position: relative;
-    overflow: hidden;
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,.13),
-        rgba(255,255,255,.045)
-      ) !important;
-
-    border:
-      1px solid rgba(255,255,255,.28) !important;
-
-    color: #fff !important;
-
-    backdrop-filter:
-      blur(18px)
-      saturate(160%);
-
-    -webkit-backdrop-filter:
-      blur(18px)
-      saturate(160%);
-
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,.22),
-      inset 0 -1px 1px rgba(0,0,0,.10),
-      0 10px 30px rgba(0,0,0,.22);
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.045)) !important;
+    border: 1px solid rgba(255,255,255,.28) !important; color: #fff !important;
+    backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.22), inset 0 -1px 1px rgba(0,0,0,.10), 0 10px 30px rgba(0,0,0,.22);
   }
-
   .btn::before {
-    content: "";
-
-    position: absolute;
-
-    top: -50%;
-    left: -100%;
-
-    width: 55%;
-    height: 200%;
-
-    background:
-      linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.22),
-        transparent
-      );
-
-    transform: rotate(20deg);
-
-    transition:
-      left .65s cubic-bezier(.22,1,.36,1);
-
-    pointer-events: none;
+    content: ""; position: absolute; top: -50%; left: -100%; width: 55%; height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+    transform: rotate(20deg); transition: left .65s cubic-bezier(.22,1,.36,1); pointer-events: none;
   }
-
-  .btn:hover::before {
-    left: 150%;
-  }
-
+  .btn:hover::before { left: 150%; }
   .btn:hover {
-    transform: translateY(-3px);
-
-    border-color:
-      rgba(255,255,255,.45) !important;
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,.18),
-        rgba(255,255,255,.065)
-      ) !important;
-
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,.25),
-      0 15px 40px rgba(0,0,0,.30);
+    transform: translateY(-3px); border-color: rgba(255,255,255,.45) !important;
+    background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.065)) !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 15px 40px rgba(0,0,0,.30);
   }
-
   .btn:not(.outline) {
-    background:
-      linear-gradient(
-        135deg,
-        rgba(18,65,235,.78),
-        rgba(18,65,235,.32)
-      ) !important;
-
-    border-color:
-      rgba(100,130,255,.60) !important;
-
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,.25),
-      0 10px 35px rgba(18,65,235,.25);
+    background: linear-gradient(135deg, rgba(18,65,235,.78), rgba(18,65,235,.32)) !important;
+    border-color: rgba(100,130,255,.60) !important; box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 10px 35px rgba(18,65,235,.25);
   }
-
   .btn:not(.outline):hover {
-    background:
-      linear-gradient(
-        135deg,
-        rgba(30,78,245,.88),
-        rgba(18,65,235,.42)
-      ) !important;
-
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,.30),
-      0 15px 45px rgba(18,65,235,.35);
+    background: linear-gradient(135deg, rgba(30,78,245,.88), rgba(18,65,235,.42)) !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.30), 0 15px 45px rgba(18,65,235,.35);
   }
-
-  .btn.outline {
-    background:
-      rgba(255,255,255,.045) !important;
-
-    border-color:
-      rgba(255,255,255,.18) !important;
-  }
+  .btn.outline { background: rgba(255,255,255,.045) !important; border-color: rgba(255,255,255,.18) !important; }
 }
-
 
 /* ============================================================
-   17. LUZES ATRÁS DO VIDRO
+    18. LUZES DE FUNDO
 ============================================================ */
+#experiencia, #espaco, #ingressos, #empreenda, #info { overflow: hidden; }
 
-#experiencia,
-#espaco,
-#ingressos,
-#empreenda,
-#info {
-  overflow: hidden;
+#experiencia::before, #ingressos::before, #info::before {
+  content: ""; position: absolute; width: 500px; height: 500px; left: -220px; top: 36%;
+  background: radial-gradient(circle, rgba(18,65,235,.18) 0%, rgba(18,65,235,.07) 35%, transparent 70%); filter: blur(35px); pointer-events: none;
 }
 
-#experiencia::before,
-#ingressos::before,
-#info::before {
-  content: "";
-
-  position: absolute;
-
-  width: 500px;
-  height: 500px;
-
-  left: -220px;
-  top: 15%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(18,65,235,.18) 0%,
-      rgba(18,65,235,.07) 35%,
-      transparent 70%
-    );
-
-  filter: blur(35px);
-
-  pointer-events: none;
+#experiencia::after, #ingressos::after, #info::after {
+  content: ""; position: absolute; width: 450px; height: 450px; right: -180px; top: 12%;
+  background: radial-gradient(circle, rgba(255,0,127,.14) 0%, rgba(255,0,127,.05) 40%, transparent 72%); filter: blur(40px); pointer-events: none;
 }
 
-#experiencia::after,
-#ingressos::after,
-#info::after {
-  content: "";
-
-  position: absolute;
-
-  width: 450px;
-  height: 450px;
-
-  right: -180px;
-  top: 45%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(255,0,127,.14) 0%,
-      rgba(255,0,127,.05) 40%,
-      transparent 72%
-    );
-
-  filter: blur(40px);
-
-  pointer-events: none;
-}
-
-#experiencia .container,
-#espaco .container,
-#ingressos .container,
-#empreenda .container,
-#info .container {
-  position: relative;
-  z-index: 2;
-}
-
+#experiencia .container, #espaco .container, #ingressos .container, #empreenda .container, #info .container { position: relative; z-index: 2; }
 
 /* ============================================================
-   18. RESPONSIVIDADE
+    19. RESPONSIVIDADE
 ============================================================ */
-
-/* ------------------------------------------------------------
-   DESKTOP
------------------------------------------------------------- */
-
 @media (min-width: 901px) {
-
-  .marquee {
-    top: -48px;
-    margin-bottom: 110px;
-  }
+  .marquee { top: -48px; margin-bottom: 110px; }
 }
-
-
-/* ------------------------------------------------------------
-   TABLETS
------------------------------------------------------------- */
 
 @media (max-width: 1100px) {
-
-  .hero-globo {
-    width: 600px;
-    height: 600px;
-    right: -120px;
-
-    -webkit-mask-image:
-      linear-gradient(
-        to right,
-        transparent 0%,
-        rgba(0,0,0,.15) 18%,
-        rgba(0,0,0,.55) 35%,
-        rgba(0,0,0,.9) 52%,
-        black 65%
-      );
-
-    mask-image:
-      linear-gradient(
-        to right,
-        transparent 0%,
-        rgba(0,0,0,.15) 18%,
-        rgba(0,0,0,.55) 35%,
-        rgba(0,0,0,.9) 52%,
-        black 65%
-      );
+  .abertura-globo {
+    width: 600px; height: 600px; right: -15px; top: 56%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 18%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.9) 52%, black 65%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 18%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.9) 52%, black 65%);
   }
 }
 
 @media (min-width: 601px) and (max-width: 1000px) {
-
-  .hero {
-    padding-top: 120px;
-    justify-content: flex-start;
-  }
-
-  .hero h1 {
-    font-size:
-      clamp(90px, 9vw, 90px);
-  }
-
-  .countdown {
-    gap: 12px;
-  }
+  .abertura { padding-top: 120px; justify-content: flex-start; }
+  .abertura h1 { font-size: clamp(90px, 9vw, 90px); padding-top: 50px; }
+  .countdown { gap: 12px; }
 }
 
 @media (max-width: 900px) {
-
-  .hero-globo {
-    width: 650px;
-    height: 650px;
-    right: -180px;
-  }
-
-  .hero-sub {
-    max-width: 520px;
-    margin-top: 24px;
-    font-size: 17px;
-    line-height: 1.4;
-  }
+  .abertura-globo { width: 650px; height: 650px; right: -180px; top: 56%; }
+  .abertura-subtitulo { max-width: 520px; margin-top: 24px; font-size: 17px; line-height: 1.4; }
 }
 
-
-/* ------------------------------------------------------------
-   MENU MOBILE
------------------------------------------------------------- */
-
 @media (max-width: 860px) {
-
-  .nav-mobile-date {
-    display: block;
-  }
-
+  .nav-mobile-date { display: block; }
   .nav-links {
-    position: fixed;
-
-    top: 64px;
-    left: 0;
-    right: 0;
-
-    background: #0a0a0f;
-
-    flex-direction: column;
-
-    padding: 32px 24px;
-
-    gap: 24px;
-
-    font-size: 18px;
-
-    border-bottom: 1px solid var(--line);
-
-    transform: translateY(-150%);
-
-    transition:
-      transform .3s ease-in-out;
-
-    z-index: 99;
+    position: fixed; top: 64px; left: 0; right: 0; background: #0a0a0f; flex-direction: column;
+    padding: 32px 24px; gap: 24px; font-size: 18px; border-bottom: 1px solid var(--line);
+    transform: translateY(-150%); transition: transform .3s ease-in-out; z-index: 99;
   }
-
-  .nav-links.open {
-    transform: translateY(0);
-
-    box-shadow:
-      0 20px 40px rgba(0,0,0,.8);
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav .btn {
-    display: none;
-  }
+  .nav-links.open { transform: translateY(0); box-shadow: 0 20px 40px rgba(0,0,0,.8); }
+  .menu-toggle { display: block; }
+  .nav .btn { display: none; }
 }
 
 @media (max-width: 800px) {
-
-  .festa-content {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .festa-photo {
-    order: 0;
-  }
-
-  .festa-text {
-    order: 1;
-  }
-
-  .festa-text h3 {
-    font-size: 28px;
-  }
-
-  .festa-text p {
-    font-size: 15px;
-  }
+  .experiencia-conteudo { grid-template-columns: 1fr; gap: 28px; }
+  .experiencia-foto { order: 0; }
+  .experiencia-texto { order: 1; }
+  .experiencia-texto h3 { font-size: 28px; }
+  .experiencia-texto p { font-size: 15px; }
 }
-
-
-/* ------------------------------------------------------------
-   MOBILE ATÉ 700
------------------------------------------------------------- */
 
 @media (max-width: 700px) {
-
-  .hero-globo {
-    width: 550px;
-    height: 550px;
-
-    right: -190px;
-
-    opacity: .99;
-
-    -webkit-mask-image:
-      linear-gradient(
-        to right,
-        transparent 0%,
-        rgba(0,0,0,.08) 20%,
-        rgba(0,0,0,.35) 38%,
-        rgba(0,0,0,.75) 55%,
-        black 70%
-      );
-
-    mask-image:
-      linear-gradient(
-        to right,
-        transparent 0%,
-        rgba(0,0,0,.08) 20%,
-        rgba(0,0,0,.35) 38%,
-        rgba(0,0,0,.75) 55%,
-        black 70%
-      );
+  .abertura-globo {
+    width: 550px; height: 550px; right: -190px; opacity: .99;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.08) 10%, rgba(0,0,0,.35) 28%, rgba(0,0,0,.75) 45%, black 80%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.08) 10%, rgba(0,0,0,.35) 28%, rgba(0,0,0,.75) 45%, black 100%);
   }
 }
-
-
-/* ------------------------------------------------------------
-   CELULARES
------------------------------------------------------------- */
 
 @media (max-width: 600px) {
+  .abertura { padding-top: 160px; padding-bottom: 0; justify-content: flex-start; }
+  .abertura h1 { font-size: 85px; }
+  .abertura-subtitulo { max-width: 340px; margin-top: 12px; font-size: 14px; }
+  .abertura-acoes { margin-top: 110px; }
+  .abertura-datas { text-align: center; width: 100%; margin-top: 60px; }
+  
+  .abertura-globo { width: 750px; height: 750px; right: -150px; top: 30% !important; }
 
-  .hero {
-    padding-top: 180px;
-    padding-bottom: 0;
-    justify-content: flex-start;
+  .countdown { justify-content: center; width: 100%; margin-top: 20px !important; margin-bottom: -100px !important; gap: 14px; margin-left: -10px; }
+  .bloco-tempo { min-width: 30px; }
+  #cd-dias { margin-left: 0; }
+  .marquee { top: -48px; }
+
+  .lineup-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .artist-card { background: var(--surface) !important; border: 1px solid var(--line) !important; box-shadow: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  .artist-card:hover { transform: none; border-color: var(--line) !important; }
+  .artist-name { font-family: 'BootzyTM', sans-serif !important; font-size: 14px !important; letter-spacing: .1em !important; word-spacing: 0 !important; line-height: 1 !important; margin: 0 !important; padding: 0 !important; }
+  .artist-info { padding: 14px !important; }
+  .artist-meta { margin-top: 3px !important; line-height: 1.15 !important; gap: 0 !important; }
+  .artist-meta .painel { letter-spacing: 0 !important; word-spacing: 0 !important; line-height: 1.15 !important; }
+  .artist-photo a { display: block; width: 100%; height: 100%; }
+  .artist-photo a img { width: 100%; height: 100%; object-fit: cover; }
+  .artist-meta .instagram-link, .artist-meta .separator { display: none !important; }
+
+  .experiencia-scroll { position: relative; margin-right: -24px; }
+  .experiencia-scroll::after { content: ""; position: absolute; top: 0; right: -1px; width: 120px; height: 100%; pointer-events: none; background: linear-gradient(to right, rgba(10,10,15,0), rgba(10,10,15,1)); z-index: 10; }
+  
+  .experiencia-cards, .ambiente-grid {
+    display: flex !important; flex-wrap: nowrap !important; overflow-x: auto; overflow-y: hidden;
+    gap: 16px; padding-right: 55px; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; scrollbar-width: none;
   }
+  .experiencia-cards::-webkit-scrollbar, .ambiente-grid::-webkit-scrollbar { display: none; }
+  .experiencia-card { flex: 0 0 84%; min-width: 84%; scroll-snap-align: start; padding: 18px; margin: 0; }
 
-  .hero h1 {
-    font-size: 85px;
+  .ambiente-card {
+    flex: 0 0 88%; min-width: 88%; scroll-snap-align: start; background: var(--surface) !important;
+    border: 1px solid var(--line) !important; box-shadow: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; transform: none !important;
   }
+  .ambiente-card::before, .ambiente-card::after { display: none !important; content: none !important; }
 
-  .hero-sub {
-    max-width: 340px;
-    margin-top: 12px;
-    font-size: 14px;
+  .empreenda-content { grid-template-columns: 1fr; }
+  .empreenda-text p { max-width: 380px; font-size: 18px !important; line-height: 1.2 !important; text-align: justify !important; }
+
+  .section { padding: 64px 0; }
+  .footer-top { flex-direction: column; align-items: center; text-align: center; }
+  .footer-brand, .footer-links, .footer-col, .footer-col h4, .footer-col a { text-align: center; }
+  .footer-logo { margin: 0 auto 12px; }
+  .social-row { justify-content: center; }
+  .footer-links { width: 100%; justify-content: center; gap: 40px; }
+  .footer-bottom { width: 100%; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; }
+  .footer-bottom span { display: block; width: 100%; margin-bottom: 10px !important; }
+
+  .btn, .btn:hover, .btn:focus, .btn:active { transform: none !important; transition: background .2s ease, border-color .2s ease, box-shadow .2s ease !important; }
+  .btn::before { display: none !important; content: none !important; }
+  .btn:not(.outline), .btn:not(.outline):hover, .btn:not(.outline):focus, .btn:not(.outline):active {
+    background: linear-gradient(135deg, rgba(18,65,235,.72), rgba(18,65,235,.30)) !important;
+    border-color: rgba(100,130,255,.48) !important; box-shadow: inset 0 1px 1px rgba(255,255,255,.18), 0 8px 28px rgba(18,65,235,.20) !important;
   }
-
-  .hero-actions {
-    margin-top: 110px !important;
+  .btn.outline, .btn.outline:hover, .btn.outline:focus, .btn.outline:active {
+    background: rgba(255,255,255,.035) !important; border-color: rgba(255,255,255,.18) !important; box-shadow: inset 0 1px 1px rgba(255,255,255,.10), 0 8px 25px rgba(0,0,0,.18) !important;
   }
+  .btn { -webkit-tap-highlight-color: transparent; }
 
-  .hero-dates {
-    text-align: center;
-    width: 100%;
-    margin-top: 60px;
+  .experiencia-card, .experiencia-card:hover {
+    transform: none; background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025)); border-color: var(--liquid-border);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), 0 12px 30px rgba(0,0,0,.22);
   }
+  .experiencia-card:hover::after { transform: rotate(18deg); opacity: .55; }
 
-  .hero-globo {
-    width: 700px !important;
-    height: 700px !important;
-    right: -150px !important;
-    top: 32% !important;
+  .ticket-card, .ticket-card:hover {
+    transform: none; background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025)); border-color: var(--liquid-border);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), 0 12px 30px rgba(0,0,0,.22);
   }
-
-
-  /* ----------------------------------------------------------
-     CONTADOR
-  ---------------------------------------------------------- */
-
-  .countdown {
-    justify-content: center;
-    width: 100%;
-    margin-top: 20px !important;
-    margin-bottom: -100px !important;
-    gap: 14px;
-    margin-left: -10px;
+  .ticket-card:hover::after { transform: rotate(18deg); opacity: .55; }
+  .ticket-card.highlight, .ticket-card.highlight:hover {
+    background: linear-gradient(135deg, rgba(18,65,235,.22), rgba(18,65,235,.075), rgba(255,255,255,.035));
+    border-color: rgba(80,115,255,.48); box-shadow: inset 0 1px 1px rgba(255,255,255,.17), 0 15px 40px rgba(18,65,235,.16);
   }
-
-  .bloco-tempo {
-    min-width: 30px;
-  }
-
-  #cd-dias {
-    margin-left: 0;
-  }
-
-
-  /* ----------------------------------------------------------
-     MARQUEE
-  ---------------------------------------------------------- */
-
-  .marquee {
-    top: -48px;
-  }
-
-
-  /* ----------------------------------------------------------
-     LINE-UP
-     SEM VIDRO
-  ---------------------------------------------------------- */
-
-  .artist-card {
-    background: var(--surface) !important;
-
-    border:
-      1px solid var(--line) !important;
-
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-
-  .artist-card:hover {
-    transform: none;
-
-    border-color:
-      var(--line) !important;
-  }
-
-  .artist-name {
-    font-family: 'BootzyTM', sans-serif !important;
-    font-size: 14px !important;
-    letter-spacing: .1em !important;
-    word-spacing: 0 !important;
-    line-height: 1 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .artist-info {
-    padding: 14px !important;
-  }
-
-  .artist-meta {
-    margin-top: 3px !important;
-    line-height: 1.15 !important;
-    gap: 0 !important;
-  }
-
-  .artist-meta .palco {
-    letter-spacing: 0 !important;
-    word-spacing: 0 !important;
-    line-height: 1.15 !important;
-  }
-
-  .artist-photo a {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
-  .artist-photo a img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .artist-meta .instagram-link,
-  .artist-meta .separator {
-    display: none !important;
-  }
-
-
-  /* ----------------------------------------------------------
-     CARROSSEL EXPERIÊNCIAS
-  ---------------------------------------------------------- */
-
-  .festa-scroll-wrapper {
-    position: relative;
-    margin-right: -24px;
-  }
-
-  .festa-scroll-wrapper::after {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    right: -1px;
-
-    width: 120px;
-    height: 100%;
-
-    pointer-events: none;
-
-    background:
-      linear-gradient(
-        to right,
-        rgba(10,10,15,0),
-        rgba(10,10,15,1)
-      );
-
-    z-index: 10;
-  }
-
-  .festa-experiencias,
-  .stage-grid {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    gap: 16px;
-
-    padding-right: 55px;
-
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-  }
-
-  .festa-experiencias::-webkit-scrollbar,
-  .stage-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .festa-experiencia {
-    flex: 0 0 84%;
-    min-width: 84%;
-    scroll-snap-align: start;
-    padding: 18px;
-    margin: 0;
-  }
-
-
-  /* ----------------------------------------------------------
-     ESTRUTURA
-     SEM VIDRO
-  ---------------------------------------------------------- */
-
-  .stage-card {
-    flex: 0 0 88%;
-    min-width: 88%;
-    scroll-snap-align: start;
-
-    background: var(--surface) !important;
-
-    border:
-      1px solid var(--line) !important;
-
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-
-    transform: none !important;
-  }
-
-  .stage-card::before,
-  .stage-card::after {
-    display: none !important;
-    content: none !important;
-  }
-
-
-  /* ----------------------------------------------------------
-     EMPREENDA
-  ---------------------------------------------------------- */
-
-  .empreenda-content {
-    grid-template-columns: 1fr;
-  }
-
-  .empreenda-text p {
-    max-width: 380px;
-    font-size: 18px !important;
-    line-height: 1.2 !important;
-    text-align: justify !important;
-  }
-
-
-  /* ----------------------------------------------------------
-     FOOTER
-  ---------------------------------------------------------- */
-
-  .section {
-    padding: 64px 0;
-  }
-
-  .footer-top {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-brand,
-  .footer-links,
-  .footer-col,
-  .footer-col h4,
-  .footer-col a {
-    text-align: center;
-  }
-
-  .footer-logo {
-    margin: 0 auto 12px;
-  }
-
-  .social-row {
-    justify-content: center;
-  }
-
-  .footer-links {
-    width: 100%;
-    justify-content: center;
-    gap: 40px;
-  }
-
-  .footer-bottom {
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 8px;
-  }
-
-  .footer-bottom span {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px !important;
-  }
-
-
-  /* ----------------------------------------------------------
-     BOTÕES MOBILE
-     SEM HOVER / SEM REFLEXO
-  ---------------------------------------------------------- */
-
-  .btn,
-  .btn:hover,
-  .btn:focus,
-  .btn:active {
-    transform: none !important;
-
-    transition:
-      background .2s ease,
-      border-color .2s ease,
-      box-shadow .2s ease !important;
-  }
-
-  .btn::before {
-    display: none !important;
-    content: none !important;
-  }
-
-  .btn:not(.outline),
-  .btn:not(.outline):hover,
-  .btn:not(.outline):focus,
-  .btn:not(.outline):active {
-    background:
-      linear-gradient(
-        135deg,
-        rgba(18,65,235,.72),
-        rgba(18,65,235,.30)
-      ) !important;
-
-    border-color:
-      rgba(100,130,255,.48) !important;
-
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,.18),
-      0 8px 28px rgba(18,65,235,.20) !important;
-  }
-
-  .btn.outline,
-  .btn.outline:hover,
-  .btn.outline:focus,
-  .btn.outline:active {
-    background:
-      rgba(255,255,255,.035) !important;
-
-    border-color:
-      rgba(255,255,255,.18) !important;
-
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,.10),
-      0 8px 25px rgba(0,0,0,.18) !important;
-  }
-
-  /*
-     Não deixa o navegador aplicar aquele
-     flash azul/cinza ao tocar.
-  */
-  .btn {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-
-  /* ----------------------------------------------------------
-     EXPERIÊNCIA NO MOBILE
-     O VIDRO FICA ESTÁTICO
-  ---------------------------------------------------------- */
-
-  .festa-experiencia,
-  .festa-experiencia:hover {
-    transform: none;
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,.075),
-        rgba(255,255,255,.025)
-      );
-
-    border-color:
-      var(--liquid-border);
-
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,.16),
-      inset 0 -1px 1px rgba(255,255,255,.035),
-      0 12px 30px rgba(0,0,0,.22);
-  }
-
-  .festa-experiencia:hover::after {
-    transform: rotate(18deg);
-    opacity: .55;
-  }
-
-
-  /* ----------------------------------------------------------
-     INGRESSOS NO MOBILE
-     VIDRO ESTÁTICO
-  ---------------------------------------------------------- */
-
-  .ticket-card,
-  .ticket-card:hover {
-    transform: none;
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,.075),
-        rgba(255,255,255,.025)
-      );
-
-    border-color:
-      var(--liquid-border);
-
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,.16),
-      inset 0 -1px 1px rgba(255,255,255,.035),
-      0 12px 30px rgba(0,0,0,.22);
-  }
-
-  .ticket-card:hover::after {
-    transform: rotate(18deg);
-    opacity: .55;
-  }
-
-  .ticket-card.highlight,
-  .ticket-card.highlight:hover {
-    background:
-      linear-gradient(
-        135deg,
-        rgba(18,65,235,.22),
-        rgba(18,65,235,.075),
-        rgba(255,255,255,.035)
-      );
-
-    border-color:
-      rgba(80,115,255,.48);
-
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,.17),
-      0 15px 40px rgba(18,65,235,.16);
-  }
-
-
-  /* ----------------------------------------------------------
-     FAQ MOBILE
-     SEM HOVER
-  ---------------------------------------------------------- */
-
-  .faq-item:hover {
-    border-color:
-      rgba(255,255,255,.11);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,.065),
-        rgba(255,255,255,.025)
-      );
-  }
+  .faq-item:hover { border-color: rgba(255,255,255,.11); background: linear-gradient(135deg, rgba(255,255,255,.065), rgba(255,255,255,.025)); }
 }
-
-
-/* ------------------------------------------------------------
-   CELULARES PEQUENOS
------------------------------------------------------------- */
 
 @media (max-width: 500px) {
-
-  .hero-globo {
-    width: 450px;
-    height: 450px;
-    right: -190px;
-    top: 45%;
-    opacity: 1;
-  }
-
-  .artist-name {
-    letter-spacing: .1em !important;
-  }
-
-  .festa-experiencias {
-    grid-template-columns: 1fr;
-  }
-
-  .festa-text h3 {
-    font-size: 25px;
-  }
+  .abertura-globo { width: 450px; height: 450px; right: -180px; top: 34%; opacity: 1; }
+  .artist-name { letter-spacing: .1em !important; }
+  .experiencia-cards { grid-template-columns: 1fr; }
+  .experiencia-texto h3 { font-size: 25px; }
 }
-
 </style>
 </head>
 
 <body>
 
-
-<!-- ============================================================
-     HEADER
-============================================================ -->
-
+<!-- HEADER / NAVEGAÇÃO -->
 <header>
-
   <nav class="nav">
-
     <a href="#" class="logo-link">
-      <img
-        src="img/logo.png"
-        alt="Gays & Garotas"
-        class="logo-img"
-      >
+      <img src="img/logo.png" alt="Gays & Garotas" class="logo-img">
     </a>
-
-    <span class="nav-mobile-date">
-      12/09/2026 - São Paulo, SP
-    </span>
-
+    <span class="nav-mobile-date">12/09/2026 - São Paulo, SP</span>
+    
     <ul class="nav-links" id="navLinks">
-
-      <li>
-        <a href="#lineup" class="bootzy">
-          Line-up
-        </a>
-      </li>
-
-      <li>
-        <a href="#experiencia" class="bootzy">
-          Experiência
-        </a>
-      </li>
-
-      <li>
-        <a href="#espaco" class="bootzy">
-          Espaço
-        </a>
-      </li>
-
-      <li>
-        <a href="#ingressos" class="bootzy">
-          Ingressos
-        </a>
-      </li>
-
-      <li>
-        <a href="#empreenda" class="bootzy">
-          Empreenda LGBT+
-        </a>
-      </li>
-
-      <li>
-        <a href="#info" class="bootzy">
-          FAQ
-        </a>
-      </li>
-
+      <li><a href="#lineup" class="bootzy">Line-up</a></li>
+      <li><a href="#experiencia" class="bootzy">Experiência</a></li>
+      <li><a href="#espaco" class="bootzy">Espaço</a></li>
+      <li><a href="#ingressos" class="bootzy">Ingressos</a></li>
+      <li><a href="#empreenda" class="bootzy">Empreenda LGBT+</a></li>
+      <li><a href="#info" class="bootzy">FAQ</a></li>
     </ul>
 
     <div class="nav-cta">
-
-      <a
-        href="https://pay.kiwify.com.br/bpJsI6S"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn bootzy"
-      >
-        Comprar ingresso
-      </a>
-
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="Abrir menu"
-      >
-        ☰
-      </button>
-
+      <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy">Comprar ingresso</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
     </div>
-
   </nav>
-
 </header>
 
-
-<!-- ============================================================
-     HERO
-============================================================ -->
-
-<section class="hero">
-
-  <img
-    src="img/globoprincipal.png"
-    alt=""
-    class="hero-globo"
-  >
-
-  <div class="hero-content">
-
-    <!-- CORRIGIDO: ANOs2000 SEM ESPAÇOS ENTRE OS SPANS -->
-    <h1 class="bootzy hero-entrance hero-title">
+<!-- SEÇÃO INICIAL -->
+<section class="abertura">
+  <img src="img/globoprincipal.png" alt="" class="abertura-globo">
+  <div class="abertura-conteudo">
+    
+    <h1 class="bootzy abertura-animacao abertura-titulo">
       <span style="color:#ffffff;">G<span style="color:#1241eb;font-size:70%;">&</span>G</span>
       <span style="color:#ffffff;">ANO</span><span style="color:#ff007f;text-transform:lowercase;">s</span><span style="color:#ff007f;">2</span><span style="color:#ffffff;">000</span>
     </h1>
 
-    <p
-      class="hero-sub hero-entrance hero-description"
-      style="color:#ffffff;"
-    >
+    <p class="abertura-subtitulo abertura-animacao abertura-descricao" style="color:#ffffff;">
       Conectando creators, empreendedores, profissionais e marcas em um ambiente seguro. Dessa vez, no The Core e com muita nostalgia.
     </p>
 
-    <div class="hero-actions hero-entrance hero-buttons">
-
-      <a
-        href="https://pay.kiwify.com.br/bpJsI6S"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn bootzy"
-      >
-        Garantir ingresso
-      </a>
-
-      <a
-        href="#lineup"
-        class="btn outline bootzy"
-      >
-        Ver line-up
-      </a>
-
+    <div class="abertura-acoes abertura-animacao abertura-botoes">
+      <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy">Garantir ingresso</a>
+      <a href="#lineup" class="btn outline bootzy">Ver line-up</a>
     </div>
 
-    <span
-      class="hero-dates hero-entrance hero-info"
-      id="heroDates"
-    >
+    <span class="abertura-datas abertura-animacao abertura-info" id="heroDates">
       — carregando datas —
     </span>
 
-    <div
-      class="countdown hero-entrance hero-info"
-      id="countdown"
-    >
-
+    <div class="countdown abertura-animacao abertura-info" id="countdown">
       <div class="bloco-tempo">
-
-        <div
-          class="num"
-          id="cd-dias"
-        >
-          00
-        </div>
-
-        <div class="lbl">
-          DIAS
-        </div>
-
+        <div class="num" id="cd-dias">00</div>
+        <div class="lbl">DIAS</div>
       </div>
-
       <div class="separador"></div>
-
+      
       <div class="relogio">
-
         <div class="bloco-tempo">
-
-          <div
-            class="num"
-            id="cd-horas"
-          >
-            00
-          </div>
-
-          <div class="lbl">
-            HR
-          </div>
-
+          <div class="num" id="cd-horas">00</div>
+          <div class="lbl">HR</div>
         </div>
-
-        <div class="separador">
-          :
-        </div>
-
+        <div class="separador">:</div>
+        
         <div class="bloco-tempo">
-
-          <div
-            class="num"
-            id="cd-min"
-          >
-            00
-          </div>
-
-          <div class="lbl">
-            MIN
-          </div>
-
+          <div class="num" id="cd-min">00</div>
+          <div class="lbl">MIN</div>
         </div>
-
-        <div class="separador">
-          :
-        </div>
-
+        <div class="separador">:</div>
+        
         <div class="bloco-tempo">
-
-          <div
-            class="num"
-            id="cd-seg"
-          >
-            00
-          </div>
-
-          <div class="lbl">
-            SEG
-          </div>
-
+          <div class="num" id="cd-seg">00</div>
+          <div class="lbl">SEG</div>
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
-<!-- ============================================================
-     LINE-UP
-============================================================ -->
-
-<section
-  class="section section-alt"
-  id="lineup"
->
-
+<!-- SEÇÃO: LINE-UP -->
+<section class="section section-alt" id="lineup">
   <div class="container">
-
-    <span class="eyebrow">
-      Atrações
-    </span>
-
-    <h2>
-      Line-up
-    </h2>
-
-    <div
-      class="day-tabs"
-      id="dayTabs"
-    ></div>
-
-    <div
-      class="lineup-grid"
-      id="lineupGrid"
-    ></div>
-
+    <span class="eyebrow">Atrações</span>
+    <h2>Line-up</h2>
+    <div class="day-tabs" id="dayTabs"></div>
+    <div class="lineup-grid" id="lineupGrid"></div>
   </div>
-
 </section>
-
-
-<!-- ============================================================
-     MARQUEE
-============================================================ -->
 
 <div hidden class="marquee">
-
-  <div
-    class="marquee-track"
-    id="marqueeTrack"
-  >
-  </div>
-
+  <div class="marquee-track" id="marqueeTrack"></div>
 </div>
 
-
-<!-- ============================================================
-     EXPERIÊNCIA
-============================================================ -->
-
-<section
-  class="section"
-  id="experiencia"
->
-
+<!-- SEÇÃO: EXPERIÊNCIA -->
+<section class="section" id="experiencia">
   <div class="container">
-
-    <span class="eyebrow">
-      experiência
-    </span>
-
-    <!-- CORRIGIDO: ANOs2000 SEM ESPAÇOS ENTRE OS SPANS -->
+    <span class="eyebrow">experiência</span>
     <h2 class="titulo-anos2000"><span class="branco">ANO</span><span class="rosa">s</span><span class="rosa">2</span><span class="branco">000</span></h2>
-
-    <div class="festa-text reveal">
-
+    
+    <div class="experiencia-texto reveal">
       <p>
         O Gays & Garotas Anos 2000 é um encontro para celebrar, conectar e criar novas experiências em comunidade.
       </p>
 
-      <div class="festa-scroll-wrapper">
-
-        <div class="festa-experiencias">
-
-          <div class="festa-experiencia">
-
-            <img
-              src="img/experiencia/musica.png"
-              alt="Música"
-            >
-
-            <strong>
-              🪩 Música
-            </strong>
-
-            <span>
-              Playlist com as mais icônicas dos anos 2000, diversão e uma pista para aproveitar a noite com a KERODRAMA.
-            </span>
-
+      <div class="experiencia-scroll">
+        <div class="experiencia-cards">
+          
+          <div class="experiencia-card">
+            <img src="img/experiencia/musica.png" alt="Música">
+            <strong>🪩 Música</strong>
+            <span>Playlist com as mais icônicas dos anos 2000, diversão e uma pista para aproveitar a noite com a KERODRAMA.</span>
           </div>
 
-          <div class="festa-experiencia">
-
-            <img
-              src="img/experiencia/conexoes.png"
-              alt="Conexões"
-            >
-
-            <strong>
-              🤝 Conexões
-            </strong>
-
-            <span>
-              Pessoas, creators, profissionais e novas conexões.
-            </span>
-
+          <div class="experiencia-card">
+            <img src="img/experiencia/conexoes.png" alt="Conexões">
+            <strong>🤝 Conexões</strong>
+            <span>Pessoas, creators, profissionais e novas conexões.</span>
           </div>
 
-          <div class="festa-experiencia">
-
-            <img
-              src="img/experiencia/workshops.png"
-              alt="Workshops"
-            >
-
-            <strong>
-              🎓 Workshops
-            </strong>
-
-            <span>
-              Os melhores profissionais do mercado transmitindo conhecimento valioso (confira o Line-Up).
-            </span>
-
+          <div class="experiencia-card">
+            <img src="img/experiencia/workshops.png" alt="Workshops">
+            <strong>🎓 Workshops</strong>
+            <span>Os melhores profissionais do mercado transmitindo conhecimento valioso (confira o Line-Up).</span>
           </div>
 
-          <div class="festa-experiencia">
-
-            <img
-              src="img/experiencia/comunidade.png"
-              alt="Comunidade"
-            >
-
-            <strong>
-              🏳️‍🌈 Comunidade
-            </strong>
-
-            <span>
-              Um espaço seguro para celebrar nossa comunidade com liberdade.
-            </span>
-
+          <div class="experiencia-card">
+            <img src="img/experiencia/comunidade.png" alt="Comunidade">
+            <strong>🏳️‍🌈 Comunidade</strong>
+            <span>Um espaço seguro para celebrar nossa comunidade com liberdade.</span>
           </div>
 
-          <div class="festa-experiencia">
-
-            <img
-              src="img/experiencia/experiencias.png"
-              alt="Experiencias"
-            >
-
-            <strong>
-              ✨ Experiências e Sorteios
-            </strong>
-
-            <span>
-              Muitos sorteios e surpresas estão te esperando.
-            </span>
-
+          <div class="experiencia-card">
+            <img src="img/experiencia/experiencias.png" alt="Experiencias">
+            <strong>✨ Experiências e Sorteios</strong>
+            <span>Muitos sorteios e surpresas estão te esperando.</span>
           </div>
-
+          
         </div>
-
       </div>
-
-      <a
-        href="https://pay.kiwify.com.br/bpJsI6S"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn bootzy"
-        style="margin-top:10px;"
-      >
-        Quero fazer parte
-      </a>
-
+      
+      <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy" style="margin-top:10px;">Quero fazer parte</a>
     </div>
-
   </div>
-
 </section>
 
-
-<!-- ============================================================
-     ESPAÇO
-============================================================ -->
-
-<section
-  class="section section-alt"
-  id="espaco"
->
-
+<!-- SEÇÃO: AMBIENTES -->
+<section class="section section-alt" id="espaco">
   <div class="container">
-
-    <span class="eyebrow">
-      Estrutura
-    </span>
-
-    <h2>
-      Espaço
-    </h2>
-
-    <div
-      class="stage-grid"
-      id="stageGrid"
-    ></div>
-
+    <span class="eyebrow">Estrutura</span>
+    <h2>Espaço</h2>
+    <div class="ambiente-grid" id="ambienteGrid"></div>
   </div>
-
 </section>
 
-
-<!-- ============================================================
-     INGRESSOS
-============================================================ -->
-
-<section
-  class="section"
-  id="ingressos"
->
-
+<!-- SEÇÃO: INGRESSOS -->
+<section class="section" id="ingressos">
   <div class="container">
-
-    <span class="eyebrow">
-      Ingressos
-    </span>
-
-    <h2>
-      Garantir ingresso
-    </h2>
-
-    <div
-      class="tickets-grid"
-      id="ticketsGrid"
-    ></div>
-
+    <span class="eyebrow">Ingressos</span>
+    <h2>Garantir ingresso</h2>
+    <div class="tickets-grid" id="ticketsGrid"></div>
   </div>
-
 </section>
 
-
-<!-- ============================================================
-     EMPREENDA
-============================================================ -->
-
-<section
-  class="section section-alt"
-  id="empreenda"
->
-
+<!-- SEÇÃO: EMPREENDA LGBT+ -->
+<section class="section section-alt" id="empreenda">
   <div class="container">
-
-    <span class="eyebrow">
-      Negócios
-    </span>
-
-    <h2>
-      Empreenda LGBT+
-    </h2>
-
+    <span class="eyebrow">Negócios</span>
+    <h2>Empreenda LGBT+</h2>
+    
     <div class="empreenda-content">
-
       <div class="empreenda-photo">
-
-        <img
-          src="img/empreenda/empreenda.jpg"
-          alt="Empreenda LGBT+"
-        >
-
+        <img src="img/empreenda/empreenda.jpg" alt="Empreenda LGBT+">
       </div>
-
       <div class="empreenda-text">
-
-        <h3>
-          Conheça o
-          <br>
-          Empreenda LGBT+
-        </h3>
-
-        <p>
-          Um espaço dedicado a negócios e oportunidades para a comunidade LGBTQIAPN+. Você poderá ser nosso parceiro e divulgar seus produtos e serviços para apoiadores da comunidade.
-        </p>
-
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfS6Ie-S19qD1J0TNaT3D2ql1tO0oXCIEPsG9aiCp3sFIH12Q/viewform"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn bootzy"
-          style="margin-top:24px;"
-        >
-          Inscrever-se
-        </a>
-
+        <h3>Conheça o<br>Empreenda LGBT+</h3>
+        <p>Um espaço dedicado a negócios e oportunidades para a comunidade LGBTQIAPN+. Você poderá ser nosso parceiro e divulgar seus produtos e serviços para apoiadores da comunidade.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfS6Ie-S19qD1J0TNaT3D2ql1tO0oXCIEPsG9aiCp3sFIH12Q/viewform" target="_blank" rel="noopener noreferrer" class="btn bootzy" style="margin-top:24px;">Inscrever-se</a>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
-<!-- ============================================================
-     FAQ
-============================================================ -->
-
-<section
-  class="section"
-  id="info"
->
-
-  <div
-    class="container"
-    style="max-width:820px;"
-  >
-
-    <span class="eyebrow">
-      FAQ
-    </span>
-
-    <h2>
-      Perguntas frequentes
-    </h2>
-
+<!-- SEÇÃO: FAQ -->
+<section class="section" id="info">
+  <div class="container" style="max-width:820px;">
+    <span class="eyebrow">FAQ</span>
+    <h2>Perguntas frequentes</h2>
     <div id="faqList"></div>
-
   </div>
-
 </section>
 
-
-<!-- ============================================================
-     FOOTER
-============================================================ -->
-
+<!-- RODAPÉ -->
 <footer>
-
   <div class="container">
-
     <div class="footer-top">
-
       <div class="footer-brand">
-
-        <img
-          src="img/logo2.png"
-          alt="Gays & Garotas"
-          class="footer-logo"
-        >
-
-        <p>
-          Nosso hub que conecta creators, empreendedores e marcas em ambientes seguros.
-          <br>
-          🏳️‍🌈 Idealizado por Julio Tuschi
-        </p>
-
-        <div
-          class="social-row"
-          id="socialRow"
-        >
-        </div>
-
+        <img src="img/logo2.png" alt="Gays & Garotas" class="footer-logo">
+        <p>Nosso hub que conecta creators, empreendedores e marcas em ambientes seguros.<br>🏳️‍🌈 Idealizado por Julio Tuschi</p>
+        <div class="social-row" id="socialRow"></div>
       </div>
-
+      
       <div class="footer-links">
-
         <div class="footer-col">
-
-          <h4>
-            Evento
-          </h4>
-
-          <a href="#lineup">
-            Line-up
-          </a>
-
-          <a href="#espaco">
-            Espaço
-          </a>
-
-          <a href="#ingressos">
-            Ingressos
-          </a>
-
+          <h4>Evento</h4>
+          <a href="#lineup">Line-up</a>
+          <a href="#espaco">Espaço</a>
+          <a href="#ingressos">Ingressos</a>
         </div>
-
+        
         <div class="footer-col">
-
-          <h4>
-            Suporte
-          </h4>
-
-          <a href="#info">
-            FAQ
-          </a>
-
-          <a
-            href="https://ig.me/m/gaysegarotashub"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Contato
-          </a>
-
-          <a href="#">
-            Início
-          </a>
-
+          <h4>Suporte</h4>
+          <a href="#info">FAQ</a>
+          <a href="https://ig.me/m/gaysegarotashub" target="_blank" rel="noopener noreferrer">Contato</a>
+          <a href="#">Início</a>
         </div>
-
       </div>
-
     </div>
-
+    
     <div class="footer-bottom">
-
-      <span>
-        © 2026 Gays & Garotas Hub. Todos os direitos reservados.
-      </span>
-
-      <span>
-        Feito com ♥ KND
-      </span>
-
+      <span>© 2026 Gays & Garotas Hub. Todos os direitos reservados.</span>
+      <span>Feito com ♥ KND</span>
     </div>
-
   </div>
-
 </footer>
 
+<!-- BOTÃO VOLTAR AO TOPO (FLUTUANTE) -->
+<a href="#" id="backToTop" class="back-to-top" aria-label="Voltar ao topo">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</a>
 
 <script>
-
 /* ============================================================
-   CONFIGURAÇÕES GERAIS
+    CONFIGURAÇÕES GERAIS
 ============================================================ */
-
 const CONFIG = {
-
-  dataInicio:
-    '12/09/2026 - 14:00:00',
-
-  textoDatas:
-    '12 de setembro · The Core - São Paulo',
-
+  dataInicio: '12/09/2026 - 14:00:00',
+  textoDatas: '12 de setembro · The Core - São Paulo',
+  
   diasLineup: [
-
     {
-
       dia: 'Speakers',
-
       artistas: [
-
-        {
-          nome: 'Julio Tuschi',
-          instagram: 'http://instagram.com/ojuliotuschi',
-          palco: 'Identidade e Comunidade',
-          foto: 'img/lineup/julio.jpg'
-        },
-
-        {
-          nome: 'Eloá Sgrignoli',
-          instagram: 'http://instagram.com/eloasgrignoli',
-          palco: 'Narrativa e Vendas',
-          foto: 'img/lineup/eloa.jpg'
-        },
-
-        {
-          nome: 'Manuela Freitas',
-          instagram: 'http://instagram.com/manuelafreitas',
-          palco: 'IA e Diferenciação',
-          foto: 'img/lineup/manu.jpg'
-        },
-
-        {
-          nome: 'Lyra Libero',
-          instagram: 'http://instagram.com/lyralibero',
-          palco: 'TikTok para fechar Negócio',
-          foto: 'img/lineup/lyra.jpg'
-        },
-
-        {
-          nome: 'Vitor Manon',
-          instagram: 'http://instagram.com/vitormanon',
-          palco: 'Narrativa Visual',
-          foto: 'img/lineup/manon.jpg'
-        },
-
-        {
-          nome: 'Kerodrama',
-          instagram: 'http://instagram.com/kerodramaduo',
-          palco: 'O duo que vai animar nosso After Party ☆',
-          foto: 'img/lineup/kerodrama.jpg'
-        }
-
+        { nome: 'Julio Tuschi', instagram: 'http://instagram.com/ojuliotuschi', painel: 'Identidade e Comunidade', foto: 'img/lineup/julio.jpg' },
+        { nome: 'Eloá Sgrignoli', instagram: 'http://instagram.com/eloasgrignoli', painel: 'Narrativa e Vendas', foto: 'img/lineup/eloa.jpg' },
+        { nome: 'Manuela Freitas', instagram: 'http://instagram.com/manuelafreitas', painel: 'IA e Diferenciação', foto: 'img/lineup/manu.jpg' },
+        { nome: 'Lyra Libero', instagram: 'http://instagram.com/lyralibero', painel: 'TikTok para fechar negócio', foto: 'img/lineup/lyra.jpg' },
+        { nome: 'Vitor Manon', instagram: 'http://instagram.com/vitormanon', painel: 'Narrativa visual', foto: 'img/lineup/manon.jpg' },
+        { nome: 'Kerodrama', instagram: 'http://instagram.com/kerodramaduo', painel: 'O duo que vai animar nosso After Party ☆', foto: 'img/lineup/kerodrama.jpg' }
       ]
-
     }
-
   ],
 
-  palcos: [
-
-    {
-      nome: 'Pista',
-      desc: 'Espaço para curtir o After Party',
-      foto: 'img/espaços/pista.jpg'
-    },
-
-    {
-      nome: 'Restaurante',
-      desc: 'Petiscos a refeições completas',
-      foto: 'img/espaços/restaurante.jpg'
-    },
-
-    {
-      nome: 'Bar',
-      desc: 'Um menu completo de drinks estão te esperando',
-      foto: 'img/espaços/bar.jpg'
-    },
-
-    {
-      nome: 'The Core',
-      desc: 'Ponto de encontro do G&G Anos 2000, que reúne cultura e gastronomia',
-      foto: 'img/espaços/thecore.jpg'
-    }
-
+  ambientes: [
+    { nome: 'Pista', desc: 'Espaço para curtir o After Party', foto: 'img/espaços/pista.jpg' },
+    { nome: 'Restaurante', desc: 'Petiscos a refeições completas', foto: 'img/espaços/restaurante.jpg' },
+    { nome: 'Bar', desc: 'Um menu completo de drinks estão te esperando', foto: 'img/espaços/bar.jpg' },
+    { nome: 'The Core', desc: 'Ponto de encontro do G&G Anos 2000, que reúne cultura e gastronomia', foto: 'img/espaços/thecore.jpg' }
   ],
 
   ingressos: [
-
-    {
-      nome: '1° lote',
-      preco: 'R$ 255',
-      destaque: false,
-      esgotado: true,
-      beneficios: []
-    },
-
-    {
-      nome: '2° lote',
-      preco: 'R$ 280',
-      destaque: true,
-      esgotado: false,
-      beneficios: [
-        'Incluso R$ 80 na comanda',
-        'Sorteios e workshops',
-        'After Party'
-      ]
-    },
-
-    {
-      nome: '3° lote',
-      preco: 'EM BREVE',
-      destaque: false,
-      esgotado: false,
-      emBreve: true,
-      beneficios: []
-    }
-
+    { nome: '1° lote', preco: 'R$ 255', destaque: false, esgotado: true, beneficios: [] },
+    { nome: '2° lote', preco: 'R$ 280', destaque: true, esgotado: false, beneficios: ['Incluso R$ 80 na comanda', 'Sorteios e workshops', 'After Party'] },
+    { nome: '3° lote', preco: 'EM BREVE', destaque: false, esgotado: false, emBreve: true, beneficios: [] }
   ],
 
   faq: [
-
-    {
-      p: 'Posso entrar e sair do evento?',
-      r: 'Sim, porém a comanda será devolvida e dada como usada.'
+    { 
+      p: 'Posso entrar e sair do evento?', 
+      r: 'Sim, a circulação é permitida. No entanto, ao deixar o espaço temporariamente, o fechamento da comanda vigente será realizado.' 
     },
-
-    {
-      p: 'O evento é apenas para criadores de conteúdo?',
-      r: 'Não, o evento também é para empreendedores e outros profissionais LGBTQIAPN+ que querem se conectar com marcas, creators e profissionais que enfrentam as mesmas situações no dia a dia.'
+    { 
+      p: 'O evento é apenas para criadores de conteúdo?', 
+      r: 'De forma alguma! O G&G é o ponto de encontro ideal para empreendedores, criadores e profissionais LGBTQIAPN+ que desejam expandir sua rede de contatos, fechar parcerias estratégicas e trocar experiências com grandes marcas.' 
     },
-
-    {
-      p: 'Onde comprar ingresso?',
-      r: 'Pelo link disponivel em "Garantir ingresso" no topo da página.'
+    { 
+      p: 'Onde comprar ingresso?', 
+      r: 'Os ingressos estão disponíveis de forma prática e segura através do link "Garantir ingresso" localizado no topo e nas seções principais da página.' 
     }
-
   ]
-
 };
 
+/* ============================================================
+    1. INSERE OS TEXTOS DE DATA
+============================================================ */
+document.getElementById('heroDates').textContent = CONFIG.textoDatas;
 
 /* ============================================================
-   1. TEXTOS INICIAIS
+    2. SISTEMA DO CONTADOR
 ============================================================ */
-
-document.getElementById('heroDates').textContent =
-  CONFIG.textoDatas;
-
-
-/* ============================================================
-   2. CONTADOR
-============================================================ */
-
 function tickCountdown() {
+  const [data, hora] = CONFIG.dataInicio.split(' - ');
+  const [dia, mes, ano] = data.split('/');
+  const alvo = new Date(`${ano}-${mes}-${dia}T${hora}`).getTime();
+  const diff = Math.max(0, alvo - Date.now());
 
-  const [data, hora] =
-    CONFIG.dataInicio.split(' - ');
-
-  const [dia, mes, ano] =
-    data.split('/');
-
-  const alvo =
-    new Date(`${ano}-${mes}-${dia}T${hora}`).getTime();
-
-  const diff =
-    Math.max(0, alvo - Date.now());
-
-  document.getElementById('cd-dias').textContent =
-    String(
-      Math.floor(diff / 86400000)
-    ).padStart(2, '0');
-
-  document.getElementById('cd-horas').textContent =
-    String(
-      Math.floor(
-        (diff % 86400000) / 3600000
-      )
-    ).padStart(2, '0');
-
-  document.getElementById('cd-min').textContent =
-    String(
-      Math.floor(
-        (diff % 3600000) / 60000
-      )
-    ).padStart(2, '0');
-
-  document.getElementById('cd-seg').textContent =
-    String(
-      Math.floor(
-        (diff % 60000) / 1000
-      )
-    ).padStart(2, '0');
-
+  document.getElementById('cd-dias').textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
+  document.getElementById('cd-horas').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+  document.getElementById('cd-min').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+  document.getElementById('cd-seg').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
 }
-
 tickCountdown();
-
 setInterval(tickCountdown, 1000);
 
-
 /* ============================================================
-   3. MARQUEE
+    3. FAIXA ROTATIVA
 ============================================================ */
-
 (function renderMarquee() {
-
-  const todos =
-    CONFIG.diasLineup.flatMap(
-      d => d.artistas.map(a => a.nome)
-    );
-
-  const nomes =
-    Array(8).fill(todos).flat();
-
-  const grupo =
-    nomes.map(nome =>
-      `<span>
-        ${nome}
-        <img src="img/globo.webp" alt="">
-      </span>`
-    ).join('');
-
-  document.getElementById('marqueeTrack').innerHTML =
-    `<div class="marquee-group">${grupo}</div>
-     <div class="marquee-group">${grupo}</div>`;
-
+  const todos = CONFIG.diasLineup.flatMap(d => d.artistas.map(a => a.nome));
+  const nomes = Array(8).fill(todos).flat();
+  const grupo = nomes.map(nome => `<span>${nome} <img src="img/globo.webp" alt=""></span>`).join('');
+  document.getElementById('marqueeTrack').innerHTML = `<div class="marquee-group">${grupo}</div><div class="marquee-group">${grupo}</div>`;
 })();
 
-
 /* ============================================================
-   4. LINE-UP
+    4. RENDERIZA OS PROFISSIONAIS (Line-Up)
 ============================================================ */
-
 (function renderLineup() {
-
-  const tabsEl =
-    document.getElementById('dayTabs');
-
-  const gridEl =
-    document.getElementById('lineupGrid');
+  const tabsEl = document.getElementById('dayTabs');
+  const gridEl = document.getElementById('lineupGrid');
 
   CONFIG.diasLineup.forEach((dia, i) => {
-
-    const tab =
-      document.createElement('button');
-
-    tab.className =
-      'day-tab' +
-      (i === 0 ? ' active' : '');
-
-    tab.textContent =
-      dia.dia;
-
+    const tab = document.createElement('button');
+    tab.className = 'day-tab' + (i === 0 ? ' active' : '');
+    tab.textContent = dia.dia;
     tab.addEventListener('click', () => {
-
-      document
-        .querySelectorAll('.day-tab')
-        .forEach(t =>
-          t.classList.remove('active')
-        );
-
+      document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-
       renderGrid(dia);
-
     });
-
     tabsEl.appendChild(tab);
-
   });
 
   function renderGrid(dia) {
-
-    gridEl.innerHTML =
-      dia.artistas.map(a => `
-
-        <div class="artist-card">
-
-          <div class="artist-photo">
-
-            ${
-              a.instagram
-
-                ? `
-                  <a
-                    href="${a.instagram}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src="${a.foto}"
-                      alt="${a.nome}"
-                    >
-                  </a>
-                `
-
-                : `
-                  <img
-                    src="${a.foto}"
-                    alt="${a.nome}"
-                  >
-                `
-            }
-
-          </div>
-
-          <div class="artist-info">
-
-            <div class="artist-name">
-              ${a.nome}
-            </div>
-
-            <div class="artist-meta">
-
-              ${
-                a.instagram
-
-                  ? `
-                    <a
-                      class="instagram-link"
-                      href="${a.instagram}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"/>
-                        <circle cx="12" cy="12" r="4"/>
-                        <circle cx="17.5" cy="6.5" r="1"/>
-                      </svg>
-
-                    </a>
-                  `
-
-                  : ''
-              }
-
-              ${
-                a.instagram && a.palco
-                  ? `<span class="separator"></span>`
-                  : ''
-              }
-
-              ${
-                a.palco
-                  ? `<span class="palco">${a.palco}</span>`
-                  : ''
-              }
-
-            </div>
-
-          </div>
-
-        </div>
-
-      `).join('');
-
-  }
-
-  renderGrid(
-    CONFIG.diasLineup[0]
-  );
-
-})();
-
-
-/* ============================================================
-   5. ESPAÇOS
-============================================================ */
-
-(function renderStages() {
-
-  document.getElementById('stageGrid').innerHTML =
-
-    CONFIG.palcos.map(p => `
-
-      <div class="stage-card">
-
-        <img
-          class="stage-photo"
-          src="${p.foto}"
-          alt="${p.nome}"
-        >
-
-        <div class="stage-body">
-
-          <h3>
-            ${p.nome}
-          </h3>
-
-          <p>
-            ${p.desc}
-          </p>
-
-        </div>
-
-      </div>
-
-    `).join('');
-
-})();
-
-
-/* ============================================================
-   6. INGRESSOS
-============================================================ */
-
-(function renderTickets() {
-
-  document.getElementById('ticketsGrid').innerHTML =
-
-    CONFIG.ingressos.map(t => `
-
-      <div
-        class="
-          ticket-card
-          ${t.destaque ? 'highlight' : ''}
-          ${t.esgotado ? 'esgotado' : ''}
-          ${t.emBreve ? 'em-breve-card' : ''}
-        "
-      >
-
-        ${
-          t.destaque
-            ? '<span class="ticket-tag">Destaque</span>'
-            : ''
-        }
-
-        <h3>
-          ${t.nome}
-        </h3>
-
-        <div class="ticket-price">
-          ${t.preco}
-          <small></small>
-        </div>
-
-        <ul>
-
-          ${
-            t.beneficios
-              .map(
-                b => `<li>✓ ${b}</li>`
-              )
-              .join('')
+    gridEl.innerHTML = dia.artistas.map(a => `
+      <div class="artist-card">
+        <div class="artist-photo">
+          ${a.instagram 
+            ? `<a href="${a.instagram}" target="_blank" rel="noopener noreferrer"><img src="${a.foto}" alt="${a.nome}"></a>` 
+            : `<img src="${a.foto}" alt="${a.nome}">`
           }
-
-        </ul>
-
-        ${
-          t.esgotado
-
-            ? `
-              <span class="btn outline esgotado">
-                Esgotado
-              </span>
-            `
-
-            : t.emBreve
-
-              ? `
-                <span class="btn outline em-breve">
-                  Em breve
-                </span>
-              `
-
-              : `
-                <a
-                  href="https://pay.kiwify.com.br/bpJsI6S"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn bootzy ${t.destaque ? '' : 'outline'}"
-                >
-                  Comprar
-                </a>
-              `
-        }
-
-      </div>
-
-    `).join('');
-
-})();
-
-
-/* ============================================================
-   7. FAQ
-============================================================ */
-
-(function renderFaq() {
-
-  const el =
-    document.getElementById('faqList');
-
-  el.innerHTML =
-    CONFIG.faq.map((item, i) => `
-
-      <div
-        class="faq-item"
-        data-i="${i}"
-      >
-
-        <button class="faq-q">
-
-          ${item.p}
-
-          <span class="plus">
-            +
-          </span>
-
-        </button>
-
-        <div class="faq-a">
-
-          <p>
-            ${item.r}
-          </p>
-
         </div>
-
+        <div class="artist-info">
+          <div class="artist-name">${a.nome}</div>
+          <div class="artist-meta">
+            ${a.instagram 
+              ? `<a class="instagram-link" href="${a.instagram}" target="_blank" rel="noopener noreferrer">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"/>
+                    <circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/>
+                  </svg>
+                 </a>` 
+              : ''}
+            ${a.instagram && a.painel ? `<span class="separator"></span>` : ''}
+            ${a.painel ? `<span class="painel">${a.painel}</span>` : ''}
+          </div>
+        </div>
       </div>
-
     `).join('');
-
-  el.querySelectorAll('.faq-item')
-    .forEach(item => {
-
-      const btn =
-        item.querySelector('.faq-q');
-
-      const answer =
-        item.querySelector('.faq-a');
-
-      btn.addEventListener('click', () => {
-
-        const isOpen =
-          item.classList.contains('open');
-
-        el.querySelectorAll('.faq-item')
-          .forEach(i => {
-
-            i.classList.remove('open');
-
-            i.querySelector('.faq-a')
-              .style.maxHeight = null;
-
-          });
-
-        if (!isOpen) {
-
-          item.classList.add('open');
-
-          answer.style.maxHeight =
-            answer.scrollHeight + 'px';
-
-        }
-
-      });
-
-    });
-
+  }
+  renderGrid(CONFIG.diasLineup[0]);
 })();
 
+/* ============================================================
+    5. RENDERIZA OS AMBIENTES DO LOCAL
+============================================================ */
+(function renderStages() {
+  document.getElementById('ambienteGrid').innerHTML = CONFIG.ambientes.map(p => `
+    <div class="ambiente-card">
+      <img class="ambiente-foto" src="${p.foto}" alt="${p.nome}">
+      <div class="ambiente-info">
+        <h3>${p.nome}</h3>
+        <p>${p.desc}</p>
+      </div>
+    </div>
+  `).join('');
+})();
 
 /* ============================================================
-   8. REDES SOCIAIS
+    6. RENDERIZA OS INGRESSOS
 ============================================================ */
+(function renderTickets() {
+  document.getElementById('ticketsGrid').innerHTML = CONFIG.ingressos.map(t => `
+    <div class="ticket-card ${t.destaque ? 'highlight' : ''} ${t.esgotado ? 'esgotado' : ''} ${t.emBreve ? 'em-breve-card' : ''}">
+      ${t.destaque ? '<span class="ticket-tag">Destaque</span>' : ''}
+      <h3>${t.nome}</h3>
+      <div class="ticket-price">${t.preco} <small></small></div>
+      <ul>${t.beneficios.map(b => `<li>✓ ${b}</li>`).join('')}</ul>
+      ${t.esgotado 
+        ? `<span class="btn outline esgotado">Esgotado</span>`
+        : t.emBreve 
+          ? `<span class="btn outline em-breve">Em breve</span>`
+          : `<a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy ${t.destaque ? '' : 'outline'}">Comprar</a>`
+      }
+    </div>
+  `).join('');
+})();
 
+/* ============================================================
+    7. RENDERIZA O FAQ ACORDEON
+============================================================ */
+(function renderFaq() {
+  const el = document.getElementById('faqList');
+  el.innerHTML = CONFIG.faq.map((item, i) => `
+    <div class="faq-item" data-i="${i}">
+      <button class="faq-q">${item.p} <span class="plus">+</span></button>
+      <div class="faq-a"><p>${item.r}</p></div>
+    </div>
+  `).join('');
+
+  el.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const answer = item.querySelector('.faq-a');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      el.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+})();
+
+/* ============================================================
+    8. REDES SOCIAIS
+============================================================ */
 (function renderSocial() {
-
   const redes = [
-
-    {
-      nome: 'Instagram',
-      url: 'http://instagram.com/gaysegarotashub',
-
-      svg: `
-        <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17.5" cy="6.5" r="1"/>
-      `
-    },
-
-    {
-      nome: 'TikTok',
-      url: 'http://tiktok.com/@gaysegarotashub',
-
-      svg: `
-        <path d="M14 3v10.5a3 3 0 11-2-2.8V3h2z"/>
-        <path d="M14 3a5 5 0 005 5"/>
-      `
-    },
-
-    {
-      nome: 'LinkedIn',
-      url: 'https://www.linkedin.com/company/gaysegarotashub/',
-
-      svg: `
-        <rect x="3" y="3" width="18" height="18" rx="2"/>
-        <path d="M8 11v6"/>
-        <path d="M8 8v.01"/>
-        <path d="M12 17v-6"/>
-        <path d="M12 14a3 3 0 016 0v3"/>
-      `
-    }
-
+    { nome: 'Instagram', url: 'http://instagram.com/gaysegarotashub', svg: `<path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/>` },
+    { nome: 'TikTok', url: 'http://tiktok.com/@gaysegarotashub', svg: `<path d="M14 3v10.5a3 3 0 11-2-2.8V3h2z"/><path d="M14 3a5 5 0 005 5"/>` },
+    { nome: 'LinkedIn', url: 'https://www.linkedin.com/company/gaysegarotashub/', svg: `<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v6"/><path d="M8 8v.01"/><path d="M12 17v-6"/><path d="M12 14a3 3 0 016 0v3"/>` }
   ];
-
-  document.getElementById('socialRow').innerHTML =
-    redes.map(r => `
-
-      <a
-        href="${r.url}"
-        aria-label="${r.nome}"
-        title="${r.nome}"
-      >
-
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          ${r.svg}
-        </svg>
-
-      </a>
-
-    `).join('');
-
+  document.getElementById('socialRow').innerHTML = redes.map(r => `
+    <a href="${r.url}" aria-label="${r.nome}" title="${r.nome}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${r.svg}</svg>
+    </a>
+  `).join('');
 })();
 
+/* ============================================================
+    9. INTERATIVIDADE DO MENU MOBILE E VOLTAR AO TOPO
+============================================================ */
+document.getElementById('menuToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+document.getElementById('backToTop').addEventListener('click', (e) => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 /* ============================================================
-   9. MENU MOBILE
+    10. ANIMAÇÕES NO SCROLL
 ============================================================ */
-
-document
-  .getElementById('menuToggle')
-  .addEventListener('click', () => {
-
-    document
-      .getElementById('navLinks')
-      .classList.toggle('open');
-
-  });
-
-document
-  .querySelectorAll('#navLinks a')
-  .forEach(a => {
-
-    a.addEventListener('click', () => {
-
-      document
-        .getElementById('navLinks')
-        .classList.remove('open');
-
-    });
-
-  });
-
-
-/* ============================================================
-   10. REVEAL NO SCROLL
-============================================================ */
-
-const revealObserver =
-  new IntersectionObserver(
-    (entries) => {
-
-      entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-          entry.target.classList.add('visible');
-
-          revealObserver.unobserve(
-            entry.target
-          );
-
-        }
-
-      });
-
-    },
-    {
-      threshold: .12
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
     }
-  );
-
-document
-  .querySelectorAll(
-    '.section .eyebrow,' +
-    '.section h2,' +
-    '.artist-card,' +
-    '.stage-card,' +
-    '.festa-photo,' +
-    '.festa-text,' +
-    '.empreenda-photo,' +
-    '.empreenda-text,' +
-    '.ticket-card,' +
-    '.faq-item'
-  )
-  .forEach((el, index) => {
-
-    el.classList.add('reveal');
-
-    el.style.transitionDelay =
-      `${(index % 4) * .08}s`;
-
-    revealObserver.observe(el);
-
   });
+}, { threshold: .12 });
 
+document.querySelectorAll(
+  '.section .eyebrow, .section h2, .artist-card, .ambiente-card, .experiencia-foto, .experiencia-texto, .empreenda-photo, .empreenda-text, .ticket-card, .faq-item'
+).forEach((el, index) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = `${(index % 4) * .08}s`;
+  revealObserver.observe(el);
+});
 </script>
 
-
-<link
-  rel="preconnect"
-  href="https://fonts.googleapis.com"
->
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap"
-  rel="stylesheet"
->
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </body>
 </html>
