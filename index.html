@@ -702,7 +702,7 @@ header {
   }
 
   .abertura h1 {
-    font-size: clamp(80px, 21vw, 100px);
+    font-size: clamp(80px, 19vw, 100px);
     margin-top: -25px !important;
     white-space: nowrap;
   }
@@ -750,7 +750,7 @@ header {
     margin-bottom: -100px !important;
     gap: 10px;
     margin-left: -25px !important;
-    padding-bottom: 200px;
+    margin-bottom: 200px;
     position: absolute;
     top: calc(var(--header-h) + 420px) !important;
   }
@@ -838,6 +838,13 @@ header {
 /* ============================================================
    9. LINE-UP
    ============================================================ */
+
+
+
+#lineup {
+  margin-top: 50px !important;
+}
+
 .day-tabs {
   display: none;
   gap: 10px;
@@ -876,7 +883,9 @@ header {
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--line);
-  transition: transform .15s ease, border-color .15s ease;
+  /* A mágica acontece aqui: mantemos a opacidade para a animação inicial não quebrar, 
+     e ajustamos o tempo do hover para ficar suave */
+  transition: opacity .75s ease, transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease;
 }
 
 .artist-card:hover {
@@ -1055,6 +1064,11 @@ header {
   line-height: 1;
   margin-bottom: 26px;
   text-align: justify;
+}
+
+.experiencia-card span {
+  display: block;
+  margin-top: 8px; /* Ajuste este valor em pixels para a distância que desejar */
 }
 
 .experiencia-texto .btn {
@@ -1275,7 +1289,28 @@ header {
   font-size: 14px;
 }
 
+
 @media (max-width: 600px) {
+
+  .ambiente-scroll {
+    position: relative;
+    margin-right: -24px;
+  }
+
+  .ambiente-scroll::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 120px;
+    height: 100%;
+    pointer-events: none;
+    /* Usa a cor de fundo da section-alt (#0e0e17 -> rgb 14, 14, 23) */
+    background: linear-gradient(to right, rgba(14,14,23,0), rgba(14,14,23,1));
+    z-index: 10;
+  }
+  /* --------------------------------------- */
+
   .ambiente-grid {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -1291,6 +1326,7 @@ header {
   .ambiente-grid::-webkit-scrollbar {
     display: none;
   }
+
 
   .ambiente-card {
     flex: 0 0 88%;
@@ -1337,7 +1373,7 @@ header {
 .empreenda-text h3 {
   font-family: 'BootzyTM' !important;
   font-size: 26px;
-  letter-spacing: .09em !important;
+  letter-spacing: .07em !important;
   line-height: 1;
   text-transform: none;
   margin-bottom: 16px;
@@ -1358,7 +1394,7 @@ header {
   .empreenda-text p {
     max-width: 380px;
     font-size: 18px !important;
-    line-height: 1.2 !important;
+    line-height: 1 !important;
     text-align: justify !important;
   }
 }
@@ -1718,7 +1754,7 @@ footer {
   }
 
   .footer-logo {
-    margin: 0 auto 12px;
+    margin: 0 auto 40px;
   }
 
   .social-row {
@@ -2018,7 +2054,10 @@ footer {
   <div class="container">
     <span class="eyebrow">Estrutura</span>
     <h2>Espaço</h2>
-    <div class="ambiente-grid" id="ambienteGrid"></div>
+    <!-- Adicionamos esta div wrapper aqui: -->
+    <div class="ambiente-scroll">
+      <div class="ambiente-grid" id="ambienteGrid"></div>
+    </div>
   </div>
 </section>
 
