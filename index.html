@@ -599,9 +599,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Previne corte de acentuação e topo de fonte no WebKit (Chrome/Safari iOS) */
-  padding: 4px 0;
-  overflow: visible !important;
 }
 
 .relogio .separador {
@@ -614,7 +611,7 @@ header {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: .08em;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 #cd-dias {
@@ -693,7 +690,9 @@ header {
 
 @media (max-width: 601px) {
   .abertura {
-    min-height: 100svh;
+    /* A mágica está nestas duas linhas: se a tela for menor que 680px, ele trava a altura e impede o corte */
+    min-height: 680px !important;
+    min-height: max(880px) !important;
     padding-top: 200px;
     padding-bottom: 0;
     justify-content: flex-start;
@@ -750,22 +749,15 @@ header {
   .countdown {
     justify-content: center;
     width: 100%;
-    margin-bottom: -100px !important;
     gap: 10px;
-    margin-left: -25px !important;
+    margin-left: -28px !important;
+    margin-bottom: 200px;
     position: absolute;
     top: calc(var(--header-h) + 420px) !important;
-    /* Permite acomodar a largura inteira da tela no iPhone Pro Max sem quebrar */
-    max-width: calc(100vw - 20px);
-    padding-right: 10px;
   }
 
   .bloco-tempo {
     min-width: 30px;
-    /* Garante que o texto 'DIAS', 'HR', etc. não empurre o número para fora */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   #cd-dias {
