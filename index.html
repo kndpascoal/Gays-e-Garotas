@@ -703,7 +703,7 @@ header {
 
   .abertura h1 {
     font-size: clamp(80px, 21vw, 100px);
-    margin-top: 0px !important;
+    margin-top: -25px !important;
     white-space: nowrap;
   }
 
@@ -711,7 +711,7 @@ header {
     max-width: 340px;
     margin-top: 0px;
     font-size: 14px;
-    padding-bottom: 2vh;
+    padding-bottom: 20px;
   }
 
   /* Botões da hero centralizados e sem quebra de linha no mobile */
@@ -732,7 +732,9 @@ header {
   .abertura-datas {
     text-align: center;
     width: 100%;
-    margin-top: 90px;
+    margin-top: 150px;
+    margin-left: 0px !important;
+    justify-content: center !important;
   }
 
   .abertura-globo {
@@ -1066,6 +1068,10 @@ header {
   grid-template-columns: repeat(5, 1fr);
   gap: 12px;
   margin-bottom: 30px;
+}
+
+.experiencia-card img {
+  margin-bottom: 12px;
 }
 
 /*
@@ -1972,31 +1978,31 @@ footer {
         <div class="experiencia-cards">
           <div class="experiencia-card">
             <img src="img/experiencia/musica.png" alt="Música">
-            <strong>🪩 Música</strong>
-            <span>Playlist com as mais icônicas dos anos 2000, diversão e uma pista para aproveitar a noite com a KERODRAMA.</span>
+            <strong>🪩 Música</strong><br>
+            <span>Playlist com as mais icônicas dos anos 2000, diversão e uma pista para aproveitar a noite com o duo KERODRAMA.</span>
           </div>
 
           <div class="experiencia-card">
             <img src="img/experiencia/conexoes.png" alt="Conexões">
-            <strong>🤝 Conexões</strong>
-            <span>Pessoas, creators, profissionais e novas conexões.</span>
+            <strong>🤝 Conexões</strong><br>
+            <span>empreendedores, creators, profissionais e novas conexões com marcas parceiras.</span>
           </div>
 
           <div class="experiencia-card">
             <img src="img/experiencia/workshops.png" alt="Workshops">
-            <strong>🎓 Workshops</strong>
+            <strong>🎓 Workshops</strong><br>
             <span>Os melhores profissionais do mercado transmitindo conhecimento valioso (confira o Line-Up).</span>
           </div>
 
           <div class="experiencia-card">
             <img src="img/experiencia/comunidade.png" alt="Comunidade">
-            <strong>🏳️‍🌈 Comunidade</strong>
+            <strong>🏳️‍🌈 Comunidade</strong><br>
             <span>Um espaço seguro para celebrar nossa comunidade com liberdade.</span>
           </div>
 
           <div class="experiencia-card">
             <img src="img/experiencia/experiencias.png" alt="Experiencias">
-            <strong>✨ Experiências e Sorteios</strong>
+            <strong>✨ Experiências e Sorteios</strong><br>
             <span>Muitos sorteios e surpresas estão te esperando.</span>
           </div>
         </div>
@@ -2114,7 +2120,7 @@ const CONFIG = {
   ambientes: [
     { nome: 'Pista', desc: 'Espaço para curtir o After Party', foto: 'img/espaços/pista.jpg' },
     { nome: 'Restaurante', desc: 'Petiscos a refeições completas', foto: 'img/espaços/restaurante.jpg' },
-    { nome: 'Bar', desc: 'Um menu completo de drinks estão te esperando', foto: 'img/espaços/bar.jpg' },
+    { nome: 'Bar', desc: 'Um menu completo de drinks está te esperando', foto: 'img/espaços/bar.jpg' },
     { nome: 'The Core', desc: 'Ponto de encontro do G&G Anos 2000, que reúne cultura e gastronomia', foto: 'img/espaços/thecore.jpg' }
   ],
 
