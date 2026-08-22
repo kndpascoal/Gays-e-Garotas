@@ -295,9 +295,11 @@ header {
 }
 
 .abertura h1 {
-  font-size: clamp(48px, 10vw, 128px);
+  font-size: clamp(62px, 20vw, 138px);
   line-height: .92;
   white-space: nowrap;
+  margin-left: 20px;
+  margin-top: -50px !important;
 }
 
 .abertura-subtitulo {
@@ -306,15 +308,17 @@ header {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.3;
+  margin-left: 20px;
 }
 
 .abertura-acoes {
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: flex-start;
   gap: 16px;
   margin-top: 40px;
   flex-wrap: nowrap;
+  margin-left: 20px;
 }
 
 .abertura-datas {
@@ -325,6 +329,7 @@ header {
   letter-spacing: .02em;
   margin-top: 50px;
   margin-bottom: 10px;
+  margin-left: 20px;
 }
 
 .abertura-globo {
@@ -333,7 +338,7 @@ header {
   height: 700px;
   object-fit: contain;
   right: max(20px, calc((100vw - 1180px) / 2 - 20px));
-  top: 55vh;
+  top: 55svh;
   transform: translate3d(0, -50%, 0);
   transform-origin: center center;
   z-index: 1;
@@ -362,6 +367,7 @@ header {
   flex-wrap: wrap;
   position: relative;
   z-index: 10;
+  margin-left: 20px;
 }
 
 .relogio {
@@ -817,10 +823,10 @@ header {
 .ticket-card::after {
   content: "";
   position: absolute;
-  width: 70%;
-  height: 160%;
-  top: -80%;
-  left: -55%;
+  width: 45%;
+  height: 220%;
+  top: -60%;
+  left: -30%;
   background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.035) 45%, rgba(255,255,255,.10) 50%, rgba(255,255,255,.025) 55%, transparent 100%);
   transform: rotate(18deg);
   pointer-events: none;
@@ -837,7 +843,7 @@ header {
 }
 
 .ticket-card:hover::after {
-  transform: translateX(120%) rotate(18deg);
+  transform: translateX(220%) rotate(18deg);
   opacity: .85;
 }
 
@@ -1287,7 +1293,7 @@ footer {
     width: 600px;
     height: 600px;
     right: -15px;
-    top: 50vh;
+    top: 50svh;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 18%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.9) 52%, black 65%);
     mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 18%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.9) 52%, black 65%);
   }
@@ -1409,23 +1415,24 @@ footer {
   }
 
   .abertura h1 {
-    font-size: clamp(58px, 19vw, 85px);
+    font-size: clamp(80px, 21vw, 100px);
+    margin-top: 0px !important;
     white-space: nowrap;
   }
 
   .abertura-subtitulo {
     max-width: 340px;
-    margin-top: 12px;
+    margin-top: 0px;
     font-size: 14px;
-    padding-bottom: 5vh;
+    padding-bottom: 2vh;
   }
 
-  /* BOTÕES CENTRADOS */
+  /* Botões da hero centralizados e sem quebra de linha no mobile */
   .abertura-acoes {
     width: 100%;
-    margin-top: 110px;
-    justify-content: center;
-    align-items: center;
+    margin-top: 50px;
+    justify-content: left;
+    align-items: left !important;
     gap: 12px;
     flex-wrap: nowrap;
   }
@@ -1433,21 +1440,19 @@ footer {
   .abertura-acoes .btn {
     flex: 0 0 auto;
     min-height: 50px;
-    padding-left: 18px;
-    padding-right: 18px;
   }
 
   .abertura-datas {
     text-align: center;
     width: 100%;
-    margin-top: 60px;
+    margin-top: 90px;
   }
 
   .abertura-globo {
     width: 750px;
     height: 750px;
     right: -150px;
-    top: 36vh !important;
+    top: 32svh !important;
   }
 
   .countdown {
@@ -1739,7 +1744,7 @@ footer {
     width: 450px;
     height: 450px;
     right: -180px;
-    top: 34vh;
+    top: 34svh;
     opacity: 1;
   }
 
@@ -1773,11 +1778,6 @@ footer {
 
   body {
     min-height: -webkit-fill-available;
-  }
-
-  .abertura-globo {
-    transform: translate3d(0,-50%,0);
-    animation: globoEntrada 1.2s cubic-bezier(.22,1,.36,1) .15s both;
   }
 }
 </style>
@@ -2000,6 +2000,8 @@ footer {
 </a>
 
 <script>
+// Configuração central do evento: data-alvo do contador, textos e listas
+// renderizadas dinamicamente (line-up, ambientes, ingressos, FAQ).
 const CONFIG = {
   dataInicio: '12/09/2026 - 14:00:00',
   textoDatas: '12 de setembro · The Core - São Paulo',
@@ -2045,8 +2047,10 @@ const CONFIG = {
   ]
 };
 
+// Preenche a data/local exibidos abaixo dos botões da hero.
 document.getElementById('heroDates').textContent = CONFIG.textoDatas;
 
+// Recalcula o contador regressivo a cada segundo até a data do evento.
 function tickCountdown() {
   const [data, hora] = CONFIG.dataInicio.split(' - ');
   const [dia, mes, ano] = data.split('/');
@@ -2062,6 +2066,8 @@ function tickCountdown() {
 tickCountdown();
 setInterval(tickCountdown, 1000);
 
+// Monta o texto rolante (marquee) repetindo os nomes do line-up 8x
+// e duplicando o grupo inteiro, para o loop de CSS ficar contínuo sem salto.
 (function renderMarquee() {
   const todos = CONFIG.diasLineup.flatMap(d => d.artistas.map(a => a.nome));
   const nomes = Array(8).fill(todos).flat();
@@ -2071,6 +2077,8 @@ setInterval(tickCountdown, 1000);
     `<div class="marquee-group">${grupo}</div><div class="marquee-group">${grupo}</div>`;
 })();
 
+// Renderiza as abas de dia e a grade de artistas do line-up,
+// trocando o conteúdo da grade ao clicar em cada aba.
 (function renderLineup() {
   const tabsEl = document.getElementById('dayTabs');
   const gridEl = document.getElementById('lineupGrid');
@@ -2125,6 +2133,7 @@ setInterval(tickCountdown, 1000);
   renderGrid(CONFIG.diasLineup[0]);
 })();
 
+// Renderiza os cards da seção "Espaço" a partir de CONFIG.ambientes.
 (function renderStages() {
   document.getElementById('ambienteGrid').innerHTML = CONFIG.ambientes.map(p => `
     <div class="ambiente-card">
@@ -2137,6 +2146,8 @@ setInterval(tickCountdown, 1000);
   `).join('');
 })();
 
+// Renderiza os cards de ingresso, alternando entre botão de compra,
+// "Esgotado" e "Em breve" conforme os flags de cada item em CONFIG.ingressos.
 (function renderTickets() {
   document.getElementById('ticketsGrid').innerHTML = CONFIG.ingressos.map(t => `
     <div class="ticket-card ${t.destaque ? 'highlight' : ''} ${t.esgotado ? 'esgotado' : ''} ${t.emBreve ? 'em-breve-card' : ''}">
@@ -2155,6 +2166,8 @@ setInterval(tickCountdown, 1000);
   `).join('');
 })();
 
+// Renderiza a lista de perguntas do FAQ e o acordeão (abre uma por vez,
+// fechando as demais ao clicar).
 (function renderFaq() {
   const el = document.getElementById('faqList');
 
@@ -2185,6 +2198,8 @@ setInterval(tickCountdown, 1000);
   });
 })();
 
+// Renderiza os ícones de redes sociais do rodapé a partir de uma lista fixa
+// (não vem de CONFIG porque os SVGs de cada ícone ficam definidos aqui).
 (function renderSocial() {
   const redes = [
     {
@@ -2211,6 +2226,7 @@ setInterval(tickCountdown, 1000);
   `).join('');
 })();
 
+// Abre/fecha o menu mobile e fecha automaticamente ao clicar em um link.
 document.getElementById('menuToggle').addEventListener('click', () => {
   document.getElementById('navLinks').classList.toggle('open');
 });
@@ -2221,11 +2237,14 @@ document.querySelectorAll('#navLinks a').forEach(a => {
   });
 });
 
+// Botão "voltar ao topo" com rolagem suave.
 document.getElementById('backToTop').addEventListener('click', e => {
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+// Observer que revela (fade + slide up) cada seção/card assim que
+// ela entra na viewport, parando de observar depois de já ter aparecido.
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
