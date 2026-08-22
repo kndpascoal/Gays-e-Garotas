@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Gays & Garotas</title>
+<title>Gays &amp; Garotas</title>
 
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -17,6 +17,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+/* ============================================================
+   1. FONTE CUSTOMIZADA
+   ============================================================ */
 @font-face {
   font-family: 'BootzyTM';
   src: url('BootzyTM.woff2') format('woff2');
@@ -25,6 +28,9 @@
   font-display: block;
 }
 
+/* ============================================================
+   2. VARIÁVEIS GLOBAIS
+   ============================================================ */
 :root {
   --bg: #0a0a0f;
   --bg-alt: #0e0e17;
@@ -40,8 +46,17 @@
   --container: 1180px;
   --liquid-border: rgba(255,255,255,.18);
   --liquid-shadow: 0 20px 50px rgba(0,0,0,.30), 0 5px 15px rgba(0,0,0,.18);
+
+  /* Altura "operacional" do header fixo (logo + padding vertical).
+     Usada para ancorar elementos da hero (ex: o globo) ao invés de
+     depender de unidades de viewport (svh), que oscilam no mobile
+     quando a barra de endereço do navegador aparece/some. */
+  --header-h: 70px;
 }
 
+/* ============================================================
+   3. RESET
+   ============================================================ */
 *,
 *::before,
 *::after {
@@ -74,10 +89,6 @@ body {
   text-size-adjust: 100%;
 }
 
-section[id] {
-  scroll-margin-top: 60px;
-}
-
 img {
   display: block;
   max-width: 100%;
@@ -105,6 +116,19 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
+@supports (-webkit-touch-callout: none) {
+  html {
+    min-height: -webkit-fill-available;
+  }
+
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* ============================================================
+   4. LAYOUT BASE / TIPOGRAFIA / BOTÕES (compartilhados)
+   ============================================================ */
 .container {
   max-width: var(--container);
   margin: 0 auto;
@@ -118,6 +142,10 @@ button {
 
 .section-alt {
   background: var(--bg-alt);
+}
+
+section[id] {
+  scroll-margin-top: 60px;
 }
 
 .bootzy {
@@ -190,6 +218,150 @@ h2 {
   color: var(--text) !important;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .btn {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.045)) !important;
+    border: 1px solid rgba(255,255,255,.28) !important;
+    color: #fff !important;
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.22), inset 0 -1px 1px rgba(0,0,0,.10), 0 10px 30px rgba(0,0,0,.22);
+  }
+
+  .btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 55%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+    transform: rotate(20deg);
+    transition: left .65s cubic-bezier(.22,1,.36,1);
+    pointer-events: none;
+  }
+
+  .btn:hover::before {
+    left: 150%;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,.45) !important;
+    background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.065)) !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 15px 40px rgba(0,0,0,.30);
+  }
+
+  .btn:not(.outline) {
+    background: linear-gradient(135deg, rgba(18,65,235,.78), rgba(18,65,235,.32)) !important;
+    border-color: rgba(100,130,255,.60) !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 10px 35px rgba(18,65,235,.25);
+  }
+
+  .btn:not(.outline):hover {
+    background: linear-gradient(135deg, rgba(30,78,245,.88), rgba(18,65,235,.42)) !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.30), 0 15px 45px rgba(18,65,235,.35);
+  }
+
+  .btn.outline {
+    background: rgba(255,255,255,.045) !important;
+    border-color: rgba(255,255,255,.18) !important;
+  }
+}
+
+/* ============================================================
+   5. ANIMAÇÕES DE ENTRADA / SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.abertura-animacao {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: animacaoAbertura .8s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.abertura-titulo {
+  animation-delay: .15s;
+}
+
+.abertura-descricao {
+  animation-delay: .35s;
+}
+
+.abertura-botoes {
+  animation-delay: .55s;
+}
+
+.abertura-info {
+  animation-delay: .75s;
+}
+
+@keyframes animacaoAbertura {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes globoEntrada {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: .75;
+  }
+}
+
+@keyframes marquee-infinito {
+  from {
+    transform: translate3d(0,0,0);
+  }
+  to {
+    transform: translate3d(-50%,0,0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .abertura-animacao {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+
+  .abertura-globo {
+    animation: none;
+    opacity: .75;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   6. HEADER / NAVEGAÇÃO
+   ============================================================ */
 header {
   position: fixed;
   top: 0;
@@ -270,6 +442,44 @@ header {
   appearance: none;
 }
 
+@media (max-width: 860px) {
+  .nav-mobile-date {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: #0a0a0f;
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 24px;
+    font-size: 18px;
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-150%);
+    transition: transform .3s ease-in-out;
+    z-index: 99;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    box-shadow: 0 20px 40px rgba(0,0,0,.8);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav .btn {
+    display: none;
+  }
+}
+
+/* ============================================================
+   7. HERO / ABERTURA
+   ============================================================ */
 .abertura {
   position: relative;
   min-height: 100vh;
@@ -332,30 +542,28 @@ header {
   margin-left: 20px;
 }
 
+/*
+  Globo da hero: ancorado ao HEADER (--header-h) + um deslocamento fixo em
+  px, em vez de "top: X svh". Unidades svh recalculam a cada mudança de
+  altura da viewport (ex.: a barra de endereço do navegador mobile
+  aparecendo/escondendo ao rolar), o que fazia o globo "pular" de posição.
+  Ancorando em px relativos ao header, a posição fica estável.
+*/
 .abertura-globo {
   position: absolute;
   width: 700px;
   height: 700px;
   object-fit: contain;
   right: max(20px, calc((100vw - 1180px) / 2 - 20px));
-  top: 55svh;
+  top: calc(var(--header-h) + 315px);
   transform: translate3d(0, -50%, 0);
   transform-origin: center center;
   z-index: 1;
   pointer-events: none;
   opacity: .75;
-  transition: opacity .3s ease, width .3s ease;
+  transition: opacity .3s ease, width .3s ease, top .3s ease;
   will-change: opacity;
   animation: globoEntrada 1.2s cubic-bezier(.22,1,.36,1) .15s both;
-}
-
-@keyframes globoEntrada {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: .75;
-  }
 }
 
 .countdown {
@@ -418,6 +626,168 @@ header {
   box-shadow: 0 0 15px rgba(255,62,165,.3);
 }
 
+@media (min-width: 901px) {
+  .marquee {
+    top: -48px;
+    margin-bottom: 110px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1000px) {
+  .abertura {
+    padding-top: 120px;
+    justify-content: flex-start;
+  }
+
+  .abertura h1 {
+    font-size: clamp(90px, 9vw, 90px);
+    padding-top: 50px;
+  }
+
+  .countdown {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .abertura-globo {
+    width: 600px;
+    height: 600px;
+    right: 0px;
+    top: calc(var(--header-h) + 280px);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 18%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.9) 52%, black 65%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 18%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.9) 52%, black 65%);
+  }
+}
+
+@media (max-width: 900px) {
+  .abertura-globo {
+    width: 650px;
+    height: 650px;
+    right: -200px;
+    top: calc(var(--header-h) + 300px);
+  }
+
+  .abertura-subtitulo {
+    max-width: 520px;
+    margin-top: 24px;
+    font-size: 17px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 700px) {
+  .abertura-globo {
+    width: 550px;
+    height: 550px;
+    right: -200px;
+    top: calc(var(--header-h) + 252px);
+    opacity: .99;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.08) 10%, rgba(0,0,0,.35) 28%, rgba(0,0,0,.75) 45%, black 80%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.08) 10%, rgba(0,0,0,.35) 28%, rgba(0,0,0,.75) 45%, black 100%);
+  }
+}
+
+@media (max-width: 601px) {
+  .abertura {
+    min-height: 100svh;
+    padding-top: 200px;
+    padding-bottom: 0;
+    justify-content: flex-start;
+  }
+
+  .abertura-conteudo {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .abertura h1 {
+    font-size: clamp(80px, 21vw, 100px);
+    margin-top: 0px !important;
+    white-space: nowrap;
+  }
+
+  .abertura-subtitulo {
+    max-width: 340px;
+    margin-top: 0px;
+    font-size: 14px;
+    padding-bottom: 2vh;
+  }
+
+  /* Botões da hero centralizados e sem quebra de linha no mobile */
+  .abertura-acoes {
+    width: 100%;
+    margin-top: 50px;
+    justify-content: left;
+    align-items: left !important;
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+
+  .abertura-acoes .btn {
+    flex: 0 0 auto;
+    min-height: 50px;
+  }
+
+  .abertura-datas {
+    text-align: center;
+    width: 100%;
+    margin-top: 90px;
+  }
+
+  .abertura-globo {
+    width: 450px !important;
+    height: 450px !important;
+    right: -150px;
+    top: calc(var(--header-h) + 230px) !important;
+  }
+
+  .countdown {
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px !important;
+    margin-bottom: -100px !important;
+    gap: 10px;
+    margin-left: 0 !important;
+    padding-bottom: 200px;
+  }
+
+  .bloco-tempo {
+    min-width: 30px;
+  }
+
+  #cd-dias {
+    margin-left: 0;
+  }
+
+  .marquee {
+    top: -48px;
+  }
+}
+
+@media (max-width: 500px) {
+  .abertura-globo {
+    width: 450px;
+    height: 450px;
+    right: -180px;
+    top: calc(var(--header-h) + 226px) !important;
+    opacity: 1;
+  }
+
+  .abertura-acoes {
+    gap: 10px;
+  }
+
+  .abertura-acoes .btn {
+    padding-left: 14px;
+    padding-right: 14px;
+    font-size: 14px;
+  }
+}
+
+/* ============================================================
+   8. MARQUEE (faixa rolante) — atualmente oculta via [hidden] no HTML
+   ============================================================ */
 .marquee {
   position: relative;
   top: 0;
@@ -462,15 +832,9 @@ header {
   flex-shrink: 0;
 }
 
-@keyframes marquee-infinito {
-  from {
-    transform: translate3d(0,0,0);
-  }
-  to {
-    transform: translate3d(-50%,0,0);
-  }
-}
-
+/* ============================================================
+   9. LINE-UP
+   ============================================================ */
 .day-tabs {
   display: none;
   gap: 10px;
@@ -525,6 +889,18 @@ header {
   justify-content: center;
 }
 
+.artist-photo a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.artist-photo a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .artist-info {
   padding: 16px;
 }
@@ -566,6 +942,66 @@ header {
   flex-shrink: 0;
 }
 
+@media (max-width: 600px) {
+  .lineup-grid {
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+  }
+
+  .artist-card {
+    background: var(--surface) !important;
+    border: 1px solid var(--line) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .artist-card:hover {
+    transform: none;
+    border-color: var(--line) !important;
+  }
+
+  .artist-name {
+    font-family: 'BootzyTM', sans-serif !important;
+    font-size: 14px !important;
+    letter-spacing: .1em !important;
+    word-spacing: 0 !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .artist-info {
+    padding: 14px !important;
+  }
+
+  .artist-meta {
+    margin-top: 3px !important;
+    line-height: 1.15 !important;
+    gap: 0 !important;
+  }
+
+  .artist-meta .painel {
+    letter-spacing: 0 !important;
+    word-spacing: 0 !important;
+    line-height: 1.15 !important;
+  }
+
+  .artist-meta .instagram-link,
+  .artist-meta .separator {
+    display: none !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .artist-name {
+    letter-spacing: .1em !important;
+  }
+}
+
+/* ============================================================
+   10. SEÇÃO EXPERIÊNCIA (título "anos2000" + cards de glass)
+   ============================================================ */
 .titulo-anos2000 {
   font-family: 'BootzyTM', sans-serif !important;
   font-size: 52px !important;
@@ -618,6 +1054,13 @@ header {
   text-align: justify;
 }
 
+.experiencia-texto .btn {
+  padding: 0 24px;
+  font-size: 13px;
+  width: fit-content;
+  align-self: flex-start;
+}
+
 .experiencia-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -625,6 +1068,14 @@ header {
   margin-bottom: 30px;
 }
 
+/*
+  Card com efeito "glass". O brilho diagonal (::after) antes ficava
+  esticado/desalinhado por passar por fora do card (top:-80%, height:160%)
+  e girado 18deg sem estar contido — em telas mais largas o reflexo
+  aparecia cortado ou "flutuando" fora da borda antes/depois do hover.
+  Agora o brilho fica contido dentro do card (overflow:hidden no pai +
+  faixa mais estreita) e a trajetória de entrada/saída é simétrica.
+*/
 .experiencia-card {
   position: relative;
   border: 1px solid var(--liquid-border);
@@ -657,15 +1108,15 @@ header {
 .experiencia-card::after {
   content: "";
   position: absolute;
-  width: 70%;
-  height: 160%;
-  top: -80%;
-  left: -55%;
+  width: 55%;
+  height: 220%;
+  top: -60%;
+  left: -70%;
   background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.035) 45%, rgba(255,255,255,.10) 50%, rgba(255,255,255,.025) 55%, transparent 100%);
   transform: rotate(18deg);
   pointer-events: none;
   opacity: .55;
-  transition: transform .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
+  transition: left .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
   z-index: 15;
 }
 
@@ -677,39 +1128,110 @@ header {
 }
 
 .experiencia-card:hover::after {
-  transform: translateX(120%) rotate(18deg);
+  left: 145%;
   opacity: .85;
 }
 
-.experiencia-card strong {
-  position: relative;
-  z-index: 1;
-  display: block;
-  font-family: 'BootzyTM', sans-serif;
-  font-size: 15px;
-  letter-spacing: .09em !important;
-  color: var(--text);
-  margin-bottom: 5px;
-  margin-top: 10px;
-  text-transform: uppercase;
+@media (max-width: 800px) {
+  .experiencia-conteudo {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .experiencia-foto {
+    order: 0;
+  }
+
+  .experiencia-texto {
+    order: 1;
+  }
+
+  .experiencia-texto h3 {
+    font-size: 28px;
+  }
+
+  .experiencia-texto p {
+    font-size: 15px;
+  }
 }
 
-.experiencia-card span {
-  position: relative;
-  z-index: 1;
-  display: block;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.4;
+@media (max-width: 600px) {
+  .experiencia-scroll {
+    position: relative;
+    margin-right: -24px;
+  }
+
+  .experiencia-scroll::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 120px;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(10,10,15,0), rgba(10,10,15,1));
+    z-index: 10;
+  }
+
+  .experiencia-cards {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 16px;
+    padding-right: 55px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .experiencia-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .experiencia-card {
+    flex: 0 0 84%;
+    min-width: 84%;
+    scroll-snap-align: start;
+    padding: 18px;
+    margin: 0;
+  }
+
+  .experiencia-card,
+  .experiencia-card:hover {
+    transform: none;
+    background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+    border-color: var(--liquid-border);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), 0 12px 30px rgba(0,0,0,.22);
+  }
+
+  .experiencia-card:hover::after {
+    left: -70%;
+    opacity: .55;
+  }
+
+  .experiencia-card,
+  .ticket-card,
+  .faq-item,
+  .back-to-top {
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
 }
 
-.experiencia-texto .btn {
-  padding: 0 24px;
-  font-size: 13px;
-  width: fit-content;
-  align-self: flex-start;
+@media (max-width: 500px) {
+  .experiencia-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .experiencia-texto h3 {
+    font-size: 25px;
+  }
 }
 
+/* ============================================================
+   11. SEÇÃO ESPAÇO (ambientes)
+   ============================================================ */
 .ambiente-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -746,6 +1268,45 @@ header {
   font-size: 14px;
 }
 
+@media (max-width: 600px) {
+  .ambiente-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 16px;
+    padding-right: 55px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .ambiente-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ambiente-card {
+    flex: 0 0 88%;
+    min-width: 88%;
+    scroll-snap-align: start;
+    background: var(--surface) !important;
+    border: 1px solid var(--line) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transform: none !important;
+  }
+
+  .ambiente-card::before,
+  .ambiente-card::after {
+    display: none !important;
+    content: none !important;
+  }
+}
+
+/* ============================================================
+   12. SEÇÃO EMPREENDA LGBT+
+   ============================================================ */
 .empreenda-content {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -782,6 +1343,22 @@ header {
   line-height: 1.4;
 }
 
+@media (max-width: 600px) {
+  .empreenda-content {
+    grid-template-columns: 1fr;
+  }
+
+  .empreenda-text p {
+    max-width: 380px;
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+    text-align: justify !important;
+  }
+}
+
+/* ============================================================
+   13. SEÇÃO INGRESSOS
+   ============================================================ */
 .tickets-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -931,6 +1508,31 @@ header {
   color: #555;
 }
 
+@media (max-width: 600px) {
+  .ticket-card,
+  .ticket-card:hover {
+    transform: none;
+    background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+    border-color: var(--liquid-border);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), 0 12px 30px rgba(0,0,0,.22);
+  }
+
+  .ticket-card:hover::after {
+    transform: rotate(18deg);
+    opacity: .55;
+  }
+
+  .ticket-card.highlight,
+  .ticket-card.highlight:hover {
+    background: linear-gradient(135deg, rgba(18,65,235,.22), rgba(18,65,235,.075), rgba(255,255,255,.035));
+    border-color: rgba(80,115,255,.48);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.17), 0 15px 40px rgba(18,65,235,.16);
+  }
+}
+
+/* ============================================================
+   14. SEÇÃO FAQ
+   ============================================================ */
 .faq-item {
   position: relative;
   margin-bottom: 10px;
@@ -993,6 +1595,16 @@ header {
   padding: 0 22px 22px;
 }
 
+@media (max-width: 600px) {
+  .faq-item:hover {
+    border-color: rgba(255,255,255,.11);
+    background: linear-gradient(135deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
+  }
+}
+
+/* ============================================================
+   15. FOOTER
+   ============================================================ */
 footer {
   background: var(--bg-alt);
   border-top: 1px solid var(--line);
@@ -1083,6 +1695,54 @@ footer {
   font-size: 13px;
 }
 
+@media (max-width: 600px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-brand,
+  .footer-links,
+  .footer-col,
+  .footer-col h4,
+  .footer-col a {
+    text-align: center;
+  }
+
+  .footer-logo {
+    margin: 0 auto 12px;
+  }
+
+  .social-row {
+    justify-content: center;
+  }
+
+  .footer-links {
+    width: 100%;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .footer-bottom {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .footer-bottom span {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px !important;
+  }
+}
+
+/* ============================================================
+   16. BOTÃO "VOLTAR AO TOPO"
+   ============================================================ */
 .back-to-top {
   position: fixed;
   bottom: calc(24px + env(safe-area-inset-bottom));
@@ -1106,126 +1766,9 @@ footer {
   transform: translateZ(0);
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.abertura-animacao {
-  opacity: 0;
-  transform: translateY(24px);
-  animation: animacaoAbertura .8s cubic-bezier(.22,1,.36,1) forwards;
-}
-
-.abertura-titulo {
-  animation-delay: .15s;
-}
-
-.abertura-descricao {
-  animation-delay: .35s;
-}
-
-.abertura-botoes {
-  animation-delay: .55s;
-}
-
-.abertura-info {
-  animation-delay: .75s;
-}
-
-@keyframes animacaoAbertura {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .reveal,
-  .abertura-animacao {
-    opacity: 1;
-    transform: none;
-    transition: none;
-    animation: none;
-  }
-
-  .abertura-globo {
-    animation: none;
-    opacity: .75;
-  }
-
-  .marquee-track {
-    animation: none;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .btn {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.045)) !important;
-    border: 1px solid rgba(255,255,255,.28) !important;
-    color: #fff !important;
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.22), inset 0 -1px 1px rgba(0,0,0,.10), 0 10px 30px rgba(0,0,0,.22);
-  }
-
-  .btn::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -100%;
-    width: 55%;
-    height: 200%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
-    transform: rotate(20deg);
-    transition: left .65s cubic-bezier(.22,1,.36,1);
-    pointer-events: none;
-  }
-
-  .btn:hover::before {
-    left: 150%;
-  }
-
-  .btn:hover {
-    transform: translateY(-3px);
-    border-color: rgba(255,255,255,.45) !important;
-    background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.065)) !important;
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 15px 40px rgba(0,0,0,.30);
-  }
-
-  .btn:not(.outline) {
-    background: linear-gradient(135deg, rgba(18,65,235,.78), rgba(18,65,235,.32)) !important;
-    border-color: rgba(100,130,255,.60) !important;
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 10px 35px rgba(18,65,235,.25);
-  }
-
-  .btn:not(.outline):hover {
-    background: linear-gradient(135deg, rgba(30,78,245,.88), rgba(18,65,235,.42)) !important;
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.30), 0 15px 45px rgba(18,65,235,.35);
-  }
-
-  .btn.outline {
-    background: rgba(255,255,255,.045) !important;
-    border-color: rgba(255,255,255,.18) !important;
-  }
-}
-
+/* ============================================================
+   17. GLOWS DECORATIVOS DE FUNDO (seções específicas)
+   ============================================================ */
 #experiencia,
 #espaco,
 #ingressos,
@@ -1271,6 +1814,9 @@ footer {
   z-index: 2;
 }
 
+/* ============================================================
+   18. FALLBACK SEM SUPORTE A backdrop-filter
+   ============================================================ */
 @supports not ((backdrop-filter: blur(1px))) {
   .experiencia-card,
   .ticket-card,
@@ -1281,380 +1827,12 @@ footer {
   }
 }
 
-@media (min-width: 901px) {
-  .marquee {
-    top: -48px;
-    margin-bottom: 110px;
-  }
-}
-
-@media (max-width: 1100px) {
-  .abertura-globo {
-    width: 600px;
-    height: 600px;
-    right: -15px;
-    top: 50svh;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 18%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.9) 52%, black 65%);
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 18%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.9) 52%, black 65%);
-  }
-}
-
-@media (min-width: 601px) and (max-width: 1000px) {
-  .abertura {
-    padding-top: 120px;
-    justify-content: flex-start;
-  }
-
-  .abertura h1 {
-    font-size: clamp(90px, 9vw, 90px);
-    padding-top: 50px;
-  }
-
-  .countdown {
-    gap: 12px;
-  }
-}
-
-@media (max-width: 900px) {
-  .abertura-globo {
-    width: 650px;
-    height: 650px;
-    right: -180px;
-    top: 52svh;
-  }
-
-  .abertura-subtitulo {
-    max-width: 520px;
-    margin-top: 24px;
-    font-size: 17px;
-    line-height: 1.4;
-  }
-}
-
-@media (max-width: 860px) {
-  .nav-mobile-date {
-    display: block;
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    background: #0a0a0f;
-    flex-direction: column;
-    padding: 32px 24px;
-    gap: 24px;
-    font-size: 18px;
-    border-bottom: 1px solid var(--line);
-    transform: translateY(-150%);
-    transition: transform .3s ease-in-out;
-    z-index: 99;
-  }
-
-  .nav-links.open {
-    transform: translateY(0);
-    box-shadow: 0 20px 40px rgba(0,0,0,.8);
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav .btn {
-    display: none;
-  }
-}
-
-@media (max-width: 800px) {
-  .experiencia-conteudo {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .experiencia-foto {
-    order: 0;
-  }
-
-  .experiencia-texto {
-    order: 1;
-  }
-
-  .experiencia-texto h3 {
-    font-size: 28px;
-  }
-
-  .experiencia-texto p {
-    font-size: 15px;
-  }
-}
-
-@media (max-width: 700px) {
-  .abertura-globo {
-    width: 550px;
-    height: 550px;
-    right: -190px;
-    top: 49svh;
-    opacity: .99;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.08) 10%, rgba(0,0,0,.35) 28%, rgba(0,0,0,.75) 45%, black 80%);
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.08) 10%, rgba(0,0,0,.35) 28%, rgba(0,0,0,.75) 45%, black 100%);
-  }
-}
-
+/* ============================================================
+   19. AJUSTES GERAIS DE MOBILE (padding de seção, tap highlight)
+   ============================================================ */
 @media (max-width: 600px) {
-  .abertura {
-    min-height: 100svh;
-    padding-top: 200px;
-    padding-bottom: 0;
-    justify-content: flex-start;
-  }
-
-  .abertura-conteudo {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-
-  .abertura h1 {
-    font-size: clamp(80px, 21vw, 100px);
-    margin-top: 0px !important;
-    white-space: nowrap;
-  }
-
-  .abertura-subtitulo {
-    max-width: 340px;
-    margin-top: 0px;
-    font-size: 14px;
-    padding-bottom: 2vh;
-  }
-
-  /* Botões da hero centralizados e sem quebra de linha no mobile */
-  .abertura-acoes {
-    width: 100%;
-    margin-top: 50px;
-    justify-content: left;
-    align-items: left !important;
-    gap: 12px;
-    flex-wrap: nowrap;
-  }
-
-  .abertura-acoes .btn {
-    flex: 0 0 auto;
-    min-height: 50px;
-  }
-
-  .abertura-datas {
-    text-align: center;
-    width: 100%;
-    margin-top: 90px;
-  }
-
-  .abertura-globo {
-    width: 750px;
-    height: 750px;
-    right: -150px;
-    top: 32svh !important;
-  }
-
-  .countdown {
-    justify-content: center;
-    width: 100%;
-    margin-top: 20px !important;
-    margin-bottom: -100px !important;
-    gap: 10px;
-    margin-left: 0 !important;
-    padding-bottom: 200px;
-  }
-
-  .bloco-tempo {
-    min-width: 30px;
-  }
-
-  #cd-dias {
-    margin-left: 0;
-  }
-
-  .marquee {
-    top: -48px;
-  }
-
-  .lineup-grid {
-    grid-template-columns: repeat(2,1fr);
-    gap: 12px;
-  }
-
-  .artist-card {
-    background: var(--surface) !important;
-    border: 1px solid var(--line) !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-
-  .artist-card:hover {
-    transform: none;
-    border-color: var(--line) !important;
-  }
-
-  .artist-name {
-    font-family: 'BootzyTM', sans-serif !important;
-    font-size: 14px !important;
-    letter-spacing: .1em !important;
-    word-spacing: 0 !important;
-    line-height: 1 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .artist-info {
-    padding: 14px !important;
-  }
-
-  .artist-meta {
-    margin-top: 3px !important;
-    line-height: 1.15 !important;
-    gap: 0 !important;
-  }
-
-  .artist-meta .painel {
-    letter-spacing: 0 !important;
-    word-spacing: 0 !important;
-    line-height: 1.15 !important;
-  }
-
-  .artist-photo a {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
-  .artist-photo a img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .artist-meta .instagram-link,
-  .artist-meta .separator {
-    display: none !important;
-  }
-
-  .experiencia-scroll {
-    position: relative;
-    margin-right: -24px;
-  }
-
-  .experiencia-scroll::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -1px;
-    width: 120px;
-    height: 100%;
-    pointer-events: none;
-    background: linear-gradient(to right, rgba(10,10,15,0), rgba(10,10,15,1));
-    z-index: 10;
-  }
-
-  .experiencia-cards,
-  .ambiente-grid {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto;
-    overflow-y: hidden;
-    gap: 16px;
-    padding-right: 55px;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-  }
-
-  .experiencia-cards::-webkit-scrollbar,
-  .ambiente-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .experiencia-card {
-    flex: 0 0 84%;
-    min-width: 84%;
-    scroll-snap-align: start;
-    padding: 18px;
-    margin: 0;
-  }
-
-  .ambiente-card {
-    flex: 0 0 88%;
-    min-width: 88%;
-    scroll-snap-align: start;
-    background: var(--surface) !important;
-    border: 1px solid var(--line) !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    transform: none !important;
-  }
-
-  .ambiente-card::before,
-  .ambiente-card::after {
-    display: none !important;
-    content: none !important;
-  }
-
-  .empreenda-content {
-    grid-template-columns: 1fr;
-  }
-
-  .empreenda-text p {
-    max-width: 380px;
-    font-size: 18px !important;
-    line-height: 1.2 !important;
-    text-align: justify !important;
-  }
-
   .section {
     padding: 64px 0;
-  }
-
-  .footer-top {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-brand,
-  .footer-links,
-  .footer-col,
-  .footer-col h4,
-  .footer-col a {
-    text-align: center;
-  }
-
-  .footer-logo {
-    margin: 0 auto 12px;
-  }
-
-  .social-row {
-    justify-content: center;
-  }
-
-  .footer-links {
-    width: 100%;
-    justify-content: center;
-    gap: 40px;
-  }
-
-  .footer-bottom {
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 8px;
-  }
-
-  .footer-bottom span {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px !important;
   }
 
   .btn,
@@ -1691,94 +1869,6 @@ footer {
   .btn {
     -webkit-tap-highlight-color: transparent;
   }
-
-  .experiencia-card,
-  .experiencia-card:hover {
-    transform: none;
-    background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
-    border-color: var(--liquid-border);
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), 0 12px 30px rgba(0,0,0,.22);
-  }
-
-  .experiencia-card:hover::after {
-    transform: rotate(18deg);
-    opacity: .55;
-  }
-
-  .ticket-card,
-  .ticket-card:hover {
-    transform: none;
-    background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
-    border-color: var(--liquid-border);
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), 0 12px 30px rgba(0,0,0,.22);
-  }
-
-  .ticket-card:hover::after {
-    transform: rotate(18deg);
-    opacity: .55;
-  }
-
-  .ticket-card.highlight,
-  .ticket-card.highlight:hover {
-    background: linear-gradient(135deg, rgba(18,65,235,.22), rgba(18,65,235,.075), rgba(255,255,255,.035));
-    border-color: rgba(80,115,255,.48);
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.17), 0 15px 40px rgba(18,65,235,.16);
-  }
-
-  .faq-item:hover {
-    border-color: rgba(255,255,255,.11);
-    background: linear-gradient(135deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
-  }
-
-  .experiencia-card,
-  .ticket-card,
-  .faq-item,
-  .back-to-top {
-    -webkit-backdrop-filter: blur(18px) saturate(140%);
-    backdrop-filter: blur(18px) saturate(140%);
-  }
-}
-
-@media (max-width: 500px) {
-  .abertura-globo {
-    width: 450px;
-    height: 450px;
-    right: -180px;
-    top: 34svh;
-    opacity: 1;
-  }
-
-  .artist-name {
-    letter-spacing: .1em !important;
-  }
-
-  .experiencia-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .experiencia-texto h3 {
-    font-size: 25px;
-  }
-
-  .abertura-acoes {
-    gap: 10px;
-  }
-
-  .abertura-acoes .btn {
-    padding-left: 14px;
-    padding-right: 14px;
-    font-size: 14px;
-  }
-}
-
-@supports (-webkit-touch-callout: none) {
-  html {
-    min-height: -webkit-fill-available;
-  }
-
-  body {
-    min-height: -webkit-fill-available;
-  }
 }
 </style>
 </head>
@@ -1813,7 +1903,7 @@ footer {
   <img src="img/globoprincipal.png" alt="" class="abertura-globo">
 
   <div class="abertura-conteudo">
-    <h1 class="bootzy abertura-animacao abertura-titulo"><span style="color:#ffffff;">G<span style="color:#1241eb;font-size:70%;">&</span>G</span> 
+    <h1 class="bootzy abertura-animacao abertura-titulo"><span style="color:#ffffff;">G<span style="color:#1241eb;font-size:70%;">&</span>G</span>
     <br><span style="color:#ffffff;">ANO</span><span style="color:#ff007f;text-transform:lowercase;">s</span><span style="color:#ff007f;">2</span><span style="color:#ffffff;">000</span></h1>
 
     <p class="abertura-subtitulo abertura-animacao abertura-descricao" style="color:#ffffff;">Conectando creators, empreendedores, profissionais e marcas em um ambiente seguro. Dessa vez, no The Core e com muita nostalgia.</p>
@@ -2000,8 +2090,11 @@ footer {
 </a>
 
 <script>
-// Configuração central do evento: data-alvo do contador, textos e listas
-// renderizadas dinamicamente (line-up, ambientes, ingressos, FAQ).
+/* ============================================================
+   CONFIGURAÇÃO CENTRAL DO EVENTO
+   Data-alvo do contador, textos e listas renderizadas
+   dinamicamente (line-up, ambientes, ingressos, FAQ).
+   ============================================================ */
 const CONFIG = {
   dataInicio: '12/09/2026 - 14:00:00',
   textoDatas: '12 de setembro · The Core - São Paulo',
@@ -2047,10 +2140,9 @@ const CONFIG = {
   ]
 };
 
-// Preenche a data/local exibidos abaixo dos botões da hero.
+/* ---------- Hero: data/local + contador regressivo ---------- */
 document.getElementById('heroDates').textContent = CONFIG.textoDatas;
 
-// Recalcula o contador regressivo a cada segundo até a data do evento.
 function tickCountdown() {
   const [data, hora] = CONFIG.dataInicio.split(' - ');
   const [dia, mes, ano] = data.split('/');
@@ -2066,8 +2158,8 @@ function tickCountdown() {
 tickCountdown();
 setInterval(tickCountdown, 1000);
 
-// Monta o texto rolante (marquee) repetindo os nomes do line-up 8x
-// e duplicando o grupo inteiro, para o loop de CSS ficar contínuo sem salto.
+/* ---------- Marquee: repete os nomes do line-up e duplica o
+   grupo inteiro, para o loop de CSS ficar contínuo sem salto. ---------- */
 (function renderMarquee() {
   const todos = CONFIG.diasLineup.flatMap(d => d.artistas.map(a => a.nome));
   const nomes = Array(8).fill(todos).flat();
@@ -2077,8 +2169,7 @@ setInterval(tickCountdown, 1000);
     `<div class="marquee-group">${grupo}</div><div class="marquee-group">${grupo}</div>`;
 })();
 
-// Renderiza as abas de dia e a grade de artistas do line-up,
-// trocando o conteúdo da grade ao clicar em cada aba.
+/* ---------- Line-up: abas de dia + grade de artistas ---------- */
 (function renderLineup() {
   const tabsEl = document.getElementById('dayTabs');
   const gridEl = document.getElementById('lineupGrid');
@@ -2133,7 +2224,7 @@ setInterval(tickCountdown, 1000);
   renderGrid(CONFIG.diasLineup[0]);
 })();
 
-// Renderiza os cards da seção "Espaço" a partir de CONFIG.ambientes.
+/* ---------- Espaço: cards de ambiente ---------- */
 (function renderStages() {
   document.getElementById('ambienteGrid').innerHTML = CONFIG.ambientes.map(p => `
     <div class="ambiente-card">
@@ -2146,8 +2237,7 @@ setInterval(tickCountdown, 1000);
   `).join('');
 })();
 
-// Renderiza os cards de ingresso, alternando entre botão de compra,
-// "Esgotado" e "Em breve" conforme os flags de cada item em CONFIG.ingressos.
+/* ---------- Ingressos: cards com estado (compra / esgotado / em breve) ---------- */
 (function renderTickets() {
   document.getElementById('ticketsGrid').innerHTML = CONFIG.ingressos.map(t => `
     <div class="ticket-card ${t.destaque ? 'highlight' : ''} ${t.esgotado ? 'esgotado' : ''} ${t.emBreve ? 'em-breve-card' : ''}">
@@ -2166,8 +2256,7 @@ setInterval(tickCountdown, 1000);
   `).join('');
 })();
 
-// Renderiza a lista de perguntas do FAQ e o acordeão (abre uma por vez,
-// fechando as demais ao clicar).
+/* ---------- FAQ: lista + acordeão (abre uma por vez) ---------- */
 (function renderFaq() {
   const el = document.getElementById('faqList');
 
@@ -2198,8 +2287,7 @@ setInterval(tickCountdown, 1000);
   });
 })();
 
-// Renderiza os ícones de redes sociais do rodapé a partir de uma lista fixa
-// (não vem de CONFIG porque os SVGs de cada ícone ficam definidos aqui).
+/* ---------- Footer: ícones de redes sociais ---------- */
 (function renderSocial() {
   const redes = [
     {
@@ -2226,7 +2314,7 @@ setInterval(tickCountdown, 1000);
   `).join('');
 })();
 
-// Abre/fecha o menu mobile e fecha automaticamente ao clicar em um link.
+/* ---------- Menu mobile: abrir/fechar + fechar ao clicar em link ---------- */
 document.getElementById('menuToggle').addEventListener('click', () => {
   document.getElementById('navLinks').classList.toggle('open');
 });
@@ -2237,14 +2325,13 @@ document.querySelectorAll('#navLinks a').forEach(a => {
   });
 });
 
-// Botão "voltar ao topo" com rolagem suave.
+/* ---------- Botão "voltar ao topo" ---------- */
 document.getElementById('backToTop').addEventListener('click', e => {
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Observer que revela (fade + slide up) cada seção/card assim que
-// ela entra na viewport, parando de observar depois de já ter aparecido.
+/* ---------- Scroll reveal: fade + slide up ao entrar na viewport ---------- */
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
