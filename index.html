@@ -97,38 +97,7 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* ============================================================
-    AJUSTE EXCLUSIVO PARA O SAFARI (Aplicado via classe JS)
-   ============================================================ */
-html.is-safari header .nav {
-  transform: scale(1.15);
-  transform-origin: top center;
-}
-html.is-safari .abertura {
-  min-height: -webkit-fill-available;
-}
-html.is-safari .hero-logo-evento {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  display: block;
-  max-width: 460px;
-  width: 100%;
-  height: auto;
-  margin-top: 40px;
-  margin-bottom: 60px;
-}
-html.is-safari .abertura h1 {
-  font-size: clamp(62px, 20vw, 138px);
-  line-height: .92;
-  white-space: nowrap;
-  margin-left: 0px;
-  margin-top: -10px !important;
-  text-align: center;
-}
-html.is-safari .abertura-acoes .btn {
-  flex: 0 0 auto;
-  min-height: 56px;
-}
+
 
 /* ============================================================
     4. LAYOUT BASE / TIPOGRAFIA / BOTÕES (compartilhados)
@@ -314,16 +283,16 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
+  padding: 14px 24px; /* Aumentei o padding vertical de 16px para 22px para dar mais corpo ao nav */
   max-width: var(--container);
   margin: 0 auto;
   position: relative;
 }
 .logo-img {
-  height: 38px;
+  height: 44px; /* Aumentado de 38px para 44px para ficar mais destacada */
   width: auto;
   display: block;
-  transform: scale(1.25);
+  transform: scale(1.15);
   transform-origin: left center;
 }
 /* CONTADOR NAVEGAÇÃO MOBILE */
@@ -333,7 +302,7 @@ header {
 .nav-links {
   display: flex;
   gap: 32px;
-  font-size: 14px;
+  font-size: 15px; /* Aumentado levemente de 14px para 15px */
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .04em;
@@ -348,16 +317,16 @@ header {
   gap: 16px;
 }
 .nav .btn {
-  min-height: 40px;
-  padding: 0 22px;
-  font-size: 13px;
+  min-height: 40px; /* Aumentado de 40px para 44px */
+  padding: 0 24px;
+  font-size: 13px; /* Aumentado de 13px para 14px */
 }
 .menu-toggle {
   display: none;
   background: none;
   border: none;
   color: var(--text);
-  font-size: 28px;
+  font-size: 28px; /* Aumentado de 28px para 32px para facilitar o toque no mobile */
   cursor: pointer;
   padding: 0;
   -webkit-appearance: none;
@@ -480,7 +449,7 @@ header {
   font-size: clamp(62px, 20vw, 138px);
   line-height: .92;
   white-space: nowrap;
-  margin-left: 20px;
+  margin-left: 0px;
   margin-top: -10px !important;
   text-align: center;
 }
@@ -598,7 +567,7 @@ header {
     gap: 12px;
   }
 }
-@media (max-width: 601px) {
+@media (max-width: 600px) {
   .abertura {
     min-height: auto !important;
     padding-top: 86px;
@@ -658,6 +627,27 @@ header {
     margin-bottom: 40px;
   }
 }
+
+@media (max-width: 601px) {
+  html.is-safari .hero-logo-evento {
+    max-width: 420px !important;
+  }
+  html.is-safari .abertura h1 {
+    font-size: clamp(68px, 20vw, 95px) !important;
+  }
+  html.is-safari .abertura-subtitulo {
+    font-size: 16px !important;
+  }
+  html.is-safari .abertura-acoes .btn {
+    min-height: 54px !important;
+    font-size: 16px !important;
+    padding: 0 28px !important;
+  }
+  html.is-safari .abertura-datas {
+    font-size: 17px !important;
+  }
+}
+
 /* ============================================================
     8. MARQUEE (faixa rolante)
    ============================================================ */
