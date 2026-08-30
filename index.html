@@ -58,7 +58,7 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  overflow-x: clip;
+  overflow-x: hidden; /* CORREÇÃO AQUI */
 }
 body {
   width: 100%;
@@ -70,7 +70,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: clip;
+  overflow-x: hidden; /* CORREÇÃO AQUI */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -96,14 +96,9 @@ select {
 button {
   -webkit-tap-highlight-color: transparent;
 }
-@supports (-webkit-touch-callout: none) {
-  html {
-    min-height: -webkit-fill-available;
-  }
-  body {
-    min-height: -webkit-fill-available;
-  }
-}
+
+/* O HACK DO -WEBKIT-FILL-AVAILABLE FOI REMOVIDO DAQUI */
+
 /* ============================================================
     4. LAYOUT BASE / TIPOGRAFIA / BOTÕES (compartilhados)
    ============================================================ */
@@ -989,6 +984,7 @@ header {
   .experiencia-card {
     flex: 0 0 84%;
     min-width: 84%;
+    max-width: 84%; /* CORREÇÃO AQUI */
     scroll-snap-align: start;
     padding: 18px;
     margin: 0;
@@ -1086,6 +1082,7 @@ header {
   .ambiente-card {
     flex: 0 0 88%;
     min-width: 88%;
+    max-width: 88%; /* CORREÇÃO AQUI */
     scroll-snap-align: start;
     background: var(--surface) !important;
     border: 1px solid var(--line) !important;
