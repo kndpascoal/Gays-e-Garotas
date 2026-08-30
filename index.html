@@ -3,22 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Gays &amp; Garotas</title>
-
+<title>Gays & Garotas</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
-
 <link rel="preload" href="BootzyTM.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="img/globoprincipal.png" as="image">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
 <style>
 /* ============================================================
-   1. FONTE CUSTOMIZADA
+    1. FONTE CUSTOMIZADA
    ============================================================ */
 @font-face {
   font-family: 'BootzyTM';
@@ -27,9 +22,8 @@
   font-style: normal;
   font-display: block;
 }
-
 /* ============================================================
-   2. VARIÁVEIS GLOBAIS
+    2. VARIÁVEIS GLOBAIS
    ============================================================ */
 :root {
   --bg: #0a0a0f;
@@ -46,16 +40,10 @@
   --container: 1180px;
   --liquid-border: rgba(255,255,255,.18);
   --liquid-shadow: 0 20px 50px rgba(0,0,0,.30), 0 5px 15px rgba(0,0,0,.18);
-
-  /* Altura "operacional" do header fixo (logo + padding vertical).
-     Usada para ancorar elementos da hero (ex: o globo) ao invés de
-     depender de unidades de viewport (svh), que oscilam no mobile
-     quando a barra de endereço do navegador aparece/some. */
   --header-h: 70px;
 }
-
 /* ============================================================
-   3. RESET
+    3. RESET
    ============================================================ */
 *,
 *::before,
@@ -64,7 +52,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 html {
   width: 100%;
   min-height: 100%;
@@ -73,7 +60,6 @@ html {
   text-size-adjust: 100%;
   overflow-x: clip;
 }
-
 body {
   width: 100%;
   min-width: 0;
@@ -88,71 +74,58 @@ body {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
-
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
-
 a {
   color: inherit;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
-
 ul {
   list-style: none;
 }
-
 button,
 input,
 textarea,
 select {
   font: inherit;
 }
-
 button {
   -webkit-tap-highlight-color: transparent;
 }
-
 @supports (-webkit-touch-callout: none) {
   html {
     min-height: -webkit-fill-available;
   }
-
   body {
     min-height: -webkit-fill-available;
   }
 }
-
 /* ============================================================
-   4. LAYOUT BASE / TIPOGRAFIA / BOTÕES (compartilhados)
+    4. LAYOUT BASE / TIPOGRAFIA / BOTÕES (compartilhados)
    ============================================================ */
 .container {
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 24px;
 }
-
 .section {
   padding: 96px 0;
   position: relative;
 }
-
 .section-alt {
   background: var(--bg-alt);
 }
-
-section[id] {
+section[id]:not(.abertura) {
   scroll-margin-top: 60px;
 }
-
 .bootzy {
   font-family: 'BootzyTM', sans-serif !important;
   color: inherit;
 }
-
 .eyebrow {
   display: block;
   font-size: 13px;
@@ -162,7 +135,6 @@ section[id] {
   font-weight: 600;
   margin-bottom: 12px;
 }
-
 h1,
 h2,
 h3 {
@@ -171,7 +143,6 @@ h3 {
   text-transform: uppercase;
   line-height: 1.02;
 }
-
 h2 {
   font-family: 'BootzyTM', sans-serif !important;
   font-size: 52px;
@@ -179,7 +150,6 @@ h2 {
   margin-bottom: 20px;
   line-height: 1;
 }
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -203,21 +173,17 @@ h2 {
   appearance: none;
   line-height: 1;
 }
-
 .btn.bootzy {
   color: #fff !important;
 }
-
 .btn.outline {
   background: transparent;
   color: var(--text);
   border-color: var(--line);
 }
-
 .btn.outline.bootzy {
   color: var(--text) !important;
 }
-
 @media (hover: hover) and (pointer: fine) {
   .btn {
     position: relative;
@@ -228,8 +194,11 @@ h2 {
     backdrop-filter: blur(18px) saturate(160%);
     -webkit-backdrop-filter: blur(18px) saturate(160%);
     box-shadow: inset 0 1px 1px rgba(255,255,255,.22), inset 0 -1px 1px rgba(0,0,0,.10), 0 10px 30px rgba(0,0,0,.22);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+    isolation: isolate;
   }
-
   .btn::before {
     content: "";
     position: absolute;
@@ -242,90 +211,45 @@ h2 {
     transition: left .65s cubic-bezier(.22,1,.36,1);
     pointer-events: none;
   }
-
   .btn:hover::before {
     left: 150%;
   }
-
   .btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px) translateZ(0);
     border-color: rgba(255,255,255,.45) !important;
     background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.065)) !important;
     box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 15px 40px rgba(0,0,0,.30);
   }
-
   .btn:not(.outline) {
     background: linear-gradient(135deg, rgba(18,65,235,.78), rgba(18,65,235,.32)) !important;
     border-color: rgba(100,130,255,.60) !important;
     box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 10px 35px rgba(18,65,235,.25);
   }
-
   .btn:not(.outline):hover {
     background: linear-gradient(135deg, rgba(30,78,245,.88), rgba(18,65,235,.42)) !important;
     box-shadow: inset 0 1px 1px rgba(255,255,255,.30), 0 15px 45px rgba(18,65,235,.35);
   }
-
   .btn.outline {
     background: rgba(255,255,255,.045) !important;
     border-color: rgba(255,255,255,.18) !important;
   }
 }
-
 /* ============================================================
-   5. ANIMAÇÕES DE ENTRADA / SCROLL REVEAL
+    5. ANIMAÇÕES DE ENTRADA / SCROLL REVEAL (Repetidas no Scroll)
    ============================================================ */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(28px) translateZ(0);
+  -webkit-transform: translateY(28px) translateZ(0);
   transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1);
+  will-change: opacity, transform;
 }
-
 .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) translateZ(0);
+  -webkit-transform: translateY(0) translateZ(0);
 }
 
-.abertura-animacao {
-  opacity: 0;
-  transform: translateY(24px);
-  animation: animacaoAbertura .8s cubic-bezier(.22,1,.36,1) forwards;
-}
-
-.abertura-titulo {
-  animation-delay: .15s;
-}
-
-.abertura-descricao {
-  animation-delay: .35s;
-}
-
-.abertura-botoes {
-  animation-delay: .55s;
-}
-
-.abertura-info {
-  animation-delay: .75s;
-}
-
-@keyframes animacaoAbertura {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes globoEntrada {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: .75;
-  }
-}
 
 @keyframes marquee-infinito {
   from {
@@ -335,32 +259,21 @@ h2 {
     transform: translate3d(-50%,0,0);
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-
-  .reveal,
-  .abertura-animacao {
-    opacity: 1;
-    transform: none;
-    transition: none;
-    animation: none;
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
-
-  .abertura-globo {
-    animation: none;
-    opacity: .75;
-  }
-
   .marquee-track {
     animation: none;
   }
 }
-
 /* ============================================================
-   6. HEADER / NAVEGAÇÃO
+    6. HEADER / NAVEGAÇÃO
    ============================================================ */
 header {
   position: fixed;
@@ -371,7 +284,6 @@ header {
   background: #0a0a0f;
   border-bottom: 1px solid var(--line);
 }
-
 .nav {
   display: flex;
   align-items: center;
@@ -381,7 +293,6 @@ header {
   margin: 0 auto;
   position: relative;
 }
-
 .logo-img {
   height: 38px;
   width: auto;
@@ -389,21 +300,10 @@ header {
   transform: scale(1.25);
   transform-origin: left center;
 }
-
-.nav-mobile-date {
+/* CONTADOR NAVEGAÇÃO MOBILE */
+.nav-mobile-countdown {
   display: none;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 17px;
-  font-family: 'BootzyTM', sans-serif;
-  color: #c3c3c3;
-  font-weight: 700;
-  text-transform: none;
-  letter-spacing: .05em;
-  white-space: nowrap;
 }
-
 .nav-links {
   display: flex;
   gap: 32px;
@@ -412,24 +312,20 @@ header {
   text-transform: uppercase;
   letter-spacing: .04em;
 }
-
 .nav-links a {
   color: var(--muted);
   transition: color .15s;
 }
-
 .nav-cta {
   display: flex;
   align-items: center;
   gap: 16px;
 }
-
 .nav .btn {
   min-height: 40px;
   padding: 0 22px;
   font-size: 13px;
 }
-
 .menu-toggle {
   display: none;
   background: none;
@@ -441,12 +337,49 @@ header {
   -webkit-appearance: none;
   appearance: none;
 }
-
 @media (max-width: 860px) {
-  .nav-mobile-date {
-    display: block;
+  .nav-mobile-countdown {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 5px;
+    font-family: var(--font-display);
+    color: #fff;
   }
-
+  .nav-mobile-countdown .nav-cd-label {
+    font-family: 'BootzyTM', sans-serif;
+    font-size: 11px;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-right: 2px;
+  }
+  .nav-mobile-countdown .nav-cd-dias {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--accent-2);
+    border-radius: 40%;
+    font-size: 13px;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255,62,165,.4);
+  }
+  .nav-mobile-countdown .nav-cd-time {
+    font-size: 13px;
+    color: #fff;
+    letter-spacing: .02em;
+    line-height: 1;
+  }
+  .nav-mobile-countdown .nav-cd-sep {
+    color: #fff;
+    font-size: 12px;
+    margin: 0 -1px;
+    line-height: 1;
+  }
   .nav-links {
     position: fixed;
     top: 64px;
@@ -462,23 +395,19 @@ header {
     transition: transform .3s ease-in-out;
     z-index: 99;
   }
-
   .nav-links.open {
     transform: translateY(0);
     box-shadow: 0 20px 40px rgba(0,0,0,.8);
   }
-
   .menu-toggle {
     display: block;
   }
-
   .nav .btn {
     display: none;
   }
 }
-
 /* ============================================================
-   7. HERO / ABERTURA
+    7. HERO / ABERTURA
    ============================================================ */
 .abertura {
   position: relative;
@@ -486,15 +415,25 @@ header {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 150px;
+  justify-content: flex-start;
+  padding-top: 110px;
+  padding-bottom: 130px;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 60% 50% at 30% 20%, rgba(255,62,165,.18), transparent),
-    radial-gradient(ellipse 50% 40% at 80% 10%, rgba(198,255,61,.14), transparent),
-    var(--bg);
+  background-color: #020b84;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='40' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
 }
-
+/* DEGRADÊ SUAVE DE TRANSIÇÃO PARA PRETO NO FINAL DA ABERTURA */
+.abertura::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(to bottom, transparent 0%, var(--bg-alt) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
 .abertura-conteudo {
   position: relative;
   z-index: 2;
@@ -503,34 +442,41 @@ header {
   margin: 0 auto;
   padding: 0 24px;
 }
-
+/* CSS ESPECÍFICO PARA CENTRALIZAR E EDITAR O NOVO LOGO DO EVENTO */
+.hero-logo-evento {
+  display: block;
+  max-width: 360px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 0px auto;
+}
 .abertura h1 {
   font-size: clamp(62px, 20vw, 138px);
   line-height: .92;
   white-space: nowrap;
   margin-left: 20px;
-  margin-top: -50px !important;
+  margin-top: -10px !important;
+  text-align: center;
 }
-
 .abertura-subtitulo {
   max-width: 590px;
   margin-top: 0;
   color: var(--muted);
   font-size: 18px;
   line-height: 1.3;
-  margin-left: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
-
 .abertura-acoes {
   display: flex;
-  align-items: left;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   gap: 16px;
   margin-top: 40px;
   flex-wrap: nowrap;
-  margin-left: 20px;
+  margin-left: 0;
 }
-
 .abertura-datas {
   display: block;
   font-size: 15px;
@@ -539,56 +485,30 @@ header {
   letter-spacing: .02em;
   margin-top: 50px;
   margin-bottom: 10px;
-  margin-left: 20px;
+  margin-left: 0;
+  text-align: center;
 }
-
-/*
-  Globo da hero: ancorado ao HEADER (--header-h) + um deslocamento fixo em
-  px, em vez de "top: X svh". Unidades svh recalculam a cada mudança de
-  altura da viewport (ex.: a barra de endereço do navegador mobile
-  aparecendo/escondendo ao rolar), o que fazia o globo "pular" de posição.
-  Ancorando em px relativos ao header, a posição fica estável.
-*/
-.abertura-globo {
-  position: absolute;
-  width: 700px;
-  height: 700px;
-  object-fit: contain;
-  right: max(20px, calc((100vw - 1180px) / 2 - 20px));
-  top: calc(var(--header-h) + 315px);
-  transform: translate3d(0, -50%, 0);
-  transform-origin: center center;
-  z-index: 1;
-  pointer-events: none;
-  opacity: .75;
-  transition: opacity .3s ease, width .3s ease, top .3s ease;
-  will-change: opacity;
-  animation: globoEntrada 1.2s cubic-bezier(.22,1,.36,1) .15s both;
-}
-
 .countdown {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   gap: 8px;
   margin-top: 10px;
   margin-bottom: 100px;
   flex-wrap: wrap;
   position: relative;
   z-index: 10;
-  margin-left: 20px;
+  margin-left: 0;
 }
-
 .relogio {
   display: flex;
   align-items: flex-start;
   gap: 5px;
 }
-
 .bloco-tempo {
   text-align: center;
   min-width: 10px;
 }
-
 .separador,
 .countdown .num {
   font-family: var(--font-display);
@@ -600,12 +520,10 @@ header {
   align-items: center;
   justify-content: center;
 }
-
 .relogio .separador {
   margin-left: -3px;
   margin-right: -3px;
 }
-
 .countdown .lbl {
   font-size: 11px;
   color: #fff;
@@ -613,7 +531,6 @@ header {
   letter-spacing: .08em;
   margin-top: 10px;
 }
-
 #cd-dias {
   display: flex;
   align-items: center;
@@ -625,172 +542,98 @@ header {
   margin: 9.4px auto;
   box-shadow: 0 0 15px rgba(255,62,165,.3);
 }
-
 @media (min-width: 901px) {
   .marquee {
     top: -48px;
     margin-bottom: 110px;
   }
+  .hero-logo-evento {
+    max-width: 360px;
+    margin-top: -34px;
+    margin-bottom: 0px;
+  }
 }
-
 @media (min-width: 601px) and (max-width: 1000px) {
   .abertura {
-    padding-top: 120px;
+    padding-top: 100px;
     justify-content: flex-start;
+    padding-bottom: 130px;
   }
-
+  .hero-logo-evento {
+    max-width: 380px;
+    margin-top: -10px;
+    margin-bottom: 0px;
+  }
   .abertura h1 {
     font-size: clamp(90px, 9vw, 90px);
-    padding-top: 50px;
+    padding-top: 20px;
   }
-
   .countdown {
     gap: 12px;
   }
 }
-
-@media (max-width: 1100px) {
-  .abertura-globo {
-    width: 600px;
-    height: 600px;
-    right: 0px;
-    top: calc(var(--header-h) + 280px);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 18%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.9) 52%, black 65%);
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.15) 18%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.9) 52%, black 65%);
-  }
-}
-
-@media (max-width: 900px) {
-  .abertura-globo {
-    width: 650px;
-    height: 650px;
-    right: -200px;
-    top: calc(var(--header-h) + 300px);
-  }
-
-  .abertura-subtitulo {
-    max-width: 520px;
-    margin-top: 24px;
-    font-size: 17px;
-    line-height: 1.4;
-  }
-}
-
-@media (max-width: 700px) {
-  .abertura-globo {
-    width: 550px;
-    height: 550px;
-    right: -200px;
-    top: calc(var(--header-h) + 252px);
-    opacity: .99;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.08) 10%, rgba(0,0,0,.35) 28%, rgba(0,0,0,.75) 45%, black 80%);
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.08) 10%, rgba(0,0,0,.35) 28%, rgba(0,0,0,.75) 45%, black 100%);
-  }
-}
-
 @media (max-width: 601px) {
   .abertura {
-    /* A mágica está nestas duas linhas: se a tela for menor que 680px, ele trava a altura e impede o corte */
-    min-height: 680px !important;
-    min-height: max(900px) !important;
-    padding-top: 200px;
-    padding-bottom: 0;
+    min-height: auto !important;
+    padding-top: 86px;
+    padding-bottom: 130px;
     justify-content: flex-start;
   }
-
   .abertura-conteudo {
     padding-left: 24px;
     padding-right: 24px;
   }
-
+  .hero-logo-evento {
+    max-width: 300px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
   .abertura h1 {
-    font-size: clamp(80px, 19vw, 100px);
-    margin-top: -25px !important;
+    font-size: clamp(60px, 18vw, 85px);
+    margin-top: -10px !important;
     white-space: nowrap;
   }
-
   .abertura-subtitulo {
     max-width: 340px;
     margin-top: 0px;
     font-size: 14px;
-    padding-bottom: 60px;
+    padding-bottom: 10px;
   }
-
-  /* Botões da hero centralizados e sem quebra de linha no mobile */
   .abertura-acoes {
     width: 100%;
-    margin-top: 50px;
-    justify-content: left;
-    align-items: left !important;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center !important;
     gap: 12px;
     flex-wrap: nowrap;
   }
-
   .abertura-acoes .btn {
     flex: 0 0 auto;
     min-height: 50px;
   }
-
   .abertura-datas {
     text-align: center;
     width: 100%;
-    margin-left: -25px !important;
-    position: absolute;
-    top: calc(var(--header-h) + 350px) !important;
+    margin-left: 0 !important;
+    margin-top: 24px;
+    margin-bottom: 20px;
   }
-
-  .abertura-globo {
-    width: 450px !important;
-    height: 450px !important;
-    right: -150px;
-    top: calc(var(--header-h) + 230px) !important;
-  }
-
   .countdown {
-    justify-content: center;
-    width: 100%;
-    gap: 10px;
-    margin-left: -28px !important;
-    margin-bottom: 200px;
-    position: absolute;
-    top: calc(var(--header-h) + 420px) !important;
+    display: none !important;
   }
-
-  .bloco-tempo {
-    min-width: 30px;
-  }
-
-  #cd-dias {
-    margin-left: 0;
-  }
-
   .marquee {
     top: -48px;
   }
 }
-
-@media (max-width: 500px) {
-  .abertura-globo {
-    width: 450px;
-    height: 450px;
-    right: -180px;
-    top: calc(var(--header-h) + 226px) !important;
-    opacity: 1;
-  }
-
-  .abertura-acoes {
-    gap: 10px;
-  }
-
-  .abertura-acoes .btn {
-    padding-left: 14px;
-    padding-right: 14px;
-    font-size: 14px;
+@media (max-width: 501px) {
+  .hero-logo-evento {
+    max-width: 360px;
+    margin-top: 20px;
+    margin-bottom: 40px;
   }
 }
-
 /* ============================================================
-   8. MARQUEE (faixa rolante) — atualmente oculta via [hidden] no HTML
+    8. MARQUEE (faixa rolante)
    ============================================================ */
 .marquee {
   position: relative;
@@ -803,20 +646,17 @@ header {
   border-top: 1px solid #0a0a0f;
   border-bottom: 1px solid #0a0a0f;
 }
-
 .marquee-track {
   display: flex;
   width: max-content;
   animation: marquee-infinito 120s linear infinite;
   will-change: transform;
 }
-
 .marquee-group {
   display: flex;
   flex-shrink: 0;
   align-items: center;
 }
-
 .marquee-track span {
   font-family: 'BootzyTM', sans-serif !important;
   font-size: 18px;
@@ -828,31 +668,25 @@ header {
   flex-shrink: 0;
   color: #fff !important;
 }
-
 .marquee-track span img {
   width: 20px;
   height: 20px;
   object-fit: contain;
   flex-shrink: 0;
 }
-
 /* ============================================================
-   9. LINE-UP
+    9. LINE-UP
    ============================================================ */
-
-
-
 #lineup {
-  margin-top: 50px !important;
+  margin-top: 0 !important;
+  border-top: none !important;
 }
-
 .day-tabs {
   display: none;
   gap: 10px;
   margin-bottom: 60px;
   flex-wrap: wrap;
 }
-
 .day-tab {
   padding: 10px 22px;
   border-radius: 999px;
@@ -866,34 +700,27 @@ header {
   cursor: pointer;
   transition: .15s;
 }
-
 .day-tab.active {
   background: var(--text);
   color: var(--bg);
   border-color: var(--text);
 }
-
 .lineup-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-
 .artist-card {
   background: var(--surface);
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--line);
-  /* A mágica acontece aqui: mantemos a opacidade para a animação inicial não quebrar, 
-     e ajustamos o tempo do hover para ficar suave */
   transition: opacity .75s ease, transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease;
 }
-
 .artist-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) translateZ(0);
   border-color: var(--accent-2);
 }
-
 .artist-photo {
   aspect-ratio: 1 / 1;
   background: linear-gradient(135deg, var(--line), var(--bg-alt));
@@ -901,30 +728,25 @@ header {
   align-items: center;
   justify-content: center;
 }
-
 .artist-photo a {
   display: block;
   width: 100%;
   height: 100%;
 }
-
 .artist-photo a img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 .artist-info {
   padding: 16px;
 }
-
 .artist-name {
   font-family: 'BootzyTM', sans-serif;
   font-size: 18px;
   text-transform: uppercase;
   letter-spacing: .08em;
 }
-
 .artist-meta {
   display: flex;
   align-items: flex-start;
@@ -934,7 +756,6 @@ header {
   color: var(--muted);
   margin-top: 4px;
 }
-
 .artist-meta .painel {
   font-size: 13px;
   color: var(--muted);
@@ -942,25 +763,21 @@ header {
   overflow-wrap: anywhere;
   word-break: break-word;
 }
-
 .artist-meta .instagram-link {
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
-
 .artist-meta .separator {
   font-size: 6px;
   line-height: 1;
   flex-shrink: 0;
 }
-
 @media (max-width: 600px) {
   .lineup-grid {
     grid-template-columns: repeat(2,1fr);
     gap: 12px;
   }
-
   .artist-card {
     background: var(--surface) !important;
     border: 1px solid var(--line) !important;
@@ -968,12 +785,10 @@ header {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
-
   .artist-card:hover {
     transform: none;
     border-color: var(--line) !important;
   }
-
   .artist-name {
     font-family: 'BootzyTM', sans-serif !important;
     font-size: 14px !important;
@@ -983,37 +798,31 @@ header {
     margin: 0 !important;
     padding: 0 !important;
   }
-
   .artist-info {
     padding: 14px !important;
   }
-
   .artist-meta {
     margin-top: 3px !important;
     line-height: 1.15 !important;
     gap: 0 !important;
   }
-
   .artist-meta .painel {
     letter-spacing: 0 !important;
     word-spacing: 0 !important;
     line-height: 1.15 !important;
   }
-
   .artist-meta .instagram-link,
   .artist-meta .separator {
     display: none !important;
   }
 }
-
 @media (max-width: 500px) {
   .artist-name {
     letter-spacing: .1em !important;
   }
 }
-
 /* ============================================================
-   10. SEÇÃO EXPERIÊNCIA (título "anos2000" + cards de glass)
+    10. SEÇÃO EXPERIÊNCIA
    ============================================================ */
 .titulo-anos2000 {
   font-family: 'BootzyTM', sans-serif !important;
@@ -1023,32 +832,26 @@ header {
   line-height: .92 !important;
   text-transform: none !important;
 }
-
 .titulo-anos2000 .branco {
   color: #fff !important;
 }
-
 .titulo-anos2000 .rosa {
   color: #ff007f !important;
 }
-
 .titulo-anos2000 .rosa:nth-of-type(1) {
   text-transform: lowercase !important;
 }
-
 .experiencia-conteudo {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 40px;
   align-items: center;
 }
-
 .experiencia-texto {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
 .experiencia-texto h3 {
   font-family: 'BootzyTM', sans-serif !important;
   font-size: 34px;
@@ -1058,7 +861,6 @@ header {
   margin-bottom: 20px;
   margin-top: 30px;
 }
-
 .experiencia-texto p {
   color: var(--muted);
   font-size: 16px;
@@ -1066,38 +868,25 @@ header {
   margin-bottom: 26px;
   text-align: justify;
 }
-
 .experiencia-card span {
   display: block;
-  margin-top: 8px; /* Ajuste este valor em pixels para a distância que desejar */
+  margin-top: 8px;
 }
-
 .experiencia-texto .btn {
   padding: 0 24px;
   font-size: 13px;
   width: fit-content;
   align-self: flex-start;
 }
-
 .experiencia-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 12px;
   margin-bottom: 30px;
 }
-
 .experiencia-card img {
   margin-bottom: 12px;
 }
-
-/*
-  Card com efeito "glass". O brilho diagonal (::after) antes ficava
-  esticado/desalinhado por passar por fora do card (top:-80%, height:160%)
-  e girado 18deg sem estar contido — em telas mais largas o reflexo
-  aparecia cortado ou "flutuando" fora da borda antes/depois do hover.
-  Agora o brilho fica contido dentro do card (overflow:hidden no pai +
-  faixa mais estreita) e a trajetória de entrada/saída é simétrica.
-*/
 .experiencia-card {
   position: relative;
   border: 1px solid var(--liquid-border);
@@ -1113,7 +902,6 @@ header {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-
 .experiencia-card::before {
   content: "";
   position: absolute;
@@ -1126,7 +914,6 @@ header {
   z-index: 20;
   pointer-events: none;
 }
-
 .experiencia-card::after {
   content: "";
   position: absolute;
@@ -1141,48 +928,39 @@ header {
   transition: left .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
   z-index: 15;
 }
-
 .experiencia-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) translateZ(0);
   border-color: rgba(255,255,255,.30);
   background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.045));
   box-shadow: inset 0 1px 1px rgba(255,255,255,.20), 0 25px 60px rgba(0,0,0,.38), 0 0 35px rgba(18,65,235,.07);
 }
-
 .experiencia-card:hover::after {
   left: 145%;
   opacity: .85;
 }
-
 @media (max-width: 800px) {
   .experiencia-conteudo {
     grid-template-columns: 1fr;
     gap: 28px;
   }
-
   .experiencia-foto {
     order: 0;
   }
-
   .experiencia-texto {
     order: 1;
   }
-
   .experiencia-texto h3 {
     font-size: 28px;
   }
-
   .experiencia-texto p {
     font-size: 15px;
   }
 }
-
 @media (max-width: 600px) {
   .experiencia-scroll {
     position: relative;
     margin-right: -24px;
   }
-
   .experiencia-scroll::after {
     content: "";
     position: absolute;
@@ -1194,7 +972,6 @@ header {
     background: linear-gradient(to right, rgba(10,10,15,0), rgba(10,10,15,1));
     z-index: 10;
   }
-
   .experiencia-cards {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -1206,11 +983,9 @@ header {
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
   }
-
   .experiencia-cards::-webkit-scrollbar {
     display: none;
   }
-
   .experiencia-card {
     flex: 0 0 84%;
     min-width: 84%;
@@ -1218,7 +993,6 @@ header {
     padding: 18px;
     margin: 0;
   }
-
   .experiencia-card,
   .experiencia-card:hover {
     transform: none;
@@ -1226,12 +1000,10 @@ header {
     border-color: var(--liquid-border);
     box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), 0 12px 30px rgba(0,0,0,.22);
   }
-
   .experiencia-card:hover::after {
     left: -70%;
     opacity: .55;
   }
-
   .experiencia-card,
   .ticket-card,
   .faq-item,
@@ -1240,33 +1012,28 @@ header {
     backdrop-filter: blur(18px) saturate(140%);
   }
 }
-
 @media (max-width: 500px) {
   .experiencia-cards {
     grid-template-columns: 1fr;
   }
-
   .experiencia-texto h3 {
     font-size: 25px;
   }
 }
-
 /* ============================================================
-   11. SEÇÃO ESPAÇO (ambientes)
+    11. SEÇÃO ESPAÇO
    ============================================================ */
 .ambiente-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
 }
-
 .ambiente-card {
   background: var(--surface);
   border-radius: var(--radius);
   border: 1px solid var(--line);
   overflow: hidden;
 }
-
 .ambiente-foto {
   width: 100%;
   height: 260px;
@@ -1274,30 +1041,23 @@ header {
   object-position: center;
   display: block;
 }
-
 .ambiente-info {
   padding: 22px;
 }
-
 .ambiente-info h3 {
   font-size: 15px;
   margin-bottom: 8px;
   letter-spacing: .07em !important;
 }
-
 .ambiente-info p {
   color: var(--muted);
   font-size: 14px;
 }
-
-
 @media (max-width: 600px) {
-
   .ambiente-scroll {
     position: relative;
     margin-right: -24px;
   }
-
   .ambiente-scroll::after {
     content: "";
     position: absolute;
@@ -1306,12 +1066,9 @@ header {
     width: 120px;
     height: 100%;
     pointer-events: none;
-    /* Usa a cor de fundo da section-alt (#0e0e17 -> rgb 14, 14, 23) */
     background: linear-gradient(to right, rgba(14,14,23,0), rgba(14,14,23,1));
     z-index: 10;
   }
-  /* --------------------------------------- */
-
   .ambiente-grid {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -1323,12 +1080,9 @@ header {
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
   }
-
   .ambiente-grid::-webkit-scrollbar {
     display: none;
   }
-
-
   .ambiente-card {
     flex: 0 0 88%;
     min-width: 88%;
@@ -1340,16 +1094,14 @@ header {
     -webkit-backdrop-filter: none !important;
     transform: none !important;
   }
-
   .ambiente-card::before,
   .ambiente-card::after {
     display: none !important;
     content: none !important;
   }
 }
-
 /* ============================================================
-   12. SEÇÃO EMPREENDA LGBT+
+    12. SEÇÃO EMPREENDA LGBT+
    ============================================================ */
 .empreenda-content {
   display: grid;
@@ -1357,20 +1109,17 @@ header {
   gap: 32px;
   align-items: center;
 }
-
 .empreenda-photo {
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--line);
 }
-
 .empreenda-photo img {
   width: 100%;
   display: block;
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
-
 .empreenda-text h3 {
   font-family: 'BootzyTM' !important;
   font-size: 26px;
@@ -1380,18 +1129,15 @@ header {
   margin-bottom: 16px;
   text-align: center;
 }
-
 .empreenda-text p {
   color: var(--muted);
   font-size: 16px;
   line-height: 1.4;
 }
-
 @media (max-width: 600px) {
   .empreenda-content {
     grid-template-columns: 1fr;
   }
-
   .empreenda-text p {
     max-width: 100%;
     font-size: 18px !important;
@@ -1399,16 +1145,14 @@ header {
     text-align: justify !important;
   }
 }
-
 /* ============================================================
-   13. SEÇÃO INGRESSOS
+    13. SEÇÃO INGRESSOS
    ============================================================ */
 .tickets-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
 }
-
 .ticket-card {
   position: relative;
   background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
@@ -1427,7 +1171,6 @@ header {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-
 .ticket-card::before {
   content: "";
   position: absolute;
@@ -1440,7 +1183,6 @@ header {
   pointer-events: none;
   z-index: 20;
 }
-
 .ticket-card::after {
   content: "";
   position: absolute;
@@ -1455,25 +1197,21 @@ header {
   transition: transform .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
   z-index: 15;
 }
-
 .ticket-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) translateZ(0);
   border-color: rgba(255,255,255,.30);
   background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.045));
   box-shadow: inset 0 1px 1px rgba(255,255,255,.20), 0 25px 60px rgba(0,0,0,.38), 0 0 35px rgba(18,65,235,.07);
 }
-
 .ticket-card:hover::after {
   transform: translateX(220%) rotate(18deg);
   opacity: .85;
 }
-
 .ticket-card.highlight {
   background: linear-gradient(135deg, rgba(18,65,235,.22), rgba(18,65,235,.075), rgba(255,255,255,.035));
   border: 1px solid rgba(80,115,255,.48);
   box-shadow: inset 0 1px 1px rgba(255,255,255,.17), 0 20px 55px rgba(18,65,235,.18), 0 0 35px rgba(18,65,235,.08);
 }
-
 .ticket-tag {
   font-size: 12px;
   color: var(--accent);
@@ -1481,18 +1219,15 @@ header {
   text-transform: uppercase;
   letter-spacing: .08em;
 }
-
 .ticket-price {
   font-family: var(--font-display);
   font-size: 40px;
 }
-
 .ticket-price small {
   font-size: 15px;
   color: var(--muted);
   font-family: var(--font-body);
 }
-
 .ticket-card ul {
   display: flex;
   flex-direction: column;
@@ -1500,25 +1235,21 @@ header {
   font-size: 14px;
   color: var(--muted);
 }
-
 .ticket-card li {
   display: flex;
   gap: 8px;
   align-items: flex-start;
 }
-
 .ticket-card.esgotado h3,
 .ticket-card.esgotado .ticket-price,
 .ticket-card.esgotado .ticket-price small {
   color: #555;
 }
-
 .ticket-card.esgotado .ticket-price {
   position: relative;
   display: inline-block;
   width: fit-content;
 }
-
 .ticket-card.esgotado .ticket-price::after {
   content: "";
   position: absolute;
@@ -1529,7 +1260,6 @@ header {
   background: #ff3030;
   transform: rotate(-5deg);
 }
-
 .ticket-card .btn.esgotado,
 .ticket-card .btn.em-breve {
   cursor: default;
@@ -1541,17 +1271,14 @@ header {
   box-shadow: none !important;
   transform: none !important;
 }
-
 .ticket-card.em-breve-card {
   opacity: .55;
 }
-
 .ticket-card.em-breve-card .ticket-price,
 .ticket-card.em-breve-card h3,
 .ticket-card.em-breve-card .ticket-price small {
   color: #555;
 }
-
 @media (max-width: 600px) {
   .ticket-card,
   .ticket-card:hover {
@@ -1560,12 +1287,10 @@ header {
     border-color: var(--liquid-border);
     box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), 0 12px 30px rgba(0,0,0,.22);
   }
-
   .ticket-card:hover::after {
     transform: rotate(18deg);
     opacity: .55;
   }
-
   .ticket-card.highlight,
   .ticket-card.highlight:hover {
     background: linear-gradient(135deg, rgba(18,65,235,.22), rgba(18,65,235,.075), rgba(255,255,255,.035));
@@ -1573,9 +1298,8 @@ header {
     box-shadow: inset 0 1px 1px rgba(255,255,255,.17), 0 15px 40px rgba(18,65,235,.16);
   }
 }
-
 /* ============================================================
-   14. SEÇÃO FAQ
+    14. SEÇÃO FAQ
    ============================================================ */
 .faq-item {
   position: relative;
@@ -1591,12 +1315,10 @@ header {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-
 .faq-item:hover {
   border-color: rgba(255,255,255,.22);
   background: rgba(255,255,255,.075);
 }
-
 .faq-q {
   width: 100%;
   text-align: left;
@@ -1614,7 +1336,6 @@ header {
   -webkit-appearance: none;
   appearance: none;
 }
-
 .faq-q .plus {
   font-size: 22px;
   color: var(--accent);
@@ -1622,11 +1343,9 @@ header {
   flex-shrink: 0;
   margin-left: 15px;
 }
-
 .faq-item.open .plus {
   transform: rotate(45deg);
 }
-
 .faq-a {
   max-height: 0;
   overflow: hidden;
@@ -1634,27 +1353,23 @@ header {
   color: var(--muted);
   font-size: 15px;
 }
-
 .faq-a p {
   padding: 0 22px 22px;
 }
-
 @media (max-width: 600px) {
   .faq-item:hover {
     border-color: rgba(255,255,255,.11);
     background: linear-gradient(135deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
   }
 }
-
 /* ============================================================
-   15. FOOTER
+    15. FOOTER
    ============================================================ */
 footer {
   background: var(--bg-alt);
   border-top: 1px solid var(--line);
   padding: 64px 0 32px;
 }
-
 .footer-top {
   display: flex;
   justify-content: space-between;
@@ -1662,31 +1377,26 @@ footer {
   flex-wrap: wrap;
   margin-bottom: 48px;
 }
-
 .footer-brand h3 {
   font-size: 26px;
   margin-bottom: 12px;
 }
-
 .footer-brand p {
   color: var(--muted);
   max-width: 320px;
   font-size: 14px;
 }
-
 .footer-logo {
   width: 180px;
   height: auto;
   display: block;
   margin-bottom: 30px;
 }
-
 .social-row {
   display: flex;
   gap: 14px;
   margin-top: 20px;
 }
-
 .social-row a {
   width: 40px;
   height: 40px;
@@ -1697,18 +1407,15 @@ footer {
   justify-content: center;
   transition: .15s;
 }
-
 .social-row a:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
-
 .footer-links {
   display: flex;
   gap: 64px;
   flex-wrap: wrap;
 }
-
 .footer-col h4 {
   font-size: 13px;
   text-transform: uppercase;
@@ -1716,18 +1423,15 @@ footer {
   color: var(--muted);
   margin-bottom: 16px;
 }
-
 .footer-col a {
   display: block;
   padding: 6px 0;
   color: var(--text);
   font-size: 14px;
 }
-
 .footer-col a:hover {
   color: var(--accent);
 }
-
 .footer-bottom {
   border-top: 1px solid var(--line);
   padding-top: 24px;
@@ -1738,14 +1442,12 @@ footer {
   color: var(--muted);
   font-size: 13px;
 }
-
 @media (max-width: 600px) {
   .footer-top {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
-
   .footer-brand,
   .footer-links,
   .footer-col,
@@ -1753,21 +1455,17 @@ footer {
   .footer-col a {
     text-align: center;
   }
-
   .footer-logo {
     margin: 0 auto 40px;
   }
-
   .social-row {
     justify-content: center;
   }
-
   .footer-links {
     width: 100%;
     justify-content: center;
     gap: 40px;
   }
-
   .footer-bottom {
     width: 100%;
     flex-direction: column;
@@ -1776,16 +1474,14 @@ footer {
     text-align: center;
     gap: 8px;
   }
-
   .footer-bottom span {
     display: block;
     width: 100%;
     margin-bottom: 10px !important;
   }
 }
-
 /* ============================================================
-   16. BOTÃO "VOLTAR AO TOPO"
+    16. BOTÃO "VOLTAR AO TOPO"
    ============================================================ */
 .back-to-top {
   position: fixed;
@@ -1809,9 +1505,8 @@ footer {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-
 /* ============================================================
-   17. GLOWS DECORATIVOS DE FUNDO (seções específicas)
+    17. GLOWS DECORATIVOS DE FUNDO
    ============================================================ */
 #experiencia,
 #espaco,
@@ -1820,7 +1515,6 @@ footer {
 #info {
   overflow: hidden;
 }
-
 #experiencia::before,
 #ingressos::before,
 #info::before {
@@ -1834,7 +1528,6 @@ footer {
   filter: blur(35px);
   pointer-events: none;
 }
-
 #experiencia::after,
 #ingressos::after,
 #info::after {
@@ -1848,7 +1541,6 @@ footer {
   filter: blur(40px);
   pointer-events: none;
 }
-
 #experiencia .container,
 #espaco .container,
 #ingressos .container,
@@ -1857,9 +1549,8 @@ footer {
   position: relative;
   z-index: 2;
 }
-
 /* ============================================================
-   18. FALLBACK SEM SUPORTE A backdrop-filter
+    18. FALLBACK SEM SUPORTE A backdrop-filter
    ============================================================ */
 @supports not ((backdrop-filter: blur(1px))) {
   .experiencia-card,
@@ -1870,15 +1561,13 @@ footer {
     background: rgba(28,28,40,.92);
   }
 }
-
 /* ============================================================
-   19. AJUSTES GERAIS DE MOBILE (padding de seção, tap highlight)
+    19. AJUSTES GERAIS DE MOBILE
    ============================================================ */
 @media (max-width: 600px) {
   .section {
     padding: 64px 0;
   }
-
   .btn,
   .btn:hover,
   .btn:focus,
@@ -1886,12 +1575,10 @@ footer {
     transform: none !important;
     transition: background .2s ease, border-color .2s ease, box-shadow .2s ease !important;
   }
-
   .btn::before {
     display: none !important;
     content: none !important;
   }
-
   .btn:not(.outline),
   .btn:not(.outline):hover,
   .btn:not(.outline):focus,
@@ -1900,7 +1587,6 @@ footer {
     border-color: rgba(100,130,255,.48) !important;
     box-shadow: inset 0 1px 1px rgba(255,255,255,.18), 0 8px 28px rgba(18,65,235,.20) !important;
   }
-
   .btn.outline,
   .btn.outline:hover,
   .btn.outline:focus,
@@ -1909,24 +1595,27 @@ footer {
     border-color: rgba(255,255,255,.18) !important;
     box-shadow: inset 0 1px 1px rgba(255,255,255,.10), 0 8px 25px rgba(0,0,0,.18) !important;
   }
-
   .btn {
     -webkit-tap-highlight-color: transparent;
   }
 }
 </style>
 </head>
-
 <body>
-
 <header>
   <nav class="nav">
     <a href="#" class="logo-link">
       <img src="img/logo.png" alt="Gays & Garotas" class="logo-img">
     </a>
-
-    <span class="nav-mobile-date">12/09/2026 - São Paulo, SP</span>
-
+    <div class="nav-mobile-countdown" id="navMobileCountdown">
+      <span class="nav-cd-label">Faltam:</span>
+      <div class="nav-cd-dias" id="nav-cd-dias">00</div>
+      <span class="nav-cd-time" id="nav-cd-horas">00</span>
+      <span class="nav-cd-sep">:</span>
+      <span class="nav-cd-time" id="nav-cd-min">00</span>
+      <span class="nav-cd-sep">:</span>
+      <span class="nav-cd-time" id="nav-cd-seg">00</span>
+    </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#lineup" class="bootzy">Line-up</a></li>
       <li><a href="#experiencia" class="bootzy">Experiência</a></li>
@@ -1935,53 +1624,39 @@ footer {
       <li><a href="#empreenda" class="bootzy">Empreenda LGBT+</a></li>
       <li><a href="#info" class="bootzy">FAQ</a></li>
     </ul>
-
     <div class="nav-cta">
       <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy">Comprar ingresso</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" type="button">☰</button>
     </div>
   </nav>
 </header>
-
-<section class="abertura">
-  <img src="img/globoprincipal.png" alt="" class="abertura-globo">
-
+<section class="abertura" id="inicio">
   <div class="abertura-conteudo">
-    <h1 class="bootzy abertura-animacao abertura-titulo"><span style="color:#ffffff;">G<span style="color:#1241eb;font-size:70%;">&</span>G</span>
-    <br><span style="color:#ffffff;">ANO</span><span style="color:#ff007f;text-transform:lowercase;">s</span><span style="color:#ff007f;">2</span><span style="color:#ffffff;">000</span></h1>
-
-    <p class="abertura-subtitulo abertura-animacao abertura-descricao" style="color:#ffffff;">Conectando creators, empreendedores, profissionais e marcas em um ambiente seguro. Dessa vez, no The Core e com muita nostalgia.</p>
-
-    <div class="abertura-acoes abertura-animacao abertura-botoes">
+    <img src="img/logo-evento.png" alt="Gays & Garotas" class="hero-logo-evento reveal">
+    <h1 class="bootzy reveal"><span style="color:#ffffff;">ANO</span><span style="color:#ff007f;text-transform:lowercase;">s</span><span style="color:#ff007f;">2</span><span style="color:#ffffff;">000</span></h1>
+    <p class="abertura-subtitulo reveal" style="color:#ffffff;">Conectando creators, empreendedores, profissionais e marcas em um ambiente seguro. Dessa vez, no The Core e com muita nostalgia.</p>
+    <div class="abertura-acoes reveal">
       <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy">Garantir ingresso</a>
       <a href="#lineup" class="btn outline bootzy">Ver line-up</a>
     </div>
-
-    <span class="abertura-datas abertura-animacao abertura-info" id="heroDates">— carregando datas —</span>
-
-    <div class="countdown abertura-animacao abertura-info" id="countdown">
+    <span class="abertura-datas reveal" id="heroDates">— carregando datas —</span>
+    <div class="countdown reveal" id="countdown">
       <div class="bloco-tempo">
         <div class="num" id="cd-dias">00</div>
         <div class="lbl">DIAS</div>
       </div>
-
       <div class="separador"></div>
-
       <div class="relogio">
         <div class="bloco-tempo">
           <div class="num" id="cd-horas">00</div>
           <div class="lbl">HR</div>
         </div>
-
         <div class="separador">:</div>
-
         <div class="bloco-tempo">
           <div class="num" id="cd-min">00</div>
           <div class="lbl">MIN</div>
         </div>
-
         <div class="separador">:</div>
-
         <div class="bloco-tempo">
           <div class="num" id="cd-seg">00</div>
           <div class="lbl">SEG</div>
@@ -1990,28 +1665,23 @@ footer {
     </div>
   </div>
 </section>
-
 <section class="section section-alt" id="lineup">
   <div class="container">
-    <span class="eyebrow">Atrações</span>
-    <h2>Line-up</h2>
+    <span class="eyebrow reveal">Atrações</span>
+    <h2 class="reveal">Line-up</h2>
     <div class="day-tabs" id="dayTabs"></div>
     <div class="lineup-grid" id="lineupGrid"></div>
   </div>
 </section>
-
 <div hidden class="marquee">
   <div class="marquee-track" id="marqueeTrack"></div>
 </div>
-
 <section class="section" id="experiencia">
   <div class="container">
-    <span class="eyebrow">experiência</span>
-    <h2 class="titulo-anos2000"><span class="branco">ANO</span><span class="rosa">s</span><span class="rosa">2</span><span class="branco">000</span></h2>
-
+    <span class="eyebrow reveal">experiência</span>
+    <h2 class="titulo-anos2000 reveal"><span class="branco">ANO</span><span class="rosa">s</span><span class="rosa">2</span><span class="branco">000</span></h2>
     <div class="experiencia-texto reveal">
       <p>O Gays & Garotas Anos 2000 é um encontro para celebrar, conectar e criar novas experiências em comunidade.</p>
-
       <div class="experiencia-scroll">
         <div class="experiencia-cards">
           <div class="experiencia-card">
@@ -2019,25 +1689,21 @@ footer {
             <strong>🪩 Música</strong><br>
             <span>Playlist com as mais icônicas dos anos 2000, diversão e uma pista para aproveitar a noite com o duo KERODRAMA.</span>
           </div>
-
           <div class="experiencia-card">
             <img src="img/experiencia/conexoes.png" alt="Conexões">
             <strong>🤝 Conexões</strong><br>
             <span>empreendedores, creators, profissionais e novas conexões com marcas parceiras.</span>
           </div>
-
           <div class="experiencia-card">
             <img src="img/experiencia/workshops.png" alt="Workshops">
             <strong>🎓 Workshops</strong><br>
             <span>Os melhores profissionais do mercado transmitindo conhecimento valioso (confira o Line-Up).</span>
           </div>
-
           <div class="experiencia-card">
             <img src="img/experiencia/comunidade.png" alt="Comunidade">
             <strong>🏳️‍🌈 Comunidade</strong><br>
             <span>Um espaço seguro para celebrar nossa comunidade com liberdade.</span>
           </div>
-
           <div class="experiencia-card">
             <img src="img/experiencia/experiencias.png" alt="Experiencias">
             <strong>✨ Experiências e Sorteios</strong><br>
@@ -2045,41 +1711,34 @@ footer {
           </div>
         </div>
       </div>
-
       <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy" style="margin-top:10px;">Quero fazer parte</a>
     </div>
   </div>
 </section>
-
 <section class="section section-alt" id="espaco">
   <div class="container">
-    <span class="eyebrow">Estrutura</span>
-    <h2>Espaço</h2>
-    <!-- Adicionamos esta div wrapper aqui: -->
+    <span class="eyebrow reveal">Estrutura</span>
+    <h2 class="reveal">Espaço</h2>
     <div class="ambiente-scroll">
       <div class="ambiente-grid" id="ambienteGrid"></div>
     </div>
   </div>
 </section>
-
 <section class="section" id="ingressos">
   <div class="container">
-    <span class="eyebrow">Ingressos</span>
-    <h2>Garantir ingresso</h2>
+    <span class="eyebrow reveal">Ingressos</span>
+    <h2 class="reveal">Garantir ingresso</h2>
     <div class="tickets-grid" id="ticketsGrid"></div>
   </div>
 </section>
-
 <section class="section section-alt" id="empreenda">
   <div class="container">
-    <span class="eyebrow">Negócios</span>
-    <h2>Empreenda LGBT+</h2>
-
-    <div class="empreenda-content">
+    <span class="eyebrow reveal">Negócios</span>
+    <h2 class="reveal">Empreenda LGBT+</h2>
+    <div class="empreenda-content reveal">
       <div class="empreenda-photo">
         <img src="img/empreenda/empreenda.jpg" alt="Empreenda LGBT+">
       </div>
-
       <div class="empreenda-text">
         <h3>Conheça o<br>Empreenda LGBT+</h3>
         <p>Um espaço dedicado a negócios e oportunidades para a comunidade LGBTQIAPN+. Você poderá ser nosso parceiro e divulgar seus produtos e serviços para apoiadores da comunidade.</p>
@@ -2088,32 +1747,28 @@ footer {
     </div>
   </div>
 </section>
-
 <section class="section" id="info">
   <div class="container" style="max-width:820px;">
-    <span class="eyebrow">FAQ</span>
-    <h2>Perguntas frequentes</h2>
+    <span class="eyebrow reveal">FAQ</span>
+    <h2 class="reveal">Perguntas frequentes</h2>
     <div id="faqList"></div>
   </div>
 </section>
-
-<footer>
+<footer class="reveal">
   <div class="container">
     <div class="footer-top">
-      <div class="footer-brand">
+      <div class="footer-brand reveal">
         <img src="img/logo2.png" alt="Gays & Garotas" class="footer-logo">
         <p>Nosso hub que conecta creators, empreendedores e marcas em ambientes seguros.<br>🏳️‍🌈 Idealizado por Julio Tuschi</p>
         <div class="social-row" id="socialRow"></div>
       </div>
-
-      <div class="footer-links">
+      <div class="footer-links reveal">
         <div class="footer-col">
           <h4>Evento</h4>
           <a href="#lineup">Line-up</a>
           <a href="#espaco">Espaço</a>
           <a href="#ingressos">Ingressos</a>
         </div>
-
         <div class="footer-col">
           <h4>Suporte</h4>
           <a href="#info">FAQ</a>
@@ -2122,30 +1777,26 @@ footer {
         </div>
       </div>
     </div>
-
-    <div class="footer-bottom">
+    <div class="footer-bottom reveal">
       <span>© 2026 Gays & Garotas Hub. Todos os direitos reservados.</span>
       <span>Feito com ♥ KND</span>
     </div>
   </div>
 </footer>
-
 <a href="#" id="backToTop" class="back-to-top" aria-label="Voltar ao topo">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M18 15l-6-6-6 6"/>
   </svg>
 </a>
-
 <script>
-/* ============================================================
-   CONFIGURAÇÃO CENTRAL DO EVENTO
-   Data-alvo do contador, textos e listas renderizadas
-   dinamicamente (line-up, ambientes, ingressos, FAQ).
-   ============================================================ */
+// GARANTE O CARREGAMENTO NO TOPO ABSOLUTO
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
 const CONFIG = {
   dataInicio: '12/09/2026 - 14:00:00',
   textoDatas: '12 de setembro · The Core - São Paulo',
-
   diasLineup: [{
     dia: 'Speakers',
     artistas: [
@@ -2157,20 +1808,16 @@ const CONFIG = {
       { nome: 'Kerodrama', instagram: 'https://instagram.com/kerodramaduo', painel: 'O duo que vai animar nosso After Party ☆', foto: 'img/lineup/kerodrama.jpg' }
     ]
   }],
-
   ambientes: [
     { nome: 'Pista', desc: 'Espaço para curtir o After Party', foto: 'img/espaços/pista.jpg' },
     { nome: 'Restaurante', desc: 'Petiscos a refeições completas', foto: 'img/espaços/restaurante.jpg' },
     { nome: 'Bar', desc: 'Um menu completo de drinks está te esperando', foto: 'img/espaços/bar.jpg' },
     { nome: 'The Core', desc: 'Ponto de encontro do G&G Anos 2000, que reúne cultura e gastronomia', foto: 'img/espaços/thecore.jpg' }
   ],
-
   ingressos: [
     { nome: '1° lote', preco: 'R$ 255', destaque: false, esgotado: true, beneficios: [] },
-    { nome: '2° lote', preco: 'R$ 280', destaque: true, esgotado: false, beneficios: ['Incluso R$ 80 na comanda', 'Sorteios e workshops', 'After Party'] },
-    { nome: '3° lote', preco: 'EM BREVE', destaque: false, esgotado: false, emBreve: true, beneficios: [] }
+    { nome: '2° lote', preco: 'R$ 285', destaque: true, esgotado: false, beneficios: ['Incluso R$ 80 na comanda', 'Sorteios e workshops', 'After Party'] },
   ],
-
   faq: [
     {
       p: 'Posso entrar e sair do evento?',
@@ -2178,7 +1825,7 @@ const CONFIG = {
     },
     {
       p: 'O evento é apenas para criadores de conteúdo?',
-      r: 'De forma alguma! O G&G é o ponto de encontro ideal para empreendedores, criadores e profissionais LGBTQIAPN+ que desejam expandir sua rede de contatos, fechar parcerias estratégicas e trocar experiências com grandes marcas.'
+      r: 'De forma alguma! O G&G é o ponto de encontro ideal para empreendedores, criadores e profissionais LGBTQIAPN+ que desejam expandir sua rede de contatos, fechar parcerias estratégicas e trocar experiências.'
     },
     {
       p: 'Onde comprar ingresso?',
@@ -2186,55 +1833,67 @@ const CONFIG = {
     }
   ]
 };
-
-/* ---------- Hero: data/local + contador regressivo ---------- */
 document.getElementById('heroDates').textContent = CONFIG.textoDatas;
-
 function tickCountdown() {
   const [data, hora] = CONFIG.dataInicio.split(' - ');
   const [dia, mes, ano] = data.split('/');
   const alvo = new Date(`${ano}-${mes}-${dia}T${hora}`).getTime();
   const diff = Math.max(0, alvo - Date.now());
-
-  document.getElementById('cd-dias').textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
-  document.getElementById('cd-horas').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
-  document.getElementById('cd-min').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-  document.getElementById('cd-seg').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+  const dias = String(Math.floor(diff / 86400000)).padStart(2, '0');
+  const horas = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+  const mins = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+  const segs = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+  document.getElementById('cd-dias').textContent = dias;
+  document.getElementById('cd-horas').textContent = horas;
+  document.getElementById('cd-min').textContent = mins;
+  document.getElementById('cd-seg').textContent = segs;
+  document.getElementById('nav-cd-dias').textContent = dias;
+  document.getElementById('nav-cd-horas').textContent = horas;
+  document.getElementById('nav-cd-min').textContent = mins;
+  document.getElementById('nav-cd-seg').textContent = segs;
 }
-
 tickCountdown();
 setInterval(tickCountdown, 1000);
-
-/* ---------- Marquee: repete os nomes do line-up e duplica o
-   grupo inteiro, para o loop de CSS ficar contínuo sem salto. ---------- */
+// OBSERVER REUTILIZÁVEL PARA AS ANIMAÇÕES REPETIREM AO PASSAR PELA TELA
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    } else {
+      entry.target.classList.remove('visible');
+    }
+  });
+}, { threshold: .12 });
+function observeElements(selector) {
+  document.querySelectorAll(selector).forEach((el, index) => {
+    if (!el.classList.contains('reveal')) {
+      el.classList.add('reveal');
+    }
+    el.style.transitionDelay = `${(index % 4) * .08}s`;
+    revealObserver.observe(el);
+  });
+}
 (function renderMarquee() {
   const todos = CONFIG.diasLineup.flatMap(d => d.artistas.map(a => a.nome));
   const nomes = Array(8).fill(todos).flat();
   const grupo = nomes.map(nome => `<span>${nome}<img src="img/globo.webp" alt=""></span>`).join('');
-
   document.getElementById('marqueeTrack').innerHTML =
     `<div class="marquee-group">${grupo}</div><div class="marquee-group">${grupo}</div>`;
 })();
-
-/* ---------- Line-up: abas de dia + grade de artistas ---------- */
 (function renderLineup() {
   const tabsEl = document.getElementById('dayTabs');
   const gridEl = document.getElementById('lineupGrid');
-
   CONFIG.diasLineup.forEach((dia, i) => {
     const tab = document.createElement('button');
     tab.className = 'day-tab' + (i === 0 ? ' active' : '');
     tab.textContent = dia.dia;
-
     tab.addEventListener('click', () => {
       document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       renderGrid(dia);
     });
-
     tabsEl.appendChild(tab);
   });
-
   function renderGrid(dia) {
     gridEl.innerHTML = dia.artistas.map(a => `
       <div class="artist-card">
@@ -2244,10 +1903,8 @@ setInterval(tickCountdown, 1000);
             : `<img src="${a.foto}" alt="${a.nome}">`
           }
         </div>
-
         <div class="artist-info">
           <div class="artist-name">${a.nome}</div>
-
           <div class="artist-meta">
             ${a.instagram
               ? `<a class="instagram-link" href="${a.instagram}" target="_blank" rel="noopener noreferrer" aria-label="Instagram de ${a.nome}">
@@ -2259,19 +1916,16 @@ setInterval(tickCountdown, 1000);
                 </a>`
               : ''
             }
-
             ${a.instagram && a.painel ? `<span class="separator"></span>` : ''}
             ${a.painel ? `<span class="painel">${a.painel}</span>` : ''}
           </div>
         </div>
       </div>
     `).join('');
+    observeElements('#lineupGrid .artist-card');
   }
-
   renderGrid(CONFIG.diasLineup[0]);
 })();
-
-/* ---------- Espaço: cards de ambiente ---------- */
 (function renderStages() {
   document.getElementById('ambienteGrid').innerHTML = CONFIG.ambientes.map(p => `
     <div class="ambiente-card">
@@ -2282,9 +1936,8 @@ setInterval(tickCountdown, 1000);
       </div>
     </div>
   `).join('');
+  observeElements('#ambienteGrid .ambiente-card');
 })();
-
-/* ---------- Ingressos: cards com estado (compra / esgotado / em breve) ---------- */
 (function renderTickets() {
   document.getElementById('ticketsGrid').innerHTML = CONFIG.ingressos.map(t => `
     <div class="ticket-card ${t.destaque ? 'highlight' : ''} ${t.esgotado ? 'esgotado' : ''} ${t.emBreve ? 'em-breve-card' : ''}">
@@ -2292,7 +1945,6 @@ setInterval(tickCountdown, 1000);
       <h3>${t.nome}</h3>
       <div class="ticket-price">${t.preco} <small></small></div>
       <ul>${t.beneficios.map(b => `<li>✓ ${b}</li>`).join('')}</ul>
-
       ${t.esgotado
         ? `<span class="btn outline esgotado">Esgotado</span>`
         : t.emBreve
@@ -2301,31 +1953,26 @@ setInterval(tickCountdown, 1000);
       }
     </div>
   `).join('');
+  observeElements('#ticketsGrid .ticket-card');
 })();
-
-/* ---------- FAQ: lista + acordeão (abre uma por vez) ---------- */
 (function renderFaq() {
   const el = document.getElementById('faqList');
-
   el.innerHTML = CONFIG.faq.map((item, i) => `
     <div class="faq-item" data-i="${i}">
       <button class="faq-q" type="button">${item.p}<span class="plus">+</span></button>
       <div class="faq-a"><p>${item.r}</p></div>
     </div>
   `).join('');
-
+  observeElements('#faqList .faq-item');
   el.querySelectorAll('.faq-item').forEach(item => {
     const btn = item.querySelector('.faq-q');
     const answer = item.querySelector('.faq-a');
-
     btn.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
-
       el.querySelectorAll('.faq-item').forEach(i => {
         i.classList.remove('open');
         i.querySelector('.faq-a').style.maxHeight = null;
       });
-
       if (!isOpen) {
         item.classList.add('open');
         answer.style.maxHeight = answer.scrollHeight + 'px';
@@ -2333,8 +1980,6 @@ setInterval(tickCountdown, 1000);
     });
   });
 })();
-
-/* ---------- Footer: ícones de redes sociais ---------- */
 (function renderSocial() {
   const redes = [
     {
@@ -2353,49 +1998,26 @@ setInterval(tickCountdown, 1000);
       svg: `<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v6"/><path d="M8 8v.01"/><path d="M12 17v-6"/><path d="M12 14a3 3 0 016 0v3"/>`
     }
   ];
-
   document.getElementById('socialRow').innerHTML = redes.map(r => `
     <a href="${r.url}" aria-label="${r.nome}" title="${r.nome}" target="_blank" rel="noopener noreferrer">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${r.svg}</svg>
     </a>
   `).join('');
 })();
-
-/* ---------- Menu mobile: abrir/fechar + fechar ao clicar em link ---------- */
 document.getElementById('menuToggle').addEventListener('click', () => {
   document.getElementById('navLinks').classList.toggle('open');
 });
-
 document.querySelectorAll('#navLinks a').forEach(a => {
   a.addEventListener('click', () => {
     document.getElementById('navLinks').classList.remove('open');
   });
 });
-
-/* ---------- Botão "voltar ao topo" ---------- */
 document.getElementById('backToTop').addEventListener('click', e => {
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-
-/* ---------- Scroll reveal: fade + slide up ao entrar na viewport ---------- */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: .12 });
-
-document.querySelectorAll(
-  '.section .eyebrow, .section h2, .artist-card, .ambiente-card, .experiencia-foto, .experiencia-texto, .empreenda-photo, .empreenda-text, .ticket-card, .faq-item'
-).forEach((el, index) => {
-  el.classList.add('reveal');
-  el.style.transitionDelay = `${(index % 4) * .08}s`;
-  revealObserver.observe(el);
-});
+// REGISTRA TODOS OS ELEMENTOS FIXOS DA PÁGINA NO OBSERVER DE ANIMAÇÃO
+observeElements('.reveal');
 </script>
-
 </body>
 </html>

@@ -1,0 +1,2655 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Gays &amp; Garotas</title>
+
+<link rel="icon" type="image/png" href="http://127.0.0.1:5500/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://127.0.0.1:5500/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://127.0.0.1:5500/favicon.png">
+
+<link rel="preload" href="http://127.0.0.1:5500/BootzyTM.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="./Gays &amp; Garotas_files/globoprincipal.png" as="image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./Gays &amp; Garotas_files/css2" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. FONTE CUSTOMIZADA
+   ============================================================ */
+@font-face {
+  font-family: 'BootzyTM';
+  src: url('BootzyTM.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+/* ============================================================
+   2. VARIÁVEIS GLOBAIS
+   ============================================================ */
+:root {
+  --bg: #0a0a0f;
+  --bg-alt: #0e0e17;
+  --surface: #1a1a24;
+  --line: #2a2a36;
+  --text: #f4f4f7;
+  --muted: #9a9aab;
+  --accent: #1241eb;
+  --accent-2: #ff3ea5;
+  --font-display: 'Anton', Impact, sans-serif;
+  --font-body: Arial, system-ui, sans-serif;
+  --radius: 10px;
+  --container: 1180px;
+  --liquid-border: rgba(255,255,255,.18);
+  --liquid-shadow: 0 20px 50px rgba(0,0,0,.30), 0 5px 15px rgba(0,0,0,.18);
+
+  /* Altura "operacional" do header fixo (logo + padding vertical).
+     Usada para ancorar elementos da hero (ex: o globo) ao invés de
+     depender de unidades de viewport (svh), que oscilam no mobile
+     quando a barra de endereço do navegador aparece/some. */
+  --header-h: 70px;
+}
+
+/* ============================================================
+   3. RESET
+   ============================================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: clip;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@supports (-webkit-touch-callout: none) {
+  html {
+    min-height: -webkit-fill-available;
+  }
+
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* ============================================================
+   4. LAYOUT BASE / TIPOGRAFIA / BOTÕES (compartilhados)
+   ============================================================ */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 96px 0;
+  position: relative;
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
+
+section[id] {
+  scroll-margin-top: 60px;
+}
+
+.bootzy {
+  font-family: 'BootzyTM', sans-serif !important;
+  color: inherit;
+}
+
+.eyebrow {
+  display: block;
+  font-size: 13px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  line-height: 1.02;
+}
+
+h2 {
+  font-family: 'BootzyTM', sans-serif !important;
+  font-size: 52px;
+  letter-spacing: .08em;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  gap: 8px;
+  min-height: 52px;
+  padding: 0 32px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  background: var(--accent);
+  color: #0a0a0f;
+  cursor: pointer;
+  transition: transform .25s cubic-bezier(.22,1,.36,1), background .25s ease, border-color .25s ease, box-shadow .25s ease;
+  -webkit-appearance: none;
+  appearance: none;
+  line-height: 1;
+}
+
+.btn.bootzy {
+  color: #fff !important;
+}
+
+.btn.outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.btn.outline.bootzy {
+  color: var(--text) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.045)) !important;
+    border: 1px solid rgba(255,255,255,.28) !important;
+    color: #fff !important;
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.22), inset 0 -1px 1px rgba(0,0,0,.10), 0 10px 30px rgba(0,0,0,.22);
+  }
+
+  .btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 55%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+    transform: rotate(20deg);
+    transition: left .65s cubic-bezier(.22,1,.36,1);
+    pointer-events: none;
+  }
+
+  .btn:hover::before {
+    left: 150%;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,.45) !important;
+    background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.065)) !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 15px 40px rgba(0,0,0,.30);
+  }
+
+  .btn:not(.outline) {
+    background: linear-gradient(135deg, rgba(18,65,235,.78), rgba(18,65,235,.32)) !important;
+    border-color: rgba(100,130,255,.60) !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 10px 35px rgba(18,65,235,.25);
+  }
+
+  .btn:not(.outline):hover {
+    background: linear-gradient(135deg, rgba(30,78,245,.88), rgba(18,65,235,.42)) !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.30), 0 15px 45px rgba(18,65,235,.35);
+  }
+
+  .btn.outline {
+    background: rgba(255,255,255,.045) !important;
+    border-color: rgba(255,255,255,.18) !important;
+  }
+}
+
+/* ============================================================
+   5. ANIMAÇÕES DE ENTRADA / SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.abertura-animacao {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: animacaoAbertura .8s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.abertura-titulo {
+  animation-delay: .15s;
+}
+
+.abertura-descricao {
+  animation-delay: .35s;
+}
+
+.abertura-botoes {
+  animation-delay: .55s;
+}
+
+.abertura-info {
+  animation-delay: .75s;
+}
+
+@keyframes animacaoAbertura {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes globoEntrada {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: .75;
+  }
+}
+
+@keyframes marquee-infinito {
+  from {
+    transform: translate3d(0,0,0);
+  }
+  to {
+    transform: translate3d(-50%,0,0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .abertura-animacao {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+
+  .abertura-globo {
+    animation: none;
+    opacity: .75;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   6. HEADER / NAVEGAÇÃO
+   ============================================================ */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #0a0a0f;
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  max-width: var(--container);
+  margin: 0 auto;
+  position: relative;
+}
+
+.logo-img {
+  height: 38px;
+  width: auto;
+  display: block;
+  transform: scale(1.25);
+  transform-origin: left center;
+}
+
+.nav-mobile-date {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 17px;
+  font-family: 'BootzyTM', sans-serif;
+  color: #c3c3c3;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: .05em;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.nav-links a {
+  color: var(--muted);
+  transition: color .15s;
+}
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav .btn {
+  min-height: 40px;
+  padding: 0 22px;
+  font-size: 13px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+@media (max-width: 860px) {
+  .nav-mobile-date {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: #0a0a0f;
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 24px;
+    font-size: 18px;
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-150%);
+    transition: transform .3s ease-in-out;
+    z-index: 99;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    box-shadow: 0 20px 40px rgba(0,0,0,.8);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav .btn {
+    display: none;
+  }
+}
+
+/* ============================================================
+   7. HERO / ABERTURA
+   ============================================================ */
+.abertura {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 150px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 20%, rgba(255,62,165,.18), transparent),
+    radial-gradient(ellipse 50% 40% at 80% 10%, rgba(198,255,61,.14), transparent),
+    var(--bg);
+}
+
+.abertura-conteudo {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.abertura h1 {
+  font-size: clamp(62px, 20vw, 138px);
+  line-height: .92;
+  white-space: nowrap;
+  margin-left: 20px;
+  margin-top: -50px !important;
+}
+
+.abertura-subtitulo {
+  max-width: 590px;
+  margin-top: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.3;
+  margin-left: 20px;
+}
+
+.abertura-acoes {
+  display: flex;
+  align-items: left;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-top: 40px;
+  flex-wrap: nowrap;
+  margin-left: 20px;
+}
+
+.abertura-datas {
+  display: block;
+  font-size: 15px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .02em;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+/*
+  Globo da hero: ancorado ao HEADER (--header-h) + um deslocamento fixo em
+  px, em vez de "top: X svh". Unidades svh recalculam a cada mudança de
+  altura da viewport (ex.: a barra de endereço do navegador mobile
+  aparecendo/escondendo ao rolar), o que fazia o globo "pular" de posição.
+  Ancorando em px relativos ao header, a posição fica estável.
+*/
+.abertura-globo {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  object-fit: contain;
+  right: max(20px, calc((100vw - 1180px) / 2 - 20px));
+  top: calc(var(--header-h) + 315px);
+  transform: translate3d(0, -50%, 0);
+  transform-origin: center center;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity .3s ease, width .3s ease, top .3s ease;
+  will-change: opacity;
+  animation: globoEntrada 1.2s cubic-bezier(.22,1,.36,1) .15s both;
+}
+
+.hero-logo-img {
+  height: 120px; /* ajuste esse valor */
+  width: auto;
+  margin-bottom: -50px !important;
+}
+
+.countdown {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 100px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+  margin-left: 20px;
+}
+
+.relogio {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.bloco-tempo {
+  text-align: center;
+  min-width: 10px;
+}
+
+.separador,
+.countdown .num {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  color: #fff;
+  line-height: 1;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.relogio .separador {
+  margin-left: -3px;
+  margin-right: -3px;
+}
+
+.countdown .lbl {
+  font-size: 11px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-top: 10px;
+}
+
+#cd-dias {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border: 3px solid var(--accent-2);
+  border-radius: 40%;
+  margin: 9.4px auto;
+  box-shadow: 0 0 15px rgba(255,62,165,.3);
+}
+
+@media (min-width: 901px) {
+  .marquee {
+    top: -48px;
+    margin-bottom: 110px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1000px) {
+  .abertura {
+    padding-top: 120px;
+    justify-content: flex-start;
+  }
+
+  .abertura h1 {
+    font-size: clamp(90px, 9vw, 90px);
+    padding-top: 50px;
+  }
+
+  .countdown {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .abertura-globo {
+    width: 600px;
+    height: 600px;
+    right: 0px;
+    top: calc(var(--header-h) + 280px);
+  }
+}
+
+@media (max-width: 900px) {
+  .abertura-globo {
+    width: 650px;
+    height: 650px;
+    right: -200px;
+    top: calc(var(--header-h) + 300px);
+  }
+
+  .abertura-subtitulo {
+    max-width: 520px;
+    margin-top: 24px;
+    font-size: 17px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 700px) {
+  .abertura-globo {
+    width: 550px;
+    height: 550px;
+    right: -200px;
+    top: calc(var(--header-h) + 252px);
+  }
+}
+
+@media (max-width: 601px) {
+  .abertura {
+    /* A mágica está nestas duas linhas: se a tela for menor que 680px, ele trava a altura e impede o corte */
+    min-height: 680px !important;
+    min-height: max(900px) !important;
+    padding-top: 200px;
+    padding-bottom: 0;
+    justify-content: flex-start;
+  }
+
+  .abertura-conteudo {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .abertura h1 {
+    font-size: clamp(80px, 19vw, 100px);
+    margin-top: -25px !important;
+    white-space: nowrap;
+  }
+
+  .abertura-subtitulo {
+    max-width: 340px;
+    margin-top: 0px;
+    font-size: 14px;
+    padding-bottom: 60px;
+  }
+
+  /* Botões da hero centralizados e sem quebra de linha no mobile */
+  .abertura-acoes {
+    width: 100%;
+    margin-top: 50px;
+    justify-content: left;
+    align-items: left !important;
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+
+  .abertura-acoes .btn {
+    flex: 0 0 auto;
+    min-height: 50px;
+  }
+
+  .abertura-datas {
+    text-align: center;
+    width: 100%;
+    margin-left: -25px !important;
+    position: absolute;
+    top: calc(var(--header-h) + 350px) !important;
+  }
+
+  .abertura-globo {
+    width: 450px !important;
+    height: 450px !important;
+    right: -150px;
+    top: calc(var(--header-h) + 230px) !important;
+  }
+
+  .countdown {
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    margin-left: -28px !important;
+    margin-bottom: 200px;
+    position: absolute;
+    top: calc(var(--header-h) + 420px) !important;
+  }
+
+  .bloco-tempo {
+    min-width: 30px;
+  }
+
+  #cd-dias {
+    margin-left: 0;
+  }
+
+  .marquee {
+    top: -48px;
+  }
+}
+
+@media (max-width: 500px) {
+  .abertura-globo {
+    width: 450px;
+    height: 450px;
+    right: -180px;
+    top: calc(var(--header-h) + 226px) !important;
+  }
+
+  .abertura-acoes {
+    gap: 10px;
+  }
+
+  .abertura-acoes .btn {
+    padding-left: 14px;
+    padding-right: 14px;
+    font-size: 14px;
+  }
+}
+
+/* ============================================================
+   8. MARQUEE (faixa rolante) — atualmente oculta via [hidden] no HTML
+   ============================================================ */
+.marquee {
+  position: relative;
+  top: 0;
+  margin-top: 50px;
+  background: #0a0a0f;
+  color: #0a0a0f;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid #0a0a0f;
+  border-bottom: 1px solid #0a0a0f;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-infinito 120s linear infinite;
+  will-change: transform;
+}
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.marquee-track span {
+  font-family: 'BootzyTM', sans-serif !important;
+  font-size: 18px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  padding-right: 40px;
+  flex-shrink: 0;
+  color: #fff !important;
+}
+
+.marquee-track span img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   9. LINE-UP
+   ============================================================ */
+
+
+
+#lineup {
+  margin-top: 50px !important;
+}
+
+.day-tabs {
+  display: none;
+  gap: 10px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.day-tab {
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: .15s;
+}
+
+.day-tab.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+.lineup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.artist-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  /* A mágica acontece aqui: mantemos a opacidade para a animação inicial não quebrar, 
+     e ajustamos o tempo do hover para ficar suave */
+  transition: opacity .75s ease, transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease;
+}
+
+.artist-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-2);
+}
+
+.artist-photo {
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, var(--line), var(--bg-alt));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.artist-photo a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.artist-photo a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artist-info {
+  padding: 16px;
+}
+
+.artist-name {
+  font-family: 'BootzyTM', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.artist-meta {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  min-width: 0;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.artist-meta .painel {
+  font-size: 13px;
+  color: var(--muted);
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.artist-meta .instagram-link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.artist-meta .separator {
+  font-size: 6px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .lineup-grid {
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+  }
+
+  .artist-card {
+    background: var(--surface) !important;
+    border: 1px solid var(--line) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .artist-card:hover {
+    transform: none;
+    border-color: var(--line) !important;
+  }
+
+  .artist-name {
+    font-family: 'BootzyTM', sans-serif !important;
+    font-size: 14px !important;
+    letter-spacing: .1em !important;
+    word-spacing: 0 !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .artist-info {
+    padding: 14px !important;
+  }
+
+  .artist-meta {
+    margin-top: 3px !important;
+    line-height: 1.15 !important;
+    gap: 0 !important;
+  }
+
+  .artist-meta .painel {
+    letter-spacing: 0 !important;
+    word-spacing: 0 !important;
+    line-height: 1.15 !important;
+  }
+
+  .artist-meta .instagram-link,
+  .artist-meta .separator {
+    display: none !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .artist-name {
+    letter-spacing: .1em !important;
+  }
+}
+
+/* ============================================================
+   10. SEÇÃO EXPERIÊNCIA (título "anos2000" + cards de glass)
+   ============================================================ */
+.titulo-anos2000 {
+  font-family: 'BootzyTM', sans-serif !important;
+  font-size: 52px !important;
+  font-weight: normal !important;
+  letter-spacing: 0 !important;
+  line-height: .92 !important;
+  text-transform: none !important;
+}
+
+.titulo-anos2000 .branco {
+  color: #fff !important;
+}
+
+.titulo-anos2000 .rosa {
+  color: #ff007f !important;
+}
+
+.titulo-anos2000 .rosa:nth-of-type(1) {
+  text-transform: lowercase !important;
+}
+
+.experiencia-conteudo {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.experiencia-texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.experiencia-texto h3 {
+  font-family: 'BootzyTM', sans-serif !important;
+  font-size: 34px;
+  letter-spacing: .08em !important;
+  line-height: 1.15;
+  text-transform: none;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.experiencia-texto p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1;
+  margin-bottom: 26px;
+  text-align: justify;
+}
+
+.experiencia-card span {
+  display: block;
+  margin-top: 8px; /* Ajuste este valor em pixels para a distância que desejar */
+}
+
+.experiencia-texto .btn {
+  padding: 0 24px;
+  font-size: 13px;
+  width: fit-content;
+  align-self: flex-start;
+}
+
+.experiencia-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.experiencia-card img {
+  margin-bottom: 12px;
+}
+
+/*
+  Card com efeito "glass". O brilho diagonal (::after) antes ficava
+  esticado/desalinhado por passar por fora do card (top:-80%, height:160%)
+  e girado 18deg sem estar contido — em telas mais largas o reflexo
+  aparecia cortado ou "flutuando" fora da borda antes/depois do hover.
+  Agora o brilho fica contido dentro do card (overflow:hidden no pai +
+  faixa mais estreita) e a trajetória de entrada/saída é simétrica.
+*/
+.experiencia-card {
+  position: relative;
+  border: 1px solid var(--liquid-border);
+  background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+  border-radius: var(--radius);
+  padding: 18px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), var(--liquid-shadow);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  isolation: isolate;
+  transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease, box-shadow .3s ease;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.experiencia-card::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 10px;
+  right: 10px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), rgba(255,255,255,.15), transparent);
+  opacity: .8;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.experiencia-card::after {
+  content: "";
+  position: absolute;
+  width: 55%;
+  height: 220%;
+  top: -60%;
+  left: -70%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.035) 45%, rgba(255,255,255,.10) 50%, rgba(255,255,255,.025) 55%, transparent 100%);
+  transform: rotate(18deg);
+  pointer-events: none;
+  opacity: .55;
+  transition: left .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
+  z-index: 15;
+}
+
+.experiencia-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255,255,255,.30);
+  background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.045));
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.20), 0 25px 60px rgba(0,0,0,.38), 0 0 35px rgba(18,65,235,.07);
+}
+
+.experiencia-card:hover::after {
+  left: 145%;
+  opacity: .85;
+}
+
+@media (max-width: 800px) {
+  .experiencia-conteudo {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .experiencia-foto {
+    order: 0;
+  }
+
+  .experiencia-texto {
+    order: 1;
+  }
+
+  .experiencia-texto h3 {
+    font-size: 28px;
+  }
+
+  .experiencia-texto p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .experiencia-scroll {
+    position: relative;
+    margin-right: -24px;
+  }
+
+  .experiencia-scroll::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 120px;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(10,10,15,0), rgba(10,10,15,1));
+    z-index: 10;
+  }
+
+  .experiencia-cards {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 16px;
+    padding-right: 55px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .experiencia-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .experiencia-card {
+    flex: 0 0 84%;
+    min-width: 84%;
+    scroll-snap-align: start;
+    padding: 18px;
+    margin: 0;
+  }
+
+  .experiencia-card,
+  .experiencia-card:hover {
+    transform: none;
+    background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+    border-color: var(--liquid-border);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), 0 12px 30px rgba(0,0,0,.22);
+  }
+
+  .experiencia-card:hover::after {
+    left: -70%;
+    opacity: .55;
+  }
+
+  .experiencia-card,
+  .ticket-card,
+  .faq-item,
+  .back-to-top {
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+}
+
+@media (max-width: 500px) {
+  .experiencia-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .experiencia-texto h3 {
+    font-size: 25px;
+  }
+}
+
+/* ============================================================
+   11. SEÇÃO ESPAÇO (ambientes)
+   ============================================================ */
+.ambiente-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.ambiente-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.ambiente-foto {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.ambiente-info {
+  padding: 22px;
+}
+
+.ambiente-info h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+  letter-spacing: .07em !important;
+}
+
+.ambiente-info p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+
+@media (max-width: 600px) {
+
+  .ambiente-scroll {
+    position: relative;
+    margin-right: -24px;
+  }
+
+  .ambiente-scroll::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 120px;
+    height: 100%;
+    pointer-events: none;
+    /* Usa a cor de fundo da section-alt (#0e0e17 -> rgb 14, 14, 23) */
+    background: linear-gradient(to right, rgba(14,14,23,0), rgba(14,14,23,1));
+    z-index: 10;
+  }
+  /* --------------------------------------- */
+
+  .ambiente-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 16px;
+    padding-right: 55px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .ambiente-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .ambiente-card {
+    flex: 0 0 88%;
+    min-width: 88%;
+    scroll-snap-align: start;
+    background: var(--surface) !important;
+    border: 1px solid var(--line) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transform: none !important;
+  }
+
+  .ambiente-card::before,
+  .ambiente-card::after {
+    display: none !important;
+    content: none !important;
+  }
+}
+
+/* ============================================================
+   12. SEÇÃO EMPREENDA LGBT+
+   ============================================================ */
+.empreenda-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.empreenda-photo {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.empreenda-photo img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.empreenda-text h3 {
+  font-family: 'BootzyTM' !important;
+  font-size: 26px;
+  letter-spacing: .07em !important;
+  line-height: 1;
+  text-transform: none;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.empreenda-text p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .empreenda-content {
+    grid-template-columns: 1fr;
+  }
+
+  .empreenda-text p {
+    max-width: 100%;
+    font-size: 18px !important;
+    line-height: 1 !important;
+    text-align: justify !important;
+  }
+}
+
+/* ============================================================
+   13. SEÇÃO INGRESSOS
+   ============================================================ */
+.tickets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.ticket-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+  border: 1px solid var(--liquid-border);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), var(--liquid-shadow);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  isolation: isolate;
+  transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease, box-shadow .3s ease;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.ticket-card::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 10px;
+  right: 10px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), rgba(255,255,255,.15), transparent);
+  opacity: .8;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.ticket-card::after {
+  content: "";
+  position: absolute;
+  width: 45%;
+  height: 220%;
+  top: -60%;
+  left: -30%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.035) 45%, rgba(255,255,255,.10) 50%, rgba(255,255,255,.025) 55%, transparent 100%);
+  transform: rotate(18deg);
+  pointer-events: none;
+  opacity: .55;
+  transition: transform .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
+  z-index: 15;
+}
+
+.ticket-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255,255,255,.30);
+  background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.045));
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.20), 0 25px 60px rgba(0,0,0,.38), 0 0 35px rgba(18,65,235,.07);
+}
+
+.ticket-card:hover::after {
+  transform: translateX(220%) rotate(18deg);
+  opacity: .85;
+}
+
+.ticket-card.highlight {
+  background: linear-gradient(135deg, rgba(18,65,235,.22), rgba(18,65,235,.075), rgba(255,255,255,.035));
+  border: 1px solid rgba(80,115,255,.48);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.17), 0 20px 55px rgba(18,65,235,.18), 0 0 35px rgba(18,65,235,.08);
+}
+
+.ticket-tag {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.ticket-price {
+  font-family: var(--font-display);
+  font-size: 40px;
+}
+
+.ticket-price small {
+  font-size: 15px;
+  color: var(--muted);
+  font-family: var(--font-body);
+}
+
+.ticket-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.ticket-card li {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.ticket-card.esgotado h3,
+.ticket-card.esgotado .ticket-price,
+.ticket-card.esgotado .ticket-price small {
+  color: #555;
+}
+
+.ticket-card.esgotado .ticket-price {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+.ticket-card.esgotado .ticket-price::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: 50%;
+  height: 3px;
+  background: #ff3030;
+  transform: rotate(-5deg);
+}
+
+.ticket-card .btn.esgotado,
+.ticket-card .btn.em-breve {
+  cursor: default;
+  pointer-events: none;
+  opacity: .6;
+  background: transparent !important;
+  border-color: #555 !important;
+  color: #888 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.ticket-card.em-breve-card {
+  opacity: .55;
+}
+
+.ticket-card.em-breve-card .ticket-price,
+.ticket-card.em-breve-card h3,
+.ticket-card.em-breve-card .ticket-price small {
+  color: #555;
+}
+
+@media (max-width: 600px) {
+  .ticket-card,
+  .ticket-card:hover {
+    transform: none;
+    background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+    border-color: var(--liquid-border);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), 0 12px 30px rgba(0,0,0,.22);
+  }
+
+  .ticket-card:hover::after {
+    transform: rotate(18deg);
+    opacity: .55;
+  }
+
+  .ticket-card.highlight,
+  .ticket-card.highlight:hover {
+    background: linear-gradient(135deg, rgba(18,65,235,.22), rgba(18,65,235,.075), rgba(255,255,255,.035));
+    border-color: rgba(80,115,255,.48);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.17), 0 15px 40px rgba(18,65,235,.16);
+  }
+}
+
+/* ============================================================
+   14. SEÇÃO FAQ
+   ============================================================ */
+.faq-item {
+  position: relative;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  overflow: hidden;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.09), 0 10px 30px rgba(0,0,0,.15);
+  transition: border-color .25s ease, background .25s ease;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.faq-item:hover {
+  border-color: rgba(255,255,255,.22);
+  background: rgba(255,255,255,.075);
+}
+
+.faq-q {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--text);
+  padding: 22px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-body);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.faq-q .plus {
+  font-size: 22px;
+  color: var(--accent);
+  transition: transform .2s;
+  flex-shrink: 0;
+  margin-left: 15px;
+}
+
+.faq-item.open .plus {
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .25s ease;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.faq-a p {
+  padding: 0 22px 22px;
+}
+
+@media (max-width: 600px) {
+  .faq-item:hover {
+    border-color: rgba(255,255,255,.11);
+    background: linear-gradient(135deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
+  }
+}
+
+/* ============================================================
+   15. FOOTER
+   ============================================================ */
+footer {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--line);
+  padding: 64px 0 32px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.footer-brand h3 {
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  color: var(--muted);
+  max-width: 320px;
+  font-size: 14px;
+}
+
+.footer-logo {
+  width: 180px;
+  height: auto;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.social-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.social-row a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .15s;
+}
+
+.social-row a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.footer-links {
+  display: flex;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+
+.footer-col h4 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.footer-col a {
+  display: block;
+  padding: 6px 0;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.footer-col a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-brand,
+  .footer-links,
+  .footer-col,
+  .footer-col h4,
+  .footer-col a {
+    text-align: center;
+  }
+
+  .footer-logo {
+    margin: 0 auto 40px;
+  }
+
+  .social-row {
+    justify-content: center;
+  }
+
+  .footer-links {
+    width: 100%;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .footer-bottom {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .footer-bottom span {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px !important;
+  }
+}
+
+/* ============================================================
+   16. BOTÃO "VOLTAR AO TOPO"
+   ============================================================ */
+.back-to-top {
+  position: fixed;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  right: calc(24px + env(safe-area-inset-right));
+  z-index: 999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.045));
+  border: 1px solid rgba(255,255,255,.28);
+  color: #fff;
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.22), inset 0 -1px 1px rgba(0,0,0,.10), 0 10px 30px rgba(0,0,0,.22);
+  cursor: pointer;
+  transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* ============================================================
+   17. GLOWS DECORATIVOS DE FUNDO (seções específicas)
+   ============================================================ */
+#experiencia,
+#espaco,
+#ingressos,
+#empreenda,
+#info {
+  overflow: hidden;
+}
+
+#experiencia::before,
+#ingressos::before,
+#info::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  left: -220px;
+  top: 36%;
+  background: radial-gradient(circle, rgba(18,65,235,.18) 0%, rgba(18,65,235,.07) 35%, transparent 70%);
+  filter: blur(35px);
+  pointer-events: none;
+}
+
+#experiencia::after,
+#ingressos::after,
+#info::after {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  right: -180px;
+  top: 12%;
+  background: radial-gradient(circle, rgba(255,0,127,.14) 0%, rgba(255,0,127,.05) 40%, transparent 72%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+#experiencia .container,
+#espaco .container,
+#ingressos .container,
+#empreenda .container,
+#info .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   18. FALLBACK SEM SUPORTE A backdrop-filter
+   ============================================================ */
+@supports not ((backdrop-filter: blur(1px))) {
+  .experiencia-card,
+  .ticket-card,
+  .faq-item,
+  .back-to-top,
+  .btn {
+    background: rgba(28,28,40,.92);
+  }
+}
+
+/* ============================================================
+   19. AJUSTES GERAIS DE MOBILE (padding de seção, tap highlight)
+   ============================================================ */
+@media (max-width: 600px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .btn,
+  .btn:hover,
+  .btn:focus,
+  .btn:active {
+    transform: none !important;
+    transition: background .2s ease, border-color .2s ease, box-shadow .2s ease !important;
+  }
+
+  .btn::before {
+    display: none !important;
+    content: none !important;
+  }
+
+  .btn:not(.outline),
+  .btn:not(.outline):hover,
+  .btn:not(.outline):focus,
+  .btn:not(.outline):active {
+    background: linear-gradient(135deg, rgba(18,65,235,.72), rgba(18,65,235,.30)) !important;
+    border-color: rgba(100,130,255,.48) !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.18), 0 8px 28px rgba(18,65,235,.20) !important;
+  }
+
+  .btn.outline,
+  .btn.outline:hover,
+  .btn.outline:focus,
+  .btn.outline:active {
+    background: rgba(255,255,255,.035) !important;
+    border-color: rgba(255,255,255,.18) !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.10), 0 8px 25px rgba(0,0,0,.18) !important;
+  }
+
+  .btn {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="http://127.0.0.1:5500/index.html#" class="logo-link">
+      <img src="./Gays &amp; Garotas_files/logo.png" alt="Gays &amp; Garotas" class="logo-img">
+    </a>
+
+    <span class="nav-mobile-date">12/09/2026 - São Paulo, SP</span>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="http://127.0.0.1:5500/index.html#lineup" class="bootzy">Line-up</a></li>
+      <li><a href="http://127.0.0.1:5500/index.html#experiencia" class="bootzy">Experiência</a></li>
+      <li><a href="http://127.0.0.1:5500/index.html#espaco" class="bootzy">Espaço</a></li>
+      <li><a href="http://127.0.0.1:5500/index.html#ingressos" class="bootzy">Ingressos</a></li>
+      <li><a href="http://127.0.0.1:5500/index.html#empreenda" class="bootzy">Empreenda LGBT+</a></li>
+      <li><a href="http://127.0.0.1:5500/index.html#info" class="bootzy">FAQ</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy">Comprar ingresso</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" type="button">☰</button>
+    </div>
+  </nav>
+</header>
+
+<section class="abertura">
+  <img src="./Gays &amp; Garotas_files/globoprincipal.png" alt="" class="abertura-globo">
+
+  <div class="abertura-conteudo">
+    <h1 class="bootzy abertura-animacao abertura-titulo"><img src="./Gays &amp; Garotas_files/logo-apresenta.png" alt="G&amp;G" class="hero-logo-img">
+    <br><span style="color:#ffffff;">ANO</span><span style="color:#ff007f;text-transform:lowercase;">s</span><span style="color:#ff007f;">2</span><span style="color:#ffffff;">000</span></h1>
+
+    <p class="abertura-subtitulo abertura-animacao abertura-descricao" style="color:#ffffff;">Conectando creators, empreendedores, profissionais e marcas em um ambiente seguro. Dessa vez, no The Core e com muita nostalgia.</p>
+
+    <div class="abertura-acoes abertura-animacao abertura-botoes">
+      <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy">Garantir ingresso</a>
+      <a href="http://127.0.0.1:5500/index.html#lineup" class="btn outline bootzy">Ver line-up</a>
+    </div>
+
+    <span class="abertura-datas abertura-animacao abertura-info" id="heroDates">12 de setembro · The Core - São Paulo</span>
+
+    <div class="countdown abertura-animacao abertura-info" id="countdown">
+      <div class="bloco-tempo">
+        <div class="num" id="cd-dias">12</div>
+        <div class="lbl">DIAS</div>
+      </div>
+
+      <div class="separador"></div>
+
+      <div class="relogio">
+        <div class="bloco-tempo">
+          <div class="num" id="cd-horas">21</div>
+          <div class="lbl">HR</div>
+        </div>
+
+        <div class="separador">:</div>
+
+        <div class="bloco-tempo">
+          <div class="num" id="cd-min">28</div>
+          <div class="lbl">MIN</div>
+        </div>
+
+        <div class="separador">:</div>
+
+        <div class="bloco-tempo">
+          <div class="num" id="cd-seg">15</div>
+          <div class="lbl">SEG</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="lineup">
+  <div class="container">
+    <span class="eyebrow reveal" style="transition-delay: 0s;">Atrações</span>
+    <h2 class="reveal" style="transition-delay: 0.08s;">Line-up</h2>
+    <div class="day-tabs" id="dayTabs"><button class="day-tab active">Speakers</button></div>
+    <div class="lineup-grid" id="lineupGrid">
+      <div class="artist-card reveal" style="transition-delay: 0.16s;">
+        <div class="artist-photo">
+          <a href="https://instagram.com/ojuliotuschi" target="_blank" rel="noopener noreferrer"><img src="./Gays &amp; Garotas_files/julio.jpg" alt="Julio Tuschi"></a>
+        </div>
+
+        <div class="artist-info">
+          <div class="artist-name">Julio Tuschi</div>
+
+          <div class="artist-meta">
+            <a class="instagram-link" href="https://instagram.com/ojuliotuschi" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Julio Tuschi">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"></path>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <circle cx="17.5" cy="6.5" r="1"></circle>
+                  </svg>
+                </a>
+
+            <span class="separator"></span>
+            <span class="painel">Identidade e Comunidade</span>
+          </div>
+        </div>
+      </div>
+    
+      <div class="artist-card reveal" style="transition-delay: 0.24s;">
+        <div class="artist-photo">
+          <a href="https://instagram.com/eloasgrignoli" target="_blank" rel="noopener noreferrer"><img src="./Gays &amp; Garotas_files/eloa.jpg" alt="Eloá Sgrignoli"></a>
+        </div>
+
+        <div class="artist-info">
+          <div class="artist-name">Eloá Sgrignoli</div>
+
+          <div class="artist-meta">
+            <a class="instagram-link" href="https://instagram.com/eloasgrignoli" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Eloá Sgrignoli">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"></path>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <circle cx="17.5" cy="6.5" r="1"></circle>
+                  </svg>
+                </a>
+
+            <span class="separator"></span>
+            <span class="painel">Narrativa e Vendas</span>
+          </div>
+        </div>
+      </div>
+    
+      <div class="artist-card reveal" style="transition-delay: 0s;">
+        <div class="artist-photo">
+          <a href="https://instagram.com/manuelafreitas" target="_blank" rel="noopener noreferrer"><img src="./Gays &amp; Garotas_files/manu.jpg" alt="Manuela Freitas"></a>
+        </div>
+
+        <div class="artist-info">
+          <div class="artist-name">Manuela Freitas</div>
+
+          <div class="artist-meta">
+            <a class="instagram-link" href="https://instagram.com/manuelafreitas" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Manuela Freitas">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"></path>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <circle cx="17.5" cy="6.5" r="1"></circle>
+                  </svg>
+                </a>
+
+            <span class="separator"></span>
+            <span class="painel">IA e Diferenciação</span>
+          </div>
+        </div>
+      </div>
+    
+      <div class="artist-card reveal" style="transition-delay: 0.08s;">
+        <div class="artist-photo">
+          <a href="https://instagram.com/lyralibero" target="_blank" rel="noopener noreferrer"><img src="./Gays &amp; Garotas_files/lyra.jpg" alt="Lyra Libero"></a>
+        </div>
+
+        <div class="artist-info">
+          <div class="artist-name">Lyra Libero</div>
+
+          <div class="artist-meta">
+            <a class="instagram-link" href="https://instagram.com/lyralibero" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Lyra Libero">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"></path>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <circle cx="17.5" cy="6.5" r="1"></circle>
+                  </svg>
+                </a>
+
+            <span class="separator"></span>
+            <span class="painel">TikTok para fechar negócio</span>
+          </div>
+        </div>
+      </div>
+    
+      <div class="artist-card reveal" style="transition-delay: 0.16s;">
+        <div class="artist-photo">
+          <a href="https://instagram.com/vitormanon" target="_blank" rel="noopener noreferrer"><img src="./Gays &amp; Garotas_files/manon.jpg" alt="Vitor Manon"></a>
+        </div>
+
+        <div class="artist-info">
+          <div class="artist-name">Vitor Manon</div>
+
+          <div class="artist-meta">
+            <a class="instagram-link" href="https://instagram.com/vitormanon" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Vitor Manon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"></path>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <circle cx="17.5" cy="6.5" r="1"></circle>
+                  </svg>
+                </a>
+
+            <span class="separator"></span>
+            <span class="painel">Narrativa visual</span>
+          </div>
+        </div>
+      </div>
+    
+      <div class="artist-card reveal" style="transition-delay: 0.24s;">
+        <div class="artist-photo">
+          <a href="https://instagram.com/kerodramaduo" target="_blank" rel="noopener noreferrer"><img src="./Gays &amp; Garotas_files/kerodrama.jpg" alt="Kerodrama"></a>
+        </div>
+
+        <div class="artist-info">
+          <div class="artist-name">Kerodrama</div>
+
+          <div class="artist-meta">
+            <a class="instagram-link" href="https://instagram.com/kerodramaduo" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Kerodrama">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"></path>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <circle cx="17.5" cy="6.5" r="1"></circle>
+                  </svg>
+                </a>
+
+            <span class="separator"></span>
+            <span class="painel">O duo que vai animar nosso After Party ☆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div hidden="" class="marquee">
+  <div class="marquee-track" id="marqueeTrack"><div class="marquee-group"><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span></div><div class="marquee-group"><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Julio Tuschi<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Eloá Sgrignoli<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Manuela Freitas<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Lyra Libero<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Vitor Manon<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span><span>Kerodrama<img src="./Gays &amp; Garotas_files/globo.webp" alt=""></span></div></div>
+</div>
+
+<section class="section" id="experiencia">
+  <div class="container">
+    <span class="eyebrow reveal" style="transition-delay: 0s;">experiência</span>
+    <h2 class="titulo-anos2000 reveal" style="transition-delay: 0.08s;"><span class="branco">ANO</span><span class="rosa">s</span><span class="rosa">2</span><span class="branco">000</span></h2>
+
+    <div class="experiencia-texto reveal" style="transition-delay: 0.16s;">
+      <p>O Gays &amp; Garotas Anos 2000 é um encontro para celebrar, conectar e criar novas experiências em comunidade.</p>
+
+      <div class="experiencia-scroll">
+        <div class="experiencia-cards">
+          <div class="experiencia-card">
+            <img src="./Gays &amp; Garotas_files/musica.png" alt="Música">
+            <strong>🪩 Música</strong><br>
+            <span>Playlist com as mais icônicas dos anos 2000, diversão e uma pista para aproveitar a noite com o duo KERODRAMA.</span>
+          </div>
+
+          <div class="experiencia-card">
+            <img src="./Gays &amp; Garotas_files/conexoes.png" alt="Conexões">
+            <strong>🤝 Conexões</strong><br>
+            <span>empreendedores, creators, profissionais e novas conexões com marcas parceiras.</span>
+          </div>
+
+          <div class="experiencia-card">
+            <img src="./Gays &amp; Garotas_files/workshops.png" alt="Workshops">
+            <strong>🎓 Workshops</strong><br>
+            <span>Os melhores profissionais do mercado transmitindo conhecimento valioso (confira o Line-Up).</span>
+          </div>
+
+          <div class="experiencia-card">
+            <img src="./Gays &amp; Garotas_files/comunidade.png" alt="Comunidade">
+            <strong>🏳️‍🌈 Comunidade</strong><br>
+            <span>Um espaço seguro para celebrar nossa comunidade com liberdade.</span>
+          </div>
+
+          <div class="experiencia-card">
+            <img src="./Gays &amp; Garotas_files/experiencias.png" alt="Experiencias">
+            <strong>✨ Experiências e Sorteios</strong><br>
+            <span>Muitos sorteios e surpresas estão te esperando.</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy" style="margin-top:10px;">Quero fazer parte</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="espaco">
+  <div class="container">
+    <span class="eyebrow reveal" style="transition-delay: 0.24s;">Estrutura</span>
+    <h2 class="reveal" style="transition-delay: 0s;">Espaço</h2>
+    <!-- Adicionamos esta div wrapper aqui: -->
+    <div class="ambiente-scroll">
+      <div class="ambiente-grid" id="ambienteGrid">
+    <div class="ambiente-card reveal" style="transition-delay: 0.08s;">
+      <img class="ambiente-foto" src="./Gays &amp; Garotas_files/pista.jpg" alt="Pista">
+      <div class="ambiente-info">
+        <h3>Pista</h3>
+        <p>Espaço para curtir o After Party</p>
+      </div>
+    </div>
+  
+    <div class="ambiente-card reveal" style="transition-delay: 0.16s;">
+      <img class="ambiente-foto" src="./Gays &amp; Garotas_files/restaurante.jpg" alt="Restaurante">
+      <div class="ambiente-info">
+        <h3>Restaurante</h3>
+        <p>Petiscos a refeições completas</p>
+      </div>
+    </div>
+  
+    <div class="ambiente-card reveal" style="transition-delay: 0.24s;">
+      <img class="ambiente-foto" src="./Gays &amp; Garotas_files/bar.jpg" alt="Bar">
+      <div class="ambiente-info">
+        <h3>Bar</h3>
+        <p>Um menu completo de drinks está te esperando</p>
+      </div>
+    </div>
+  
+    <div class="ambiente-card reveal" style="transition-delay: 0s;">
+      <img class="ambiente-foto" src="./Gays &amp; Garotas_files/thecore.jpg" alt="The Core">
+      <div class="ambiente-info">
+        <h3>The Core</h3>
+        <p>Ponto de encontro do G&amp;G Anos 2000, que reúne cultura e gastronomia</p>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ingressos">
+  <div class="container">
+    <span class="eyebrow reveal" style="transition-delay: 0.08s;">Ingressos</span>
+    <h2 class="reveal" style="transition-delay: 0.16s;">Garantir ingresso</h2>
+    <div class="tickets-grid" id="ticketsGrid">
+    <div class="ticket-card esgotado reveal" style="transition-delay: 0.24s;">
+      
+      <h3>1° lote</h3>
+      <div class="ticket-price">R$ 255 <small></small></div>
+      <ul></ul>
+
+      <span class="btn outline esgotado">Esgotado</span>
+    </div>
+  
+    <div class="ticket-card highlight reveal" style="transition-delay: 0s;">
+      <span class="ticket-tag">Destaque</span>
+      <h3>2° lote</h3>
+      <div class="ticket-price">R$ 280 <small></small></div>
+      <ul><li>✓ Incluso R$ 80 na comanda</li><li>✓ Sorteios e workshops</li><li>✓ After Party</li></ul>
+
+      <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy ">Comprar</a>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="empreenda">
+  <div class="container">
+    <span class="eyebrow reveal" style="transition-delay: 0.08s;">Negócios</span>
+    <h2 class="reveal" style="transition-delay: 0.16s;">Empreenda LGBT+</h2>
+
+    <div class="empreenda-content">
+      <div class="empreenda-photo reveal" style="transition-delay: 0.24s;">
+        <img src="./Gays &amp; Garotas_files/empreenda.jpg" alt="Empreenda LGBT+">
+      </div>
+
+      <div class="empreenda-text reveal" style="transition-delay: 0s;">
+        <h3>Conheça o<br>Empreenda LGBT+</h3>
+        <p>Um espaço dedicado a negócios e oportunidades para a comunidade LGBTQIAPN+. Você poderá ser nosso parceiro e divulgar seus produtos e serviços para apoiadores da comunidade.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfS6Ie-S19qD1J0TNaT3D2ql1tO0oXCIEPsG9aiCp3sFIH12Q/viewform" target="_blank" rel="noopener noreferrer" class="btn bootzy" style="margin-top:24px;">Inscrever-se</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="info">
+  <div class="container" style="max-width:820px;">
+    <span class="eyebrow reveal" style="transition-delay: 0.08s;">FAQ</span>
+    <h2 class="reveal" style="transition-delay: 0.16s;">Perguntas frequentes</h2>
+    <div id="faqList">
+    <div class="faq-item reveal" data-i="0" style="transition-delay: 0.24s;">
+      <button class="faq-q" type="button">Posso entrar e sair do evento?<span class="plus">+</span></button>
+      <div class="faq-a"><p>Sim, a circulação é permitida. No entanto, ao deixar o espaço temporariamente, o fechamento da comanda vigente será realizado.</p></div>
+    </div>
+  
+    <div class="faq-item reveal" data-i="1" style="transition-delay: 0s;">
+      <button class="faq-q" type="button">O evento é apenas para criadores de conteúdo?<span class="plus">+</span></button>
+      <div class="faq-a"><p>De forma alguma! O G&amp;G é o ponto de encontro ideal para empreendedores, criadores e profissionais LGBTQIAPN+ que desejam expandir sua rede de contatos, fechar parcerias estratégicas e trocar experiências com grandes marcas.</p></div>
+    </div>
+  
+    <div class="faq-item reveal" data-i="2" style="transition-delay: 0.08s;">
+      <button class="faq-q" type="button">Onde comprar ingresso?<span class="plus">+</span></button>
+      <div class="faq-a"><p>Os ingressos estão disponíveis de forma prática e segura através do link "Garantir ingresso" localizado no topo e nas seções principais da página.</p></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="./Gays &amp; Garotas_files/logo2.png" alt="Gays &amp; Garotas" class="footer-logo">
+        <p>Nosso hub que conecta creators, empreendedores e marcas em ambientes seguros.<br>🏳️‍🌈 Idealizado por Julio Tuschi</p>
+        <div class="social-row" id="socialRow">
+    <a href="https://instagram.com/gaysegarotashub" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener noreferrer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"></path><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>
+    </a>
+  
+    <a href="https://tiktok.com/@gaysegarotashub" aria-label="TikTok" title="TikTok" target="_blank" rel="noopener noreferrer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v10.5a3 3 0 11-2-2.8V3h2z"></path><path d="M14 3a5 5 0 005 5"></path></svg>
+    </a>
+  
+    <a href="https://www.linkedin.com/company/gaysegarotashub/" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M8 11v6"></path><path d="M8 8v.01"></path><path d="M12 17v-6"></path><path d="M12 14a3 3 0 016 0v3"></path></svg>
+    </a>
+  </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Evento</h4>
+          <a href="http://127.0.0.1:5500/index.html#lineup">Line-up</a>
+          <a href="http://127.0.0.1:5500/index.html#espaco">Espaço</a>
+          <a href="http://127.0.0.1:5500/index.html#ingressos">Ingressos</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Suporte</h4>
+          <a href="http://127.0.0.1:5500/index.html#info">FAQ</a>
+          <a href="https://ig.me/m/gaysegarotashub" target="_blank" rel="noopener noreferrer">Contato</a>
+          <a href="http://127.0.0.1:5500/index.html#">Início</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Gays &amp; Garotas Hub. Todos os direitos reservados.</span>
+      <span>Feito com ♥ KND</span>
+    </div>
+  </div>
+</footer>
+
+<a href="http://127.0.0.1:5500/index.html#" id="backToTop" class="back-to-top" aria-label="Voltar ao topo">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"></path>
+  </svg>
+</a>
+
+<script>
+/* ============================================================
+   CONFIGURAÇÃO CENTRAL DO EVENTO
+   Data-alvo do contador, textos e listas renderizadas
+   dinamicamente (line-up, ambientes, ingressos, FAQ).
+   ============================================================ */
+const CONFIG = {
+  dataInicio: '12/09/2026 - 14:00:00',
+  textoDatas: '12 de setembro · The Core - São Paulo',
+
+  diasLineup: [{
+    dia: 'Speakers',
+    artistas: [
+      { nome: 'Julio Tuschi', instagram: 'https://instagram.com/ojuliotuschi', painel: 'Identidade e Comunidade', foto: 'img/lineup/julio.jpg' },
+      { nome: 'Eloá Sgrignoli', instagram: 'https://instagram.com/eloasgrignoli', painel: 'Narrativa e Vendas', foto: 'img/lineup/eloa.jpg' },
+      { nome: 'Manuela Freitas', instagram: 'https://instagram.com/manuelafreitas', painel: 'IA e Diferenciação', foto: 'img/lineup/manu.jpg' },
+      { nome: 'Lyra Libero', instagram: 'https://instagram.com/lyralibero', painel: 'TikTok para fechar negócio', foto: 'img/lineup/lyra.jpg' },
+      { nome: 'Vitor Manon', instagram: 'https://instagram.com/vitormanon', painel: 'Narrativa visual', foto: 'img/lineup/manon.jpg' },
+      { nome: 'Kerodrama', instagram: 'https://instagram.com/kerodramaduo', painel: 'O duo que vai animar nosso After Party ☆', foto: 'img/lineup/kerodrama.jpg' }
+    ]
+  }],
+
+  ambientes: [
+    { nome: 'Pista', desc: 'Espaço para curtir o After Party', foto: 'img/espaços/pista.jpg' },
+    { nome: 'Restaurante', desc: 'Petiscos a refeições completas', foto: 'img/espaços/restaurante.jpg' },
+    { nome: 'Bar', desc: 'Um menu completo de drinks está te esperando', foto: 'img/espaços/bar.jpg' },
+    { nome: 'The Core', desc: 'Ponto de encontro do G&G Anos 2000, que reúne cultura e gastronomia', foto: 'img/espaços/thecore.jpg' }
+  ],
+
+  ingressos: [
+    { nome: '1° lote', preco: 'R$ 255', destaque: false, esgotado: true, beneficios: [] },
+    { nome: '2° lote', preco: 'R$ 280', destaque: true, esgotado: false, beneficios: ['Incluso R$ 80 na comanda', 'Sorteios e workshops', 'After Party'] },
+  ],
+
+  faq: [
+    {
+      p: 'Posso entrar e sair do evento?',
+      r: 'Sim, a circulação é permitida. No entanto, ao deixar o espaço temporariamente, o fechamento da comanda vigente será realizado.'
+    },
+    {
+      p: 'O evento é apenas para criadores de conteúdo?',
+      r: 'De forma alguma! O G&G é o ponto de encontro ideal para empreendedores, criadores e profissionais LGBTQIAPN+ que desejam expandir sua rede de contatos, fechar parcerias estratégicas e trocar experiências com grandes marcas.'
+    },
+    {
+      p: 'Onde comprar ingresso?',
+      r: 'Os ingressos estão disponíveis de forma prática e segura através do link "Garantir ingresso" localizado no topo e nas seções principais da página.'
+    }
+  ]
+};
+
+/* ---------- Hero: data/local + contador regressivo ---------- */
+document.getElementById('heroDates').textContent = CONFIG.textoDatas;
+
+function tickCountdown() {
+  const [data, hora] = CONFIG.dataInicio.split(' - ');
+  const [dia, mes, ano] = data.split('/');
+  const alvo = new Date(`${ano}-${mes}-${dia}T${hora}`).getTime();
+  const diff = Math.max(0, alvo - Date.now());
+
+  document.getElementById('cd-dias').textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
+  document.getElementById('cd-horas').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+  document.getElementById('cd-min').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+  document.getElementById('cd-seg').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+}
+
+tickCountdown();
+setInterval(tickCountdown, 1000);
+
+/* ---------- Marquee: repete os nomes do line-up e duplica o
+   grupo inteiro, para o loop de CSS ficar contínuo sem salto. ---------- */
+(function renderMarquee() {
+  const todos = CONFIG.diasLineup.flatMap(d => d.artistas.map(a => a.nome));
+  const nomes = Array(8).fill(todos).flat();
+  const grupo = nomes.map(nome => `<span>${nome}<img src="img/globo.webp" alt=""></span>`).join('');
+
+  document.getElementById('marqueeTrack').innerHTML =
+    `<div class="marquee-group">${grupo}</div><div class="marquee-group">${grupo}</div>`;
+})();
+
+/* ---------- Line-up: abas de dia + grade de artistas ---------- */
+(function renderLineup() {
+  const tabsEl = document.getElementById('dayTabs');
+  const gridEl = document.getElementById('lineupGrid');
+
+  CONFIG.diasLineup.forEach((dia, i) => {
+    const tab = document.createElement('button');
+    tab.className = 'day-tab' + (i === 0 ? ' active' : '');
+    tab.textContent = dia.dia;
+
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderGrid(dia);
+    });
+
+    tabsEl.appendChild(tab);
+  });
+
+  function renderGrid(dia) {
+    gridEl.innerHTML = dia.artistas.map(a => `
+      <div class="artist-card">
+        <div class="artist-photo">
+          ${a.instagram
+            ? `<a href="${a.instagram}" target="_blank" rel="noopener noreferrer"><img src="${a.foto}" alt="${a.nome}"></a>`
+            : `<img src="${a.foto}" alt="${a.nome}">`
+          }
+        </div>
+
+        <div class="artist-info">
+          <div class="artist-name">${a.nome}</div>
+
+          <div class="artist-meta">
+            ${a.instagram
+              ? `<a class="instagram-link" href="${a.instagram}" target="_blank" rel="noopener noreferrer" aria-label="Instagram de ${a.nome}">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="1"/>
+                  </svg>
+                </a>`
+              : ''
+            }
+
+            ${a.instagram && a.painel ? `<span class="separator"></span>` : ''}
+            ${a.painel ? `<span class="painel">${a.painel}</span>` : ''}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  renderGrid(CONFIG.diasLineup[0]);
+})();
+
+/* ---------- Espaço: cards de ambiente ---------- */
+(function renderStages() {
+  document.getElementById('ambienteGrid').innerHTML = CONFIG.ambientes.map(p => `
+    <div class="ambiente-card">
+      <img class="ambiente-foto" src="${p.foto}" alt="${p.nome}">
+      <div class="ambiente-info">
+        <h3>${p.nome}</h3>
+        <p>${p.desc}</p>
+      </div>
+    </div>
+  `).join('');
+})();
+
+/* ---------- Ingressos: cards com estado (compra / esgotado / em breve) ---------- */
+(function renderTickets() {
+  document.getElementById('ticketsGrid').innerHTML = CONFIG.ingressos.map(t => `
+    <div class="ticket-card ${t.destaque ? 'highlight' : ''} ${t.esgotado ? 'esgotado' : ''} ${t.emBreve ? 'em-breve-card' : ''}">
+      ${t.destaque ? `<span class="ticket-tag">Destaque</span>` : ''}
+      <h3>${t.nome}</h3>
+      <div class="ticket-price">${t.preco} <small></small></div>
+      <ul>${t.beneficios.map(b => `<li>✓ ${b}</li>`).join('')}</ul>
+
+      ${t.esgotado
+        ? `<span class="btn outline esgotado">Esgotado</span>`
+        : t.emBreve
+          ? `<span class="btn outline em-breve">Em breve</span>`
+          : `<a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy ${t.destaque ? '' : 'outline'}">Comprar</a>`
+      }
+    </div>
+  `).join('');
+})();
+
+/* ---------- FAQ: lista + acordeão (abre uma por vez) ---------- */
+(function renderFaq() {
+  const el = document.getElementById('faqList');
+
+  el.innerHTML = CONFIG.faq.map((item, i) => `
+    <div class="faq-item" data-i="${i}">
+      <button class="faq-q" type="button">${item.p}<span class="plus">+</span></button>
+      <div class="faq-a"><p>${item.r}</p></div>
+    </div>
+  `).join('');
+
+  el.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const answer = item.querySelector('.faq-a');
+
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+
+      el.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+})();
+
+/* ---------- Footer: ícones de redes sociais ---------- */
+(function renderSocial() {
+  const redes = [
+    {
+      nome: 'Instagram',
+      url: 'https://instagram.com/gaysegarotashub',
+      svg: `<path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/>`
+    },
+    {
+      nome: 'TikTok',
+      url: 'https://tiktok.com/@gaysegarotashub',
+      svg: `<path d="M14 3v10.5a3 3 0 11-2-2.8V3h2z"/><path d="M14 3a5 5 0 005 5"/>`
+    },
+    {
+      nome: 'LinkedIn',
+      url: 'https://www.linkedin.com/company/gaysegarotashub/',
+      svg: `<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v6"/><path d="M8 8v.01"/><path d="M12 17v-6"/><path d="M12 14a3 3 0 016 0v3"/>`
+    }
+  ];
+
+  document.getElementById('socialRow').innerHTML = redes.map(r => `
+    <a href="${r.url}" aria-label="${r.nome}" title="${r.nome}" target="_blank" rel="noopener noreferrer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${r.svg}</svg>
+    </a>
+  `).join('');
+})();
+
+/* ---------- Menu mobile: abrir/fechar + fechar ao clicar em link ---------- */
+document.getElementById('menuToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+document.querySelectorAll('#navLinks a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+/* ---------- Botão "voltar ao topo" ---------- */
+document.getElementById('backToTop').addEventListener('click', e => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ---------- Scroll reveal: fade + slide up, repetindo sempre que o
+   elemento entra/sai da viewport (subindo ou descendo a página) ---------- */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    } else {
+      entry.target.classList.remove('visible');
+    }
+  });
+}, { threshold: .12 });
+
+document.querySelectorAll(
+  '.section .eyebrow, .section h2, .artist-card, .ambiente-card, .experiencia-foto, .experiencia-texto, .empreenda-photo, .empreenda-text, .ticket-card, .faq-item'
+).forEach((el, index) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = `${(index % 4) * .08}s`;
+  revealObserver.observe(el);
+});
+</script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
