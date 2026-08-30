@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Gays & Garotas</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -56,9 +56,9 @@ html {
   width: 100%;
   min-height: 100%;
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100% !important;
-  text-size-adjust: 100% !important;
-  overflow-x: hidden !important;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: clip;
 }
 body {
   width: 100%;
@@ -70,9 +70,9 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden !important;
-  -webkit-text-size-adjust: 100% !important;
-  text-size-adjust: 100% !important;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 img {
   display: block;
@@ -95,6 +95,14 @@ select {
 }
 button {
   -webkit-tap-highlight-color: transparent;
+}
+@supports (-webkit-touch-callout: none) {
+  html {
+    min-height: -webkit-fill-available;
+  }
+  body {
+    min-height: -webkit-fill-available;
+  }
 }
 /* ============================================================
     4. LAYOUT BASE / TIPOGRAFIA / BOTÕES (compartilhados)
@@ -443,10 +451,10 @@ header {
   margin: 0 auto 0px auto;
 }
 .abertura h1 {
-  font-size: clamp(52px, 15vw, 138px);
+  font-size: clamp(62px, 20vw, 138px);
   line-height: .92;
   white-space: nowrap;
-  margin-left: 0;
+  margin-left: 20px;
   margin-top: -10px !important;
   text-align: center;
 }
@@ -581,7 +589,7 @@ header {
     margin-bottom: 20px;
   }
   .abertura h1 {
-    font-size: clamp(48px, 14vw, 75px);
+    font-size: clamp(60px, 18vw, 85px);
     margin-top: -10px !important;
     white-space: nowrap;
   }
@@ -981,7 +989,6 @@ header {
   .experiencia-card {
     flex: 0 0 84%;
     min-width: 84%;
-    max-width: 84%;
     scroll-snap-align: start;
     padding: 18px;
     margin: 0;
@@ -1079,7 +1086,6 @@ header {
   .ambiente-card {
     flex: 0 0 88%;
     min-width: 88%;
-    max-width: 88%;
     scroll-snap-align: start;
     background: var(--surface) !important;
     border: 1px solid var(--line) !important;
