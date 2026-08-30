@@ -117,7 +117,28 @@ button {
     .hero-logo-evento {
       -webkit-transform: translateZ(0);
       transform: translateZ(0);
+      display: block;
+      max-width: 460px;
+      width: 100%;
+      height: auto;
+      margin-top: 40px;
+      margin-bottom: 60px;
     }
+
+.abertura h1 {
+  font-size: clamp(62px, 20vw, 138px);
+  line-height: .92;
+  white-space: nowrap;
+  margin-left: 0px;
+  margin-top: -10px !important;
+  text-align: center;
+}
+
+.abertura-acoes .btn {
+    flex: 0 0 auto;
+    min-height: 56px;
+  }
+
   }
 }
 
@@ -471,7 +492,7 @@ header {
   font-size: clamp(62px, 20vw, 138px);
   line-height: .92;
   white-space: nowrap;
-  margin-left: 20px;
+  margin-left: 0px;
   margin-top: -10px !important;
   text-align: center;
 }
