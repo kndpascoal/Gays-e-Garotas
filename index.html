@@ -104,6 +104,23 @@ button {
     min-height: -webkit-fill-available;
   }
 }
+
+/* ============================================================
+    HACK ESTÁVEL EXCLUSIVO PARA O SAFARI (Sem alterar escala global do HTML)
+   ============================================================ */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 768px) {
+    /* Ajustes pontuais e seguros apenas para estabilizar renderização no Safari móvel */
+    .abertura {
+      min-height: -webkit-fill-available;
+    }
+    .hero-logo-evento {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+  }
+}
+
 /* ============================================================
     4. LAYOUT BASE / TIPOGRAFIA / BOTÕES (compartilhados)
    ============================================================ */
