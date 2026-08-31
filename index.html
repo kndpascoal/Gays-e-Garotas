@@ -283,13 +283,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px; /* Aumentei o padding vertical de 16px para 22px para dar mais corpo ao nav */
+  padding: 14px 24px;
   max-width: var(--container);
   margin: 0 auto;
   position: relative;
 }
 .logo-img {
-  height: 44px; /* Aumentado de 38px para 44px para ficar mais destacada */
+  height: 44px;
   width: auto;
   display: block;
   transform: scale(1.15);
@@ -302,13 +302,13 @@ header {
 .nav-links {
   display: flex;
   gap: 32px;
-  font-size: 15px; /* Aumentado levemente de 14px para 15px */
+  font-size: 15px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .04em;
 }
 .nav-links a {
-  color: var(--muted);
+  color: var(--text);
   transition: color .15s;
 }
 .nav-cta {
@@ -317,16 +317,16 @@ header {
   gap: 16px;
 }
 .nav .btn {
-  min-height: 40px; /* Aumentado de 40px para 44px */
+  min-height: 40px;
   padding: 0 24px;
-  font-size: 13px; /* Aumentado de 13px para 14px */
+  font-size: 13px;
 }
 .menu-toggle {
   display: none;
   background: none;
   border: none;
   color: var(--text);
-  font-size: 28px; /* Aumentado de 28px para 32px para facilitar o toque no mobile */
+  font-size: 28px;
   cursor: pointer;
   padding: 0;
   -webkit-appearance: none;
@@ -350,6 +350,8 @@ header {
     text-transform: uppercase;
     letter-spacing: .05em;
     margin-right: 2px;
+    position: relative; /* Habilita o deslocamento */
+    top: 1px;          /* Ajuste a quantidade de pixels que quer descer (ex: 2px a 4px) */
   }
   .nav-mobile-countdown .nav-cd-dias {
     display: flex;
@@ -417,7 +419,6 @@ header {
   background-color: #020b84;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='6' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
 }
-/* DEGRADÊ SUAVE DE TRANSIÇÃO PARA PRETO NO FINAL DA ABERTURA */
 .abertura::after {
   content: "";
   position: absolute;
@@ -437,7 +438,6 @@ header {
   margin: 0 auto;
   padding: 0 24px;
 }
-/* CSS ESPECÍFICO PARA CENTRALIZAR E EDITAR O NOVO LOGO DO EVENTO */
 .hero-logo-evento {
   display: block;
   max-width: 360px;
@@ -555,7 +555,7 @@ header {
     padding-bottom: 130px;
   }
   .hero-logo-evento {
-    max-width: 380px;
+    max-width: 360px;
     margin-top: -10px;
     margin-bottom: 0px;
   }
@@ -896,9 +896,11 @@ header {
   backdrop-filter: blur(22px) saturate(145%);
   -webkit-backdrop-filter: blur(22px) saturate(145%);
   isolation: isolate;
-  transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease, box-shadow .3s ease;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+}
+.experiencia-card.reveal {
+  transition: opacity 1.2s cubic-bezier(.22,1,.36,1), transform 1.2s cubic-bezier(.22,1,.36,1) !important;
 }
 .experiencia-card::before {
   content: "";
@@ -1165,9 +1167,12 @@ header {
   backdrop-filter: blur(22px) saturate(145%);
   -webkit-backdrop-filter: blur(22px) saturate(145%);
   isolation: isolate;
-  transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease, box-shadow .3s ease;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+}
+.ticket-card.reveal {
+  /* Altere o '1.2s' para o tempo que você preferir (ex: 0.5s para mais rápido, 1.5s para mais lento) */
+  transition: opacity 1.2s cubic-bezier(.22,1,.36,1), transform 1.2s cubic-bezier(.22,1,.36,1) !important;
 }
 .ticket-card::before {
   content: "";
@@ -1687,28 +1692,28 @@ footer {
     <div class="experiencia-texto reveal">
       <p>O Gays & Garotas Anos 2000 é um encontro para celebrar, conectar e criar novas experiências em comunidade.</p>
       <div class="experiencia-scroll">
-        <div class="experiencia-cards">
-          <div class="experiencia-card">
+        <div class="experiencia-cards" id="experienciaCards">
+          <div class="experiencia-card reveal">
             <img src="img/experiencia/musica.png" alt="Música">
             <strong>🪩 Música</strong><br>
             <span>Playlist com as mais icônicas dos anos 2000, diversão e uma pista para aproveitar a noite com o duo KERODRAMA.</span>
           </div>
-          <div class="experiencia-card">
+          <div class="experiencia-card reveal">
             <img src="img/experiencia/conexoes.png" alt="Conexões">
             <strong>🤝 Conexões</strong><br>
             <span>empreendedores, creators, profissionais e novas conexões com marcas parceiras.</span>
           </div>
-          <div class="experiencia-card">
+          <div class="experiencia-card reveal">
             <img src="img/experiencia/workshops.png" alt="Workshops">
             <strong>🎓 Workshops</strong><br>
             <span>Os melhores profissionais do mercado transmitindo conhecimento valioso (confira o Line-Up).</span>
           </div>
-          <div class="experiencia-card">
+          <div class="experiencia-card reveal">
             <img src="img/experiencia/comunidade.png" alt="Comunidade">
             <strong>🏳️‍🌈 Comunidade</strong><br>
             <span>Um espaço seguro para celebrar nossa comunidade com liberdade.</span>
           </div>
-          <div class="experiencia-card">
+          <div class="experiencia-card reveal">
             <img src="img/experiencia/experiencias.png" alt="Experiencias">
             <strong>✨ Experiências e Sorteios</strong><br>
             <span>Muitos sorteios e surpresas estão te esperando.</span>
@@ -1858,6 +1863,7 @@ function tickCountdown() {
 }
 tickCountdown();
 setInterval(tickCountdown, 1000);
+
 // OBSERVER REUTILIZÁVEL PARA AS ANIMAÇÕES REPETIREM AO PASSAR PELA TELA
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -1868,6 +1874,7 @@ const revealObserver = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: .12 });
+
 function observeElements(selector) {
   document.querySelectorAll(selector).forEach((el, index) => {
     if (!el.classList.contains('reveal')) {
@@ -1877,6 +1884,7 @@ function observeElements(selector) {
     revealObserver.observe(el);
   });
 }
+
 (function renderMarquee() {
   const todos = CONFIG.diasLineup.flatMap(d => d.artistas.map(a => a.nome));
   const nomes = Array(8).fill(todos).flat();
@@ -1884,6 +1892,7 @@ function observeElements(selector) {
   document.getElementById('marqueeTrack').innerHTML =
     `<div class="marquee-group">${grupo}</div><div class="marquee-group">${grupo}</div>`;
 })();
+
 (function renderLineup() {
   const tabsEl = document.getElementById('dayTabs');
   const gridEl = document.getElementById('lineupGrid');
@@ -1900,7 +1909,7 @@ function observeElements(selector) {
   });
   function renderGrid(dia) {
     gridEl.innerHTML = dia.artistas.map(a => `
-      <div class="artist-card">
+      <div class="artist-card reveal">
         <div class="artist-photo">
           ${a.instagram
             ? `<a href="${a.instagram}" target="_blank" rel="noopener noreferrer"><img src="${a.foto}" alt="${a.nome}"></a>`
@@ -1930,9 +1939,10 @@ function observeElements(selector) {
   }
   renderGrid(CONFIG.diasLineup[0]);
 })();
+
 (function renderStages() {
   document.getElementById('ambienteGrid').innerHTML = CONFIG.ambientes.map(p => `
-    <div class="ambiente-card">
+    <div class="ambiente-card reveal">
       <img class="ambiente-foto" src="${p.foto}" alt="${p.nome}">
       <div class="ambiente-info">
         <h3>${p.nome}</h3>
@@ -1942,9 +1952,10 @@ function observeElements(selector) {
   `).join('');
   observeElements('#ambienteGrid .ambiente-card');
 })();
+
 (function renderTickets() {
   document.getElementById('ticketsGrid').innerHTML = CONFIG.ingressos.map(t => `
-    <div class="ticket-card ${t.destaque ? 'highlight' : ''} ${t.esgotado ? 'esgotado' : ''} ${t.emBreve ? 'em-breve-card' : ''}">
+    <div class="ticket-card reveal ${t.destaque ? 'highlight' : ''} ${t.esgotado ? 'esgotado' : ''} ${t.emBreve ? 'em-breve-card' : ''}">
       ${t.destaque ? `<span class="ticket-tag">Destaque</span>` : ''}
       <h3>${t.nome}</h3>
       <div class="ticket-price">${t.preco} <small></small></div>
@@ -1959,10 +1970,11 @@ function observeElements(selector) {
   `).join('');
   observeElements('#ticketsGrid .ticket-card');
 })();
+
 (function renderFaq() {
   const el = document.getElementById('faqList');
   el.innerHTML = CONFIG.faq.map((item, i) => `
-    <div class="faq-item" data-i="${i}">
+    <div class="faq-item reveal" data-i="${i}">
       <button class="faq-q" type="button">${item.p}<span class="plus">+</span></button>
       <div class="faq-a"><p>${item.r}</p></div>
     </div>
@@ -1984,6 +1996,7 @@ function observeElements(selector) {
     });
   });
 })();
+
 (function renderSocial() {
   const redes = [
     {
@@ -2008,6 +2021,7 @@ function observeElements(selector) {
     </a>
   `).join('');
 })();
+
 document.getElementById('menuToggle').addEventListener('click', () => {
   document.getElementById('navLinks').classList.toggle('open');
 });
@@ -2020,8 +2034,10 @@ document.getElementById('backToTop').addEventListener('click', e => {
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-// REGISTRA TODOS OS ELEMENTOS FIXOS DA PÁGINA NO OBSERVER DE ANIMAÇÃO
+
+// REGISTRA TODOS OS ELEMENTOS FIXOS E DINÂMICOS DA PÁGINA NO OBSERVER DE ANIMAÇÃO
 observeElements('.reveal');
+observeElements('#experienciaCards .experiencia-card');
 </script>
 </body>
 </html>
