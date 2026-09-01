@@ -30,7 +30,7 @@
       "addressCountry": "BR"
     }
   },
-  "url": "http://gaysegarotas.com.br/",
+  "url": "https://gaysegarotas.com.br/",
   "description": "O encontro que conecta creators, empreendedores e marcas em um ambiente seguro e nostálgico.",
   "offers": {
     "@type": "Offer",
@@ -1697,12 +1697,14 @@ header {
   color: var(--muted);
   font-size: 15px;
   font-style: italic;
-  line-height: 1.3;
   margin: 4px 0 2px;
   text-align: justify;
   hyphens: auto;
   overflow: hidden;
-  transition: max-height .35s ease;
+  transition: none !important;
+}
+.feedback-card.expanded .feedback-texto {
+  max-height: none !important;
 }
 .feedback-toggle {
   display: none;
@@ -1762,9 +1764,16 @@ header {
   transform: translateY(-5px) translateZ(0);
   border-color: rgba(255,255,255,.30);
 }
+h3.ticket-lote {
+  color: #ffffff8b;
+  text-transform: lowercase !important;
+  font-size: 10px;
+}
 .ticket-price {
   font-family: var(--font-display);
   font-size: 40px;
+  margin-top: -18px;
+  margin-bottom: -12px;
 }
 .ticket-price small {
   font-size: 15px;
@@ -2656,7 +2665,7 @@ function observeElements(selector) {
   compraEl.innerHTML = CONFIG.ingressos.map(t => `
     <div class="ticket-card reveal ${t.destaque ? 'highlight' : ''} ${t.esgotado ? 'esgotado' : ''} ${t.emBreve ? 'em-breve-card' : ''}">
       ${t.destaque ? `<span class="ticket-tag">Ingresso</span>` : ''}
-      <h3>${t.nome}</h3>
+      <h3 class="ticket-lote">${t.nome}</h3>
       <div class="ticket-price">${t.preco} <small></small></div>
       <ul>${t.beneficios.map(b => `<li>✓ ${b}</li>`).join('')}</ul>
       ${t.esgotado
@@ -2719,7 +2728,8 @@ function observeElements(selector) {
         toggle.classList.add('show');
 
         toggle.addEventListener('click', () => {
-          const isOpen = toggle.classList.toggle('open');
+          const isOpen = card.classList.toggle('expanded');
+          toggle.classList.toggle('open', isOpen);
           if (isOpen) {
             texto.style.maxHeight = fullHeight + 'px';
             label.textContent = 'Ver menos';
