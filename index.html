@@ -34,7 +34,7 @@
   "description": "O encontro que conecta creators, empreendedores e marcas em um ambiente seguro e nostálgico.",
   "offers": {
     "@type": "Offer",
-    "url": "https://pay.kiwify.com.br/bpJsI6S",
+    "url": "https://mpago.li/2dRXSQu",
     "price": "285.00",
     "priceCurrency": "BRL",
     "availability": "https://schema.org/InStock",
@@ -925,6 +925,10 @@ header {
 .experiencia-card span {
   display: block;
   margin-top: 8px;
+  text-align: justify;
+  hyphens: auto;
+  line-height: 1.1;
+  font-size: 13px;
 }
 .experiencia-texto .btn {
   padding: 0 24px;
@@ -1024,6 +1028,16 @@ header {
   }
 }
 @media (max-width: 600px) {
+  .btn::before {
+    display: none !important;
+  }
+  .experiencia-card::after,
+  .ambiente-card::after,
+  .sobre-card::after,
+  .edicao-card::after,
+  .ticket-card::after {
+    display: none !important;
+  }
   .experiencia-scroll {
     position: relative;
     margin-right: -22px;
@@ -1067,10 +1081,6 @@ header {
     border-color: var(--liquid-border);
     box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), 0 12px 30px rgba(0,0,0,.22);
   }
-  .experiencia-card:hover::after {
-    left: -70%;
-    opacity: .55;
-  }
   .experiencia-card,
   .ticket-card,
   .faq-item,
@@ -1088,7 +1098,7 @@ header {
   }
 }
 /* ============================================================
-    11. SEÇÃO ESPAÇO (LIQUID GLASS)
+    11. SEÇÃO ESPAÇO (LIQUID GLASS + BORDA BANDEIRA LGBT+)
    ============================================================ */
 .ambiente-grid {
   display: grid;
@@ -1097,53 +1107,81 @@ header {
 }
 .ambiente-card {
   position: relative;
-  background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
-  border: 1px solid var(--liquid-border);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 59, 48, 0.08) 0%,
+    rgba(255, 149, 0, 0.06) 20%,
+    rgba(255, 204, 0, 0.05) 40%,
+    rgba(52, 199, 89, 0.06) 60%,
+    rgba(0, 122, 255, 0.08) 80%,
+    rgba(175, 82, 222, 0.09) 100%
+  );
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), var(--liquid-shadow);
-  backdrop-filter: blur(22px) saturate(145%);
-  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2),
+              0 10px 30px rgba(0, 0, 0, 0.4),
+              0 0 25px rgba(18, 65, 235, 0.12);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
   isolation: isolate;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), border-color 1.2s ease;
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.22, 1, .36, 1), background 0.4s ease, box-shadow 0.4s ease;
 }
+/* Borda de vidro com gradiente da bandeira LGBT+ */
 .ambiente-card::before {
   content: "";
   position: absolute;
-  top: 1px;
-  left: 10px;
-  right: 10px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), rgba(255,255,255,.15), transparent);
-  opacity: .8;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 59, 48, 0.6),
+    rgba(255, 149, 0, 0.5),
+    rgba(255, 204, 0, 0.5),
+    rgba(52, 199, 89, 0.5),
+    rgba(0, 122, 255, 0.6),
+    rgba(175, 82, 222, 0.6)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
   pointer-events: none;
   z-index: 20;
 }
 .ambiente-card::after {
   content: "";
   position: absolute;
-  width: 45%;
+  width: 55%;
   height: 220%;
   top: -60%;
-  left: -30%;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.035) 45%, rgba(255,255,255,.10) 50%, rgba(255,255,255,.025) 55%, transparent 100%);
+  left: -70%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.035) 45%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.025) 55%, transparent 100%);
   transform: rotate(18deg);
   pointer-events: none;
   opacity: .55;
-  transition: transform .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
+  transition: left .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
   z-index: 15;
 }
 .ambiente-card:hover {
   transform: translateY(-5px) translateZ(0);
-  border-color: rgba(255,255,255,.30);
-  background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.045));
-  box-shadow: inset 0 1px 1px rgba(255,255,255,.20), 0 25px 60px rgba(0,0,0,.38), 0 0 35px rgba(18,65,235,.07);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 59, 48, 0.15) 0%,
+    rgba(255, 149, 0, 0.12) 20%,
+    rgba(255, 204, 0, 0.10) 40%,
+    rgba(52, 199, 89, 0.12) 60%,
+    rgba(0, 122, 255, 0.15) 80%,
+    rgba(175, 82, 222, 0.18) 100%
+  );
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35),
+              0 25px 60px rgba(0, 0, 0, 0.5),
+              0 0 40px rgba(255, 62, 165, 0.2);
 }
 .ambiente-card:hover::after {
-  transform: translateX(220%) rotate(18deg);
-  opacity: .85;
+  left: 145%;
+  opacity: .95;
 }
 .ambiente-foto {
   width: 100%;
@@ -1155,15 +1193,34 @@ header {
 }
 .ambiente-info {
   padding: 22px;
+  display: flex;
+  align-items: center;        /* Alinha H3 e P verticalmente no centro */
+  justify-content: space-between; /* Mantém a separação nas extremidades */
+  min-height: 80px;            /* Fixa uma altura mínima igual para todos os cards */
+  box-sizing: border-box;
+  gap: 16px;
 }
 .ambiente-info h3 {
-  font-size: 15px;
-  margin-bottom: 8px;
-  letter-spacing: .07em !important;
+  font-family: 'BootzyTM', sans-serif !important;
+  font-size: 18px;
+  letter-spacing: .06em !important;
+  text-transform: uppercase;
+  color: #fff;
+  transform: rotate(-3deg);
+  display: inline-block;
+  line-height: 1;
+  flex-shrink: 0;
+  margin: 0;
+  align-self: center;          /* Reforça a centralização vertical individual */
 }
 .ambiente-info p {
-  color: var(--muted);
-  font-size: 14px;
+  color: #fff;
+  font-size: 13px;
+  text-align: justify;
+  hyphens: auto;
+  margin: 0;
+  line-height: 1.1;
+  align-self: center;          /* Reforça a centralização vertical individual */
 }
 @media (max-width: 600px) {
   .ambiente-scroll {
@@ -1197,13 +1254,9 @@ header {
   }
   .ambiente-card {
     flex: 0 0 84%;
-    min-width: 84%;
+    min-width: 90%;
     scroll-snap-align: start;
     transform: none !important;
-  }
-  .ambiente-card:hover::after {
-    transform: rotate(18deg);
-    opacity: .55;
   }
 }
 /* ============================================================
@@ -1317,7 +1370,7 @@ header {
 }
 
 /* ============================================================
-   13. SEÇÃO SOBRE O HUB (LIQUID GLASS BANDEIRA LGBT+)
+    13. SEÇÃO SOBRE O HUB (LIQUID GLASS BANDEIRA LGBT+)
    ============================================================ */
 .sobre-grid {
   display: grid;
@@ -1384,15 +1437,15 @@ header {
 .sobre-card::after {
   content: "";
   position: absolute;
-  width: 45%;
+  width: 55%;
   height: 220%;
   top: -60%;
-  left: -30%;
+  left: -70%;
   background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.035) 45%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.025) 55%, transparent 100%);
   transform: rotate(18deg);
   pointer-events: none;
   opacity: .55;
-  transition: transform .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
+  transition: left .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
   z-index: 15;
 }
 
@@ -1413,7 +1466,7 @@ header {
 }
 
 .sobre-card:hover::after {
-  transform: translateX(220%) rotate(18deg);
+  left: 145%;
   opacity: .95;
 }
 
@@ -1471,7 +1524,7 @@ header {
     transform: none !important;
   }
   .sobre-card:hover::after {
-    transform: rotate(18deg);
+    left: -70%;
     opacity: .55;
   }
 }
@@ -1516,15 +1569,15 @@ header {
 .edicao-card::after {
   content: "";
   position: absolute;
-  width: 45%;
+  width: 55%;
   height: 220%;
   top: -60%;
-  left: -30%;
+  left: -70%;
   background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.035) 45%, rgba(255,255,255,.10) 50%, rgba(255,255,255,.025) 55%, transparent 100%);
   transform: rotate(18deg);
   pointer-events: none;
   opacity: .55;
-  transition: transform .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
+  transition: left .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
   z-index: 15;
 }
 .edicao-card:hover {
@@ -1534,7 +1587,7 @@ header {
   box-shadow: inset 0 1px 1px rgba(255,255,255,.20), 0 25px 60px rgba(0,0,0,.38), 0 0 35px rgba(18,65,235,.07);
 }
 .edicao-card:hover::after {
-  transform: translateX(220%) rotate(18deg);
+  left: 145%;
   opacity: .85;
 }
 .edicao-foto {
@@ -1606,7 +1659,7 @@ header {
     transform: none !important;
   }
   .edicao-card:hover::after {
-    transform: rotate(18deg);
+    left: -70%;
     opacity: .55;
   }
 }
@@ -1655,15 +1708,15 @@ header {
 .ticket-card::after {
   content: "";
   position: absolute;
-  width: 45%;
+  width: 55%;
   height: 220%;
   top: -60%;
-  left: -30%;
+  left: -70%;
   background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.035) 45%, rgba(255,255,255,.10) 50%, rgba(255,255,255,.025) 55%, transparent 100%);
   transform: rotate(18deg);
   pointer-events: none;
   opacity: .55;
-  transition: transform .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
+  transition: left .8s cubic-bezier(.22,1,.36,1), opacity .4s ease;
   z-index: 15;
 }
 .ticket-card:hover {
@@ -1673,7 +1726,7 @@ header {
   box-shadow: inset 0 1px 1px rgba(255,255,255,.20), 0 25px 60px rgba(0,0,0,.38), 0 0 35px rgba(18,65,235,.07);
 }
 .ticket-card:hover::after {
-  transform: translateX(220%) rotate(18deg);
+  left: 145%;
   opacity: .85;
 }
 .ticket-card.highlight {
@@ -1841,7 +1894,7 @@ h3.ticket-lote {
     box-shadow: inset 0 1px 1px rgba(255,255,255,.16), inset 0 -1px 1px rgba(255,255,255,.035), 0 12px 30px rgba(0,0,0,.22);
   }
   .ticket-card:hover::after {
-    transform: rotate(18deg);
+    left: -70%;
     opacity: .55;
   }
   .ticket-card.highlight,
@@ -2254,7 +2307,7 @@ footer {
       <li><a href="#info" class="bootzy">FAQ</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy">Comprar ingresso</a>
+      <a href="https://mpago.li/2dRXSQu" target="_blank" rel="noopener noreferrer" class="btn bootzy">Comprar ingresso</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" type="button">☰</button>
     </div>
   </nav>
@@ -2265,7 +2318,7 @@ footer {
     <h1 class="bootzy reveal"><span style="color:#ffffff;">ANO</span><span style="color:#ff007f;text-transform:lowercase;">s</span><span style="color:#ff007f;">2</span><span style="color:#ffffff;">000</span></h1>
     <p class="abertura-subtitulo reveal" style="color:#ffffff;">      Conectando creators, empreendedores, profissionais e marcas em um ambiente seguro. Dessa vez, no The Core e com a temática dos anos 2000. Confira!</p>
     <div class="abertura-acoes reveal">
-      <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy">Garantir ingresso</a>
+      <a href="https://mpago.li/2dRXSQu" target="_blank" rel="noopener noreferrer" class="btn bootzy">Garantir ingresso</a>
       <a href="#sobre-hub" class="btn outline bootzy">Sobre o HUB</a>
     </div>
     <span class="abertura-datas reveal" id="heroDates">— carregando datas —</span>
@@ -2340,7 +2393,7 @@ footer {
           </div>
         </div>
       </div>
-      <a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy" style="margin-top:10px;">Quero fazer parte</a>
+      <a href="https://mpago.li/2dRXSQu" target="_blank" rel="noopener noreferrer" class="btn bootzy" style="margin-top:10px;">Quero fazer parte</a>
     </div>
   </div>
 </section>
@@ -2348,6 +2401,13 @@ footer {
   <div class="container">
     <span class="eyebrow reveal">Estrutura</span>
     <h2 class="reveal">Espaço</h2>
+    <a href="https://www.google.com/maps/search/?api=1&query=R.+Maj.+Sertório,+209+-+República,+São+Paulo+-+SP" target="_blank" rel="noopener noreferrer" class="reveal" style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-family: var(--font-body); font-weight: 600; color: var(--muted); margin-bottom: 20px; text-transform: none; letter-spacing: 0.02em; text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; color: var(--accent-2);">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+      </svg>
+      THE CORE - R. Maj. Sertório, 209 - República, São Paulo - SP, 01222-000
+    </a>
     <div class="ambiente-scroll">
       <div class="ambiente-grid" id="ambienteGrid"></div>
     </div>
@@ -2355,7 +2415,7 @@ footer {
 </section>
 <section class="section" id="ingressos">
   <div class="container">
-    <span class="eyebrow reveal">Ingressos</span>
+    <span class="eyebrow reveal">Ingresso</span>
     <h2 class="reveal">Venha fazer parte</h2>
     
         <h3 class="reveal" style="font-size: 14px; font-family: var(--font-body); font-weight: 600; color: var(--muted); margin-bottom: 16px; text-transform: none; letter-spacing: 0.02em;">O que a galera do HUB diz:</h3>
@@ -2519,9 +2579,9 @@ const CONFIG = {
   }],
   ambientes: [
     { nome: 'Pista', desc: 'Espaço para curtir o After Party', foto: 'img/espaços/pista.jpg' },
-    { nome: 'Restaurante', desc: 'Petiscos a refeições completas', foto: 'img/espaços/restaurante.jpg' },
-    { nome: 'Bar', desc: 'Um menu completo de drinks está te esperando', foto: 'img/espaços/bar.jpg' },
-    { nome: 'The Core', desc: 'Ponto de encontro do G&G Anos 2000, que reúne cultura e gastronomia', foto: 'img/espaços/thecore.jpg' }
+    { nome: 'Restaurante', desc: 'Petiscos a refeições completas', foto: 'img/espaços/restaurante.png' },
+    { nome: 'Bar', desc: 'Um menu completo de drinks está te esperando', foto: 'img/espaços/bar.png' },
+    { nome: 'The Core', desc: 'Ponto de encontro do G&G Anos 2000, que reúne cultura e gastronomia', foto: 'img/espaços/thecore.png' }
   ],
   feedbacks: [
     { autor: 'Carolina Queiroz', cargo: 'Videomaker', foto: 'img/feedbacks/carolina.jpeg', texto: 'Eu já fui em tanto evento de marketing digital grande e esse foi o que tive mais insights que realmente fizeram diferença, sabe?' },
@@ -2534,7 +2594,7 @@ const CONFIG = {
   faq: [
     {
       p: 'Posso entrar e sair do evento?',
-      r: 'Sim, a circulação é permitida. No entanto, ao deixar o espaço temporariamente, o fechamento da comanda vigente será realizado.'
+      r: 'Sim, a circulação é permitida. No entanto, ao deixar o espaço temporariamente, o fechamento da comanda vigente será realizada.'
     },
     {
       p: 'O evento é apenas para criadores de conteúdo?',
@@ -2672,7 +2732,7 @@ function observeElements(selector) {
         ? `<span class="btn outline esgotado">Esgotado</span>`
         : t.emBreve
           ? `<span class="btn outline em-breve">Em breve</span>`
-          : `<a href="https://pay.kiwify.com.br/bpJsI6S" target="_blank" rel="noopener noreferrer" class="btn bootzy ${t.destaque ? '' : 'outline'}">Comprar</a>`
+          : `<a href="https://mpago.li/2dRXSQu" target="_blank" rel="noopener noreferrer" class="btn bootzy ${t.destaque ? '' : 'outline'}">Comprar</a>`
       }
     </div>
   `).join('');
