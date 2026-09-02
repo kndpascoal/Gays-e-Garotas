@@ -1855,6 +1855,11 @@ header {
   overflow: hidden;
   transition: none !important;
 }
+/* Altura de referência = 4 linhas (line-height 1.3 * font-size 15px * 4) */
+.feedback-texto {
+  --linhas-visiveis: 4;
+  max-height: calc(1.3em * var(--linhas-visiveis));
+}
 .feedback-card.expanded .feedback-texto {
   max-height: none !important;
 }
@@ -1869,11 +1874,14 @@ header {
   font-size: 11px !important;
   font-weight: 600;
   cursor: pointer;
-  padding: 0;
+  padding: 0px 0;
   margin: 0 0 10px;
   line-height: 1;
   -webkit-appearance: none;
   appearance: none;
+  touch-action: manipulation;
+  position: relative;
+  z-index: 2;
 }
 .feedback-toggle.show {
   display: flex;
@@ -2863,43 +2871,71 @@ function observeElements(selector) {
     revealObserver.observe(el);
   });
 
-  // Define a altura de referência com base no card da Carolina (o mais curto)
-  // e adiciona o botão "ver mais/menos" apenas nos cards cujo texto ultrapassa essa altura.
+  // Limita o texto a 4 linhas visíveis (via CSS) e mostra o botão "ver mais/menos"
+  // apenas nos cards cujo texto realmente ultrapassa essas 4 linhas.
   function setupExpandableFeedbacks() {
     const textos = Array.from(feedbackEl.querySelectorAll('.feedback-texto'));
     if (!textos.length) return;
-
-    // Reseta para medir a altura natural de cada texto
-    textos.forEach(t => { t.style.maxHeight = 'none'; });
-
-    // Referência: card da Carolina (índice 1 no CONFIG.feedbacks), senão o menor de todos
-    let refIndex = CONFIG.feedbacks.findIndex(f => f.autor === 'Carolina Queiroz');
-    if (refIndex === -1) refIndex = 0;
-    let refHeight = textos[refIndex] ? textos[refIndex].scrollHeight : Math.min(...textos.map(t => t.scrollHeight));
 
     textos.forEach(texto => {
       const card = texto.closest('.feedback-card');
       const toggle = card.querySelector('.feedback-toggle');
       const label = toggle.querySelector('.toggle-label');
+
+      // Mede a altura real do texto sem limite, e a altura de 4 linhas (definida no CSS)
+      texto.style.maxHeight = 'none';
       const fullHeight = texto.scrollHeight;
+      const lineHeightPx = parseFloat(getComputedStyle(texto).lineHeight);
+      const refHeight = Math.ceil(lineHeightPx * 4);
+      texto.style.maxHeight = '';
 
       if (fullHeight > refHeight + 4) {
-        texto.style.maxHeight = refHeight + 'px';
+        card.classList.remove('expanded');
+        toggle.classList.remove('open');
+        label.textContent = 'Ver mais';
         toggle.classList.add('show');
 
-        toggle.addEventListener('click', () => {
-          const isOpen = card.classList.toggle('expanded');
-          toggle.classList.toggle('open', isOpen);
-          if (isOpen) {
-            texto.style.maxHeight = fullHeight + 'px';
-            label.textContent = 'Ver menos';
-          } else {
-            texto.style.maxHeight = refHeight + 'px';
-            label.textContent = 'Ver mais';
-          }
-        });
+        // Evita listeners duplicados quando setupExpandableFeedbacks roda de novo (ex: resize)
+        if (!toggle.dataset.bound) {
+          toggle.dataset.bound = '1';
+
+          const doToggle = () => {
+            const isOpen = card.classList.toggle('expanded');
+            toggle.classList.toggle('open', isOpen);
+            label.textContent = isOpen ? 'Ver menos' : 'Ver mais';
+          };
+
+          // Safari (principalmente iOS) às vezes não dispara o "click" sintético em botões
+          // dentro de containers com rolagem lateral (scroll-snap + overflow-scrolling: touch).
+          // Usamos pointerup como gatilho principal, com click como fallback para outros navegadores,
+          // e um guard de tempo para não disparar duas vezes quando ambos ocorrem.
+          let lastTrigger = 0;
+          const triggerOnce = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const now = Date.now();
+            if (now - lastTrigger < 300) return;
+            lastTrigger = now;
+            doToggle();
+          };
+
+          toggle.addEventListener('pointerup', triggerOnce);
+          toggle.addEventListener('click', triggerOnce);
+
+          // Também permite abrir clicando no card inteiro, exceto no próprio botão
+          // (já tratado acima) ou em links/imagens que existam dentro do card.
+          card.addEventListener('pointerup', (e) => {
+            if (e.target.closest('.feedback-toggle')) return;
+            if (e.target.closest('a')) return;
+            const now = Date.now();
+            if (now - lastTrigger < 300) return;
+            lastTrigger = now;
+            doToggle();
+          });
+          card.style.cursor = 'pointer';
+        }
       } else {
-        texto.style.maxHeight = fullHeight + 'px';
+        toggle.classList.remove('show');
       }
     });
   }
