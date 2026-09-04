@@ -81,7 +81,7 @@
   ],
   "offers": {
     "@type": "Offer",
-    "url": "https://mpago.li/2dRXSQu",
+    "url": "https://mpago.la/1gacRUM",
     "price": "285.00",
     "priceCurrency": "BRL",
     "availability": "https://schema.org/InStock",
@@ -1293,7 +1293,7 @@ header {
 .ambiente-info {
   padding: 22px;
   display: flex;
-  align-items: center;      /* Alinha H3 e P verticalmente no centro */
+  align-items: center;     /* Alinha H3 e P verticalmente no centro */
   justify-content: space-between; /* Mantém a separação nas extremidades */
   min-height: 80px;            /* Fixa uma altura mínima igual para todos os cards */
   box-sizing: border-box;
@@ -2414,7 +2414,7 @@ footer {
       <li><a href="#info" class="bootzy">FAQ</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="https://mpago.li/2dRXSQu" target="_blank" rel="noopener noreferrer" class="btn bootzy">Comprar ingresso</a>
+      <a href="https://mpago.la/1gacRUM" target="_blank" rel="noopener noreferrer" class="btn bootzy link-pagamento-global">Comprar ingresso</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" type="button">☰</button>
     </div>
   </nav>
@@ -2425,7 +2425,7 @@ footer {
     <h1 class="bootzy reveal"><span style="color:#ffffff;">ANO</span><span style="color:#ff007f;text-transform:lowercase;">s</span><span style="color:#ff007f;">2</span><span style="color:#ffffff;">000</span></h1>
     <p class="abertura-subtitulo reveal" style="color:#ffffff;">     Conectando creators, empreendedores, profissionais e marcas em um ambiente seguro. Dessa vez, no The Core e com a temática dos anos 2000. Confira!</p>
     <div class="abertura-acoes reveal">
-      <a href="https://mpago.li/2dRXSQu" target="_blank" rel="noopener noreferrer" class="btn bootzy">Garantir ingresso</a>
+      <a href="https://mpago.la/1gacRUM" target="_blank" rel="noopener noreferrer" class="btn bootzy link-pagamento-global">Garantir ingresso</a>
       <a href="#sobre-hub" class="btn outline bootzy">Sobre o HUB</a>
     </div>
     <span class="abertura-datas reveal" id="heroDates">— carregando datas —</span>
@@ -2500,7 +2500,7 @@ footer {
           </div>
         </div>
       </div>
-      <a href="https://mpago.li/2dRXSQu" target="_blank" rel="noopener noreferrer" class="btn bootzy" style="margin-top:10px;">Quero fazer parte</a>
+      <a href="https://mpago.la/1gacRUM" target="_blank" rel="noopener noreferrer" class="btn bootzy link-pagamento-global" style="margin-top:10px;">Quero fazer parte</a>
     </div>
   </div>
 </section>
@@ -2525,7 +2525,7 @@ footer {
     <span class="eyebrow reveal">Ingresso</span>
     <h2 class="reveal">Venha fazer parte</h2>
     
-        <h3 class="reveal" style="font-size: 14px; font-family: var(--font-body); font-weight: 600; color: var(--muted); margin-bottom: 16px; text-transform: none; letter-spacing: 0.02em;">O que a galera do HUB diz:</h3>
+      <h3 class="reveal" style="font-size: 14px; font-family: var(--font-body); font-weight: 600; color: var(--muted); margin-bottom: 16px; text-transform: none; letter-spacing: 0.02em;">O que a galera do HUB diz:</h3>
     <div class="feedbacks-scroll" style="margin-bottom: 32px;">
       <div class="tickets-grid" id="feedbacksGrid"></div>
     </div>
@@ -2665,11 +2665,24 @@ footer {
   </svg>
 </a>
 <script>
+// =========================================================================
+// 🔗 REFERÊNCIA DO LINK DE PAGAMENTO GLOBAL (Altere apenas aqui quando precisar)
+// =========================================================================
+const LINK_PAGAMENTO = 'https://mpago.la/1gacRUM';
+
+// Atualiza automaticamente os links estáticos do HTML que possuem a classe .link-pagamento-global
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.link-pagamento-global').forEach(el => {
+    el.href = LINK_PAGAMENTO;
+  });
+});
+
 // GARANTE O CARREGAMENTO NO TOPO ABSOLUTO
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
 window.scrollTo(0, 0);
+
 const CONFIG = {
   dataInicio: '12/09/2026 - 14:00:00',
   textoDatas: '12 de setembro · The Core - São Paulo',
@@ -2714,7 +2727,9 @@ const CONFIG = {
     }
   ]
 };
+
 document.getElementById('heroDates').textContent = CONFIG.textoDatas;
+
 function tickCountdown() {
   const [data, hora] = CONFIG.dataInicio.split(' - ');
   const [dia, mes, ano] = data.split('/');
@@ -2827,7 +2842,7 @@ function observeElements(selector) {
   });
 })();
 
-// RENDERIZA APENAS O CARD DE COMPRA DO INGRESSO
+// RENDERIZA APENAS O CARD DE COMPRA DO INGRESSO USANDO A VARIÁVEL GLOBAL
 (function renderTicketCompra() {
   const compraEl = document.getElementById('ticketCompraGrid');
   compraEl.innerHTML = CONFIG.ingressos.map(t => `
@@ -2840,7 +2855,7 @@ function observeElements(selector) {
         ? `<span class="btn outline esgotado">Esgotado</span>`
         : t.emBreve
           ? `<span class="btn outline em-breve">Em breve</span>`
-          : `<a href="https://mpago.li/2dRXSQu" target="_blank" rel="noopener noreferrer" class="btn bootzy ${t.destaque ? '' : 'outline'}">Comprar</a>`
+          : `<a href="${LINK_PAGAMENTO}" target="_blank" rel="noopener noreferrer" class="btn bootzy ${t.destaque ? '' : 'outline'}">Comprar</a>`
       }
     </div>
   `).join('');
@@ -2871,8 +2886,6 @@ function observeElements(selector) {
     revealObserver.observe(el);
   });
 
-  // Limita o texto a 4 linhas visíveis (via CSS) e mostra o botão "ver mais/menos"
-  // apenas nos cards cujo texto realmente ultrapassa essas 4 linhas.
   function setupExpandableFeedbacks() {
     const textos = Array.from(feedbackEl.querySelectorAll('.feedback-texto'));
     if (!textos.length) return;
@@ -2882,7 +2895,6 @@ function observeElements(selector) {
       const toggle = card.querySelector('.feedback-toggle');
       const label = toggle.querySelector('.toggle-label');
 
-      // Mede a altura real do texto sem limite, e a altura de 4 linhas (definida no CSS)
       texto.style.maxHeight = 'none';
       const fullHeight = texto.scrollHeight;
       const lineHeightPx = parseFloat(getComputedStyle(texto).lineHeight);
@@ -2895,7 +2907,6 @@ function observeElements(selector) {
         label.textContent = 'Ver mais';
         toggle.classList.add('show');
 
-        // Evita listeners duplicados quando setupExpandableFeedbacks roda de novo (ex: resize)
         if (!toggle.dataset.bound) {
           toggle.dataset.bound = '1';
 
@@ -2905,10 +2916,6 @@ function observeElements(selector) {
             label.textContent = isOpen ? 'Ver menos' : 'Ver mais';
           };
 
-          // Safari (principalmente iOS) às vezes não dispara o "click" sintético em botões
-          // dentro de containers com rolagem lateral (scroll-snap + overflow-scrolling: touch).
-          // Usamos pointerup como gatilho principal, com click como fallback para outros navegadores,
-          // e um guard de tempo para não disparar duas vezes quando ambos ocorrem.
           let lastTrigger = 0;
           const triggerOnce = (e) => {
             e.preventDefault();
@@ -2922,8 +2929,6 @@ function observeElements(selector) {
           toggle.addEventListener('pointerup', triggerOnce);
           toggle.addEventListener('click', triggerOnce);
 
-          // Também permite abrir clicando no card inteiro, exceto no próprio botão
-          // (já tratado acima) ou em links/imagens que existam dentro do card.
           card.addEventListener('pointerup', (e) => {
             if (e.target.closest('.feedback-toggle')) return;
             if (e.target.closest('a')) return;
@@ -2940,7 +2945,6 @@ function observeElements(selector) {
     });
   }
 
-  // Aguarda o layout (fontes/imagens) assentar antes de medir
   requestAnimationFrame(() => requestAnimationFrame(setupExpandableFeedbacks));
   window.addEventListener('resize', () => {
     clearTimeout(window.__fbResizeTimer);
@@ -3012,11 +3016,9 @@ document.getElementById('backToTop').addEventListener('click', e => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// REGISTRA TODOS OS ELEMENTOS FIXOS E DINÂMICOS DA PÁGINA NO OBSERVER DE ANIMAÇÃO
 observeElements('.reveal');
 observeElements('#experienciaCards .experiencia-card');
 
-// CONTROLE DE EXIBIÇÃO DO BOTÃO VOLTAR AO TOPO A PARTIR DO LINE-UP
 const backToTopBtn = document.getElementById('backToTop');
 const lineupSection = document.getElementById('lineup');
 
@@ -3029,7 +3031,6 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// CONTROLE DINÂMICO DO GRADIENTE LATERAL (SOME AO CHEGAR NO FIM)
 (function initScrollFades() {
   const containers = [
     document.querySelector('.experiencia-scroll'),
