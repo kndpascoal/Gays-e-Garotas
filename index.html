@@ -1729,8 +1729,8 @@ header {
 
 .ticket-price-val {
   font-family: var(--font-display);
-  font-size: 36px;
-  line-height: 1;
+  font-size: 31px;
+  line-height: 1.5;
   color: #fff;
   text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
@@ -2214,23 +2214,23 @@ footer {
         <div class="experiencia-cards" id="experienciaCards">
           <div class="experiencia-card reveal">
             <img src="img/experiencia/comunidade.png" alt="Comunidade">
-            <strong>🏳️‍🌈 Comunidade</strong><br>
+            <strong>Comunidade</strong><br>
             <span>Um ambiente acolhedor, livre de preconceitos, feito por nós e para nós.</span>
           </div>
           <div class="experiencia-card reveal">
             <img src="img/experiencia/workshops.png" alt="Painéis & Conversas">
-            <strong>💬 Dinâmicas</strong><br>
+            <strong>Dinâmicas</strong><br>
             <span>Troque ideias e experiências com diversas pessoas e especialistas da área através de dinâmicas de conexão.</span>
           </div>
           <div class="experiencia-card reveal">
             <img src="img/experiencia/conexoes.png" alt="Conexões">
-            <strong>🤝 Conexões</strong><br>
-            <span>Faça networking de alto nível com criadores, profissionais do mercado e grandes marcas parceiras.</span>
+            <strong>Conexões</strong><br>
+            <span>Faça networking com criadores e profissionais de nichos diversos.</span>
           </div>
           <div class="experiencia-card reveal">
             <img src="img/experiencia/experiencias.png" alt="Experiências">
-            <strong>✨ Experiências</strong><br>
-            <span>Ativações exclusivas das marcas parceiras, concurso de fantasias e muitas surpresas te esperando.</span>
+            <strong>Experiências</strong><br>
+            <span>Ativações exclusivas das marcas parceiras.</span>
           </div>
         </div>
       </div>
@@ -2458,7 +2458,7 @@ const CONFIG = {
     { horario: '15:30', titulo: 'Painel participativo sobre empreendedorismo, saúde mental e finanças.' },
     { horario: '17:00', titulo: 'Dinâmica em grupo, Open Food e Empreenda LGBT+' },
     { horario: '18:00', titulo: 'Painel participativo sobre Linkedin, Instagram e TikTok.' },
-    { horario: '19:00', titulo: 'Dinâmica surpresa 🤫' },
+    { horario: '19:00', titulo: 'Dinâmica surpresa' },
     { horario: '20:00', titulo: 'Sorteios da noite' },
     { horario: '20:30', titulo: 'Hora do Networking' },
     { horario: '22:00', titulo: 'Encerramento' }
@@ -2488,7 +2488,6 @@ const CONFIG = {
       beneficios: [
         'Acesso completo ao evento 8h de duração',
         'Open Food incluso',
-        'Participação nos sorteios, painéis e networking',
         'Opção no PIX com 9% OFF ou Cartão em até 3x sem juros'
       ] 
     }
@@ -2777,7 +2776,7 @@ function observeElements(selector) {
         <div class="ticket-price-row">
           <div class="ticket-price-info">
             <span class="ticket-price-label">Pagamento via PIX <span class="badge-desconto-spooky">9% OFF</span></span>
-            <div class="ticket-price-val"><span class="price-de">${t.precoAntigo}</span>${t.pix}</div>
+            <div class="ticket-price-val">${t.pix}</div>
           </div>
           <a href="${t.linkPix}" target="_blank" rel="noopener noreferrer" class="btn bootzy btn-spooky-pix">Comprar no PIX</a>
         </div>
