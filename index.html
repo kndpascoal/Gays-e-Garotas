@@ -561,9 +561,9 @@ header {
 
 .bat {
   position: absolute;
-  width: 30px;
-  height: 15px;
-  fill: #08012c;
+  width: 20px;
+  height: 10px;
+  fill: #10032c;
   filter: drop-shadow(0 0 6px rgba(0,0,0,0.9));
   will-change: transform, opacity;
   opacity: 0;
@@ -814,7 +814,7 @@ header {
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(180deg, #ff6a00, #e100ff);
+  background: linear-gradient(180deg, #9500ff, #e100ff00);
   opacity: 0.8;
 }
 
@@ -2209,7 +2209,7 @@ footer {
     <span class="eyebrow reveal">experiência</span>
     <h2 class="titulo-anos2000 reveal"><span class="spooky-text">Halloween</span></h2>
     <div class="experiencia-texto reveal">
-      <p>Prepare-se para o Gays e Garotas Halloween. Evento da nossa comunidade com muita fantasia, networking real e diversão. Esperamos você no dia 31 de outubro.</p>
+      <p>Prepare-se para o Gays e Garotas Halloween.</p>
       <div class="experiencia-scroll">
         <div class="experiencia-cards" id="experienciaCards">
           <div class="experiencia-card reveal">
@@ -2305,7 +2305,7 @@ footer {
 
         <div class="empreenda-text">
           <h3>Conheça a iniciativa</h3>
-          <p>O hub oficial de oportunidades e negócios para a comunidade LGBTQIAPN+. Torne-se um parceiro estratégico, exponha sua marca e conecte-se diretamente com um público engajado e de alto potencial. Inscreva-se e fortaleça a nossa rede.</p>
+          <p>O Empreenda LGBT+ é uma solução com oportunidades e negócios para a comunidade LGBTQIAPN+. Torne-se um parceiro estratégico, exponha sua marca e conecte-se diretamente com um público engajado e de alto potencial. Inscreva-se e fortaleça a nossa rede.</p>
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSfS6Ie-S19qD1J0TNaT3D2ql1tO0oXCIEPsG9aiCp3sFIH12Q/viewform" target="_blank" rel="noopener noreferrer" class="btn bootzy" style="margin-top:24px;">Inscrever-se</a>
         </div>
       </div>
@@ -2318,7 +2318,7 @@ footer {
     <span class="eyebrow reveal">Gays e Garotas</span>
     <h2 class="reveal">Sobre o HUB</h2>
     <p class="reveal" style="color: var(--muted); font-size: 17px; max-width: 800px; margin-bottom: 40px; line-height: 1.1; text-align: justify; hyphens: auto;">
-      Muito mais que uma festa: somos um ecossistema vivo. O Gays e Garotas conecta mentes criativas, marcas visionárias e talentos da comunidade LGBTQIAPN+ para gerar impacto real, negócios e pertencimento.
+      Somos um ecossistema. O Gays e Garotas conecta mentes criativas, marcas visionárias, talentos da comunidade LGBTQIAPN+ e empreendedores para gerar impacto, negócios e pertencimento.
     </p>
     <div class="sobre-scroll">
       <div class="sobre-grid">
@@ -2454,14 +2454,14 @@ const CONFIG = {
   dataInicio: '31/10/2026 - 14:00:00',
   textoDatas: '31 de outubro · A partir das 14h',
   programacao: [
-    { horario: '14:00', titulo: 'Chegada, Dinâmicas de quebra gelo e Empreenda LGBT+' },
+    { horario: '14:00', titulo: 'Chegada, Dinâmicas de quebra gelo e Empreenda LGBT+.' },
     { horario: '15:30', titulo: 'Painel participativo sobre empreendedorismo, saúde mental e finanças.' },
-    { horario: '17:00', titulo: 'Dinâmica em grupo, Open Food e Empreenda LGBT+' },
+    { horario: '17:00', titulo: 'Dinâmica em grupo e Open Food.' },
     { horario: '18:00', titulo: 'Painel participativo sobre Linkedin, Instagram e TikTok.' },
-    { horario: '19:00', titulo: 'Dinâmica surpresa' },
-    { horario: '20:00', titulo: 'Sorteios da noite' },
-    { horario: '20:30', titulo: 'Hora do Networking' },
-    { horario: '22:00', titulo: 'Encerramento' }
+    { horario: '19:00', titulo: 'Dinâmica surpresa.' },
+    { horario: '20:00', titulo: 'Sorteios da noite.' },
+    { horario: '20:30', titulo: 'Hora do Networking.' },
+    { horario: '22:00', titulo: 'Encerramento.' }
   ],
   ambientes: [
     { nome: 'Rooftop', desc: 'Espaço principal para interações e networking', foto: 'img/espaços/img1.png' },
@@ -2768,7 +2768,7 @@ function observeElements(selector) {
   
   compraEl.innerHTML = CONFIG.ingressos.map(t => `
     <div class="ticket-card-spooky reveal">
-      ${t.destaque ? `<span class="ticket-tag-spooky">⚡ OFERTA LIMITADA</span>` : ''}
+      ${t.destaque ? `<span class="ticket-tag-spooky">OFERTA LIMITADA</span>` : ''}
       <h3 class="ticket-title-spooky">${t.nome}</h3>
       
       <div class="ticket-prices-container">
