@@ -56,7 +56,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "startDate": "2026-10-31T14:00:00-03:00",
   "endDate": "2026-10-31T22:00:00-03:00",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "eventStatus": "https://schema.org/EventScheduled",
+  "eventStatus": "https://schema.org/EventPostponed",
   "image": [
     "https://gaysegarotas.com.br/img/imgevento/evento.png"
   ],
@@ -84,7 +84,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   ],
   "offers": {
     "@type": "Offer",
-    "url": "https://mpago.li/2nY2zYL",
     "price": "240.00",
     "priceCurrency": "BRL",
     "availability": "https://schema.org/InStock",
@@ -2213,22 +2212,22 @@ footer {
       <div class="experiencia-scroll">
         <div class="experiencia-cards" id="experienciaCards">
           <div class="experiencia-card reveal">
-            <img src="img/experiencia/comunidade.png" alt="Comunidade">
+            <img src="img/experiencia/comunidade.jpg" alt="Comunidade">
             <strong>Comunidade</strong><br>
             <span>Um ambiente acolhedor, livre de preconceitos, feito por nós e para nós.</span>
           </div>
           <div class="experiencia-card reveal">
-            <img src="img/experiencia/workshops.png" alt="Painéis & Conversas">
+            <img src="img/experiencia/workshops.jpg" alt="Painéis & Conversas">
             <strong>Dinâmicas</strong><br>
             <span>Troque ideias e experiências com diversas pessoas e especialistas da área através de dinâmicas de conexão.</span>
           </div>
           <div class="experiencia-card reveal">
-            <img src="img/experiencia/conexoes.png" alt="Conexões">
+            <img src="img/experiencia/conexoes.jpg" alt="Conexões">
             <strong>Conexões</strong><br>
             <span>Faça networking com criadores e profissionais de nichos diversos.</span>
           </div>
           <div class="experiencia-card reveal">
-            <img src="img/experiencia/experiencias.png" alt="Experiências">
+            <img src="img/experiencia/experiencias.jpg" alt="Experiências">
             <strong>Experiências</strong><br>
             <span>Ativações exclusivas das marcas parceiras.</span>
           </div>
@@ -2436,8 +2435,10 @@ footer {
 </a>
 
 <script>
-const LINK_PIX = 'https://mpago.li/2nY2zYL';
-const LINK_CARTAO = 'https://mpago.la/22gDmAh';
+// Links de pagamento: enquanto estiverem vazios (''), os botões mostram "Em breve".
+// Links antigos: PIX 'https://mpago.li/2nY2zYL' | Cartão 'https://mpago.la/22gDmAh'
+const LINK_PIX = '';
+const LINK_CARTAO = '';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.link-pagamento-global').forEach(el => {
@@ -2451,8 +2452,10 @@ if ('scrollRestoration' in history) {
 window.scrollTo(0, 0);
 
 const CONFIG = {
-  dataInicio: '31/10/2026 - 14:00:00',
-  textoDatas: '31 de outubro · A partir das 14h',
+  // Evento adiado: com dataInicio vazio (''), o contador mostra "--".
+  // Para voltar, use o formato 'DD/MM/AAAA - HH:MM:SS'. Data antiga: '31/10/2026 - 14:00:00'
+  dataInicio: '',
+  textoDatas: 'Nova data em breve',
   programacao: [
     { horario: '14:00', titulo: 'Chegada, Dinâmicas de quebra gelo e Empreenda LGBT+.' },
     { horario: '15:30', titulo: 'Painel participativo sobre empreendedorismo, saúde mental e finanças.' },
@@ -2464,10 +2467,10 @@ const CONFIG = {
     { horario: '22:00', titulo: 'Encerramento.' }
   ],
   ambientes: [
-    { nome: 'Rooftop', desc: 'Espaço principal para interações e networking', foto: 'img/espaços/img1.png' },
-    { nome: 'Jardim', desc: 'Ambiente aconchegante para conversas e trocas', foto: 'img/espaços/img2.png' },
-    { nome: 'Auditório', desc: 'Área reservada para experiências com marcas parceiras', foto: 'img/espaços/img3.png' },
-    { nome: 'Vista', desc: 'Ponto de encontro do G&G Halloween, Casa da Diversidade', foto: 'img/espaços/img4.png' }
+    { nome: 'Rooftop', desc: 'Espaço principal para interações e networking', foto: 'img/espaços/img1.jpg' },
+    { nome: 'Jardim', desc: 'Ambiente aconchegante para conversas e trocas', foto: 'img/espaços/img2.jpg' },
+    { nome: 'Auditório', desc: 'Área reservada para experiências com marcas parceiras', foto: 'img/espaços/img3.jpg' },
+    { nome: 'Vista', desc: 'Ponto de encontro do G&G Halloween, Casa da Diversidade', foto: 'img/espaços/img4.jpg' }
   ],
   feedbacks: [
     { autor: 'Carolina Queiroz', cargo: 'Videomaker', foto: 'img/feedbacks/carolina.jpeg', texto: 'Eu já fui em tanto evento grande e esse foi o que tive mais insights que realmente fizeram diferença, sabe?' },
@@ -2503,7 +2506,7 @@ const CONFIG = {
     },
     {
       p: 'Onde comprar ingresso?',
-      r: 'Os ingressos estão disponíveis de forma prática e segura através do link "Garantir ingresso" localizado no topo e nas seções principais da página.'
+      r: 'As vendas abrem em breve, junto com a nova data do evento. Acompanhe nosso Instagram @gaysegarotashub para saber primeiro.'
     },
     {
       p: 'Qual horário e duração?',
@@ -2515,6 +2518,11 @@ const CONFIG = {
 document.getElementById('heroDates').textContent = CONFIG.textoDatas;
 
 function tickCountdown() {
+  if (!CONFIG.dataInicio) {
+    ['cd-dias', 'cd-horas', 'cd-min', 'cd-seg', 'nav-cd-dias', 'nav-cd-horas', 'nav-cd-min', 'nav-cd-seg']
+      .forEach(id => { document.getElementById(id).textContent = '--'; });
+    return;
+  }
   const [data, hora] = CONFIG.dataInicio.split(' - ');
   const [dia, mes, ano] = data.split('/');
   const alvo = new Date(`${ano}-${mes}-${dia}T${hora}`).getTime();
@@ -2778,7 +2786,9 @@ function observeElements(selector) {
             <span class="ticket-price-label">Pagamento via PIX <span class="badge-desconto-spooky">9% OFF</span></span>
             <div class="ticket-price-val">${t.pix}</div>
           </div>
-          <a href="${t.linkPix}" target="_blank" rel="noopener noreferrer" class="btn bootzy btn-spooky-pix">Comprar no PIX</a>
+          ${t.linkPix
+            ? `<a href="${t.linkPix}" target="_blank" rel="noopener noreferrer" class="btn bootzy btn-spooky-pix">Comprar no PIX</a>`
+            : `<a class="btn bootzy btn-spooky-pix" aria-disabled="true" style="pointer-events:none;">Em breve</a>`}
         </div>
         
         <hr style="border: 0; border-top: 1px dashed rgba(255,255,255,0.12);">
@@ -2789,7 +2799,9 @@ function observeElements(selector) {
             <span class="ticket-price-label">Cartão de Crédito</span>
             <div class="ticket-price-val">${t.cartao} <small>até 3x sem juros</small></div>
           </div>
-          <a href="${t.linkCartao}" target="_blank" rel="noopener noreferrer" class="btn outline bootzy btn-spooky-card">Comprar no Cartão</a>
+          ${t.linkCartao
+            ? `<a href="${t.linkCartao}" target="_blank" rel="noopener noreferrer" class="btn outline bootzy btn-spooky-card">Comprar no Cartão</a>`
+            : `<a class="btn outline bootzy btn-spooky-card" aria-disabled="true" style="pointer-events:none;">Em breve</a>`}
         </div>
       </div>
 
