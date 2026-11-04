@@ -1966,6 +1966,9 @@ footer {
    19. GLOWS DECORATIVOS DE FUNDO
    ============================================================ */
 #experiencia, #espaco, #ingressos, #empreenda, #sobre-hub, #edicoes-anteriores, #info { overflow: hidden; }
+/* As luzes ficam atrás do conteúdo (z-index -1 dentro da seção): na frente, o Safari do iPhone não deixava arrastar os carrosséis com o dedo */
+#experiencia, #ingressos, #info { isolation: isolate; }
+#experiencia::before, #ingressos::before, #info::before, #experiencia::after, #ingressos::after, #info::after { z-index: -1; }
 #experiencia::before, #ingressos::before, #info::before {
   content: "";
   position: absolute;
