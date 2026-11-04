@@ -116,8 +116,20 @@ const revealObserver = new IntersectionObserver(entries => {
   });
 }, { threshold: .12 });
 
-function observeElements(selector) {
-  document.querySelectorAll(selector).forEach((el, index) => {
+// Com "grupo" (carrossel): os cartões aparecem todos juntos quando o carrossel entra na tela e não somem mais.
+// Acender e apagar cartão durante o arrasto fazia o Safari do iPhone voltar para o primeiro cartão.
+function observeElements(selector, grupo) {
+  const itens = document.querySelectorAll(selector);
+  const caixa = grupo && document.querySelector(grupo);
+  if (caixa) {
+    const io = new IntersectionObserver(entries => {
+      if (!entries.some(e => e.isIntersecting)) return;
+      itens.forEach(el => el.classList.add('visible'));
+      io.disconnect();
+    }, { threshold: .12 });
+    io.observe(caixa);
+  }
+  itens.forEach((el, index) => {
     const isProg = el.classList.contains('prog-item');
     if (!isProg && !el.classList.contains('reveal')) {
       el.classList.add('reveal');
@@ -125,7 +137,7 @@ function observeElements(selector) {
     const delayStep = isProg ? 0.06 : 0.08;
     const modulo = isProg ? 8 : 4;
     el.style.transitionDelay = `${(index % modulo) * delayStep}s`;
-    revealObserver.observe(el);
+    if (!caixa) revealObserver.observe(el);
   });
 }
 
@@ -147,7 +159,7 @@ function observeElements(selector) {
     </div>
   `).join('');
 
-  observeElements('#progList .prog-item');
+  observeElements('#progList .prog-item', '#progList');
 })();
 
 (function renderStages() {
@@ -425,8 +437,8 @@ document.getElementById('backToTop').addEventListener('click', e => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-observeElements('.reveal');
-observeElements('#experienciaCards .experiencia-card');
+observeElements('.reveal:not(.experiencia-card)');
+observeElements('#experienciaCards .experiencia-card', '#experienciaCards');
 
 const backToTopBtn = document.getElementById('backToTop');
 const progSection = document.getElementById('programacao');
