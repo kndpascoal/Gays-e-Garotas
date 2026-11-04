@@ -262,7 +262,7 @@ header {
   position: relative;
 }
 .logo-img {
-  height: 44px;
+  height: 36px;
   width: auto;
   display: block;
   transform: scale(1.15);
@@ -378,6 +378,9 @@ header {
 /* ============================================================
    7. HERO / ABERTURA
    ============================================================ */
+/* Posição das estrelas ao rolar: só o topo usa, não passa para os filhos (menos trabalho a cada quadro) */
+@property --stars-offset-before { syntax: '<length>'; inherits: false; initial-value: 0px; }
+@property --stars-offset-after { syntax: '<length>'; inherits: false; initial-value: 0px; }
 .abertura {
   position: relative;
   min-height: 100vh;
@@ -390,7 +393,6 @@ header {
   overflow: hidden;
   background-color: #16000a;
   perspective: 1000px;
-  will-change: background-position;
 
   background-image: 
     linear-gradient(to bottom, transparent 70%, var(--bg-alt) 100%),
@@ -415,6 +417,7 @@ header {
   pointer-events: none;
   z-index: 1;
   will-change: transform;
+  --stars-offset-before: inherit;
   transform: translateY(var(--stars-offset-before, 0px));
 
   box-shadow: 
@@ -441,6 +444,7 @@ header {
   pointer-events: none;
   z-index: 1;
   will-change: transform;
+  --stars-offset-after: inherit;
   transform: translateY(var(--stars-offset-after, 0px));
 
   box-shadow: 
@@ -471,6 +475,11 @@ header {
 .circulo-runas {
   position: absolute;
   inset: 0;
+}
+/* Cada camada é um svg próprio girado inteiro: o navegador só gira a imagem pronta, sem repintar a cada quadro */
+.circulo-runas .anel {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   overflow: visible;
@@ -480,10 +489,11 @@ header {
   stroke-linecap: round;
   stroke-linejoin: round;
   filter: drop-shadow(0 0 3px rgba(255,45,72,.85));
+  will-change: transform;
+  animation: runas-gira 60s linear infinite;
 }
 .circulo-runas .runa { stroke: #ff8a96; stroke-width: 1.4; }
 .circulo-runas .tracejado { stroke-dasharray: 2 3; }
-.circulo-runas .anel { transform-origin: 0 0; animation: runas-gira 60s linear infinite; }
 .circulo-runas .anel-1 { animation-duration: 90s; }
 .circulo-runas .anel-2 { animation-duration: 55s; animation-direction: reverse; }
 .circulo-runas .anel-3 { animation-duration: 40s; opacity: .75; }

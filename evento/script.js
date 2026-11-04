@@ -498,11 +498,8 @@ window.addEventListener('scroll', () => {
     const heroHeight = heroSection.offsetHeight;
 
     if (scrollY <= heroHeight) {
-      const offsetBg = scrollY * 0.35;    
       const offsetBefore = scrollY * 0.5;  
       const offsetAfter = scrollY * 0.25;  
-
-      heroSection.style.backgroundPositionY = `0px, ${offsetBg}px, ${offsetBg}px, ${offsetBg}px, ${offsetBg}px, ${offsetBg}px, ${offsetBg}px, 0px, 0px`;
 
       heroSection.style.setProperty('--stars-offset-before', `${offsetBefore}px`);
       heroSection.style.setProperty('--stars-offset-after', `${offsetAfter}px`);
