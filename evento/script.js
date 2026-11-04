@@ -1,7 +1,7 @@
-// Links de pagamento: enquanto estiverem vazios (''), os botões mostram "Em breve".
-// Links antigos: PIX 'https://mpago.li/2nY2zYL' | Cartão 'https://mpago.la/22gDmAh'
-const LINK_PIX = '';
-const LINK_CARTAO = '';
+// Links de pagamento (Mercado Pago, só para os ingressos do evento). Vazio ('') = o botão mostra "Em breve".
+// Baile Místico: PIX R$ 240 | Cartão em até 3x R$ 265
+const LINK_PIX = 'https://mpago.li/2nY2zYL';
+const LINK_CARTAO = 'https://mpago.la/22gDmAh';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.link-pagamento-global').forEach(el => {
@@ -69,7 +69,7 @@ const CONFIG = {
     },
     {
       p: 'Onde comprar ingresso?',
-      r: 'As vendas abrem em breve. Acompanhe nosso Instagram @gaysegarotashub para saber primeiro.'
+      r: 'Aqui no site, na seção Ingressos: no Pix por R$ 240 ou no cartão por R$ 265, em até 3x sem juros. O pagamento é feito pelo Mercado Pago.'
     },
     {
       p: 'Qual horário e duração?',
