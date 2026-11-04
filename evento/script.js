@@ -490,6 +490,8 @@ window.addEventListener('scroll', () => {
 (function initStarsParallax() {
   const heroSection = document.querySelector('.abertura');
   if (!heroSection || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Navegador com parallax pela rolagem no CSS (estilo.css, 7.1): ele mesmo move as estrelas.
+  if (window.CSS && CSS.supports('animation-timeline: scroll()')) return;
 
   let ticking = false;
 

@@ -452,6 +452,25 @@ header {
     13vw 87vh #d2e4ff, 28vw 29vh #ffffff, 44vw 93vh #ffffff, 62vw 11vh #ffd0d6, 79vw 61vh #ffffff, 91vw 19vh #d2e4ff, 10vw 40vh #ffffff, 33vw 60vh #ffd0d6, 55vw 80vh #ffffff, 72vw 20vh #d2e4ff;
 }
 
+/* Parallax das estrelas feito pelo próprio navegador, junto com a rolagem (sem esperar o script):
+   mesmo ritmo de antes (perto: metade da rolagem; longe: um quarto). Sem esse recurso, o script faz. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .abertura::before {
+      animation: estrelas-perto linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0px 3000px;
+    }
+    .abertura::after {
+      animation: estrelas-longe linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0px 3000px;
+    }
+  }
+}
+@keyframes estrelas-perto { from { transform: translateY(0); } to { transform: translateY(1500px); } }
+@keyframes estrelas-longe { from { transform: translateY(0); } to { transform: translateY(750px); } }
+
 /* ============================================================
    7.1 CÍRCULO DE RUNAS (atrás do logo; camadas girando em sentidos opostos)
    ============================================================ */
