@@ -54,7 +54,7 @@
 html, body {
   width: 100%;
   min-height: 100vh;
-  background-color: #16000a;
+  background-color: #0a0a0f;
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.5;
@@ -66,8 +66,8 @@ body {
   flex-direction: column;
   justify-content: space-between;
   background-image:
-    radial-gradient(circle at 50% 25%, rgba(160,0,26,.5) 0%, rgba(10,2,5,.95) 70%),
-    radial-gradient(circle at 80% 15%, rgba(224,17,43,.18) 0%, transparent 45%);
+    radial-gradient(circle at 50% 0%, rgba(160,0,26,.22) 0%, rgba(10,2,5,0) 60%),
+    linear-gradient(#0d0508, #0a0a0f);
   background-attachment: fixed;
 }
 
@@ -213,7 +213,7 @@ main::before {
   height: 450px;
   left: -150px;
   top: 40%;
-  background: radial-gradient(circle, rgba(224,17,43,.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(224,17,43,.07) 0%, transparent 70%);
   filter: blur(40px);
   pointer-events: none;
   animation: glowFloatLeft 12s ease-in-out infinite;
@@ -227,7 +227,7 @@ main::after {
   height: 450px;
   right: -150px;
   bottom: 20%;
-  background: radial-gradient(circle, rgba(160,0,26,.28) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(160,0,26,.09) 0%, transparent 70%);
   filter: blur(40px);
   pointer-events: none;
   animation: glowFloatRight 14s ease-in-out infinite;
@@ -256,7 +256,7 @@ main::after {
   inset: 0;
   border-radius: var(--radius);
   padding: 1px;
-  background: linear-gradient(135deg, rgba(255,59,79,.55), rgba(224,17,43,.12) 45%, rgba(255,59,79,.4));
+  background: linear-gradient(135deg, rgba(255,59,79,.35), rgba(255,255,255,.06) 45%, rgba(255,59,79,.22));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -284,10 +284,13 @@ main::after {
 }
 
 .thanks-card h1 {
-  font-size: clamp(30px, 6.5vw, 46px);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  text-transform: none;
+  font-size: clamp(30px, 6.5vw, 42px);
   margin-bottom: 12px;
-  line-height: 1;
-  letter-spacing: .04em;
+  line-height: 1.05;
+  letter-spacing: -.01em;
   animation: fadeInUp 0.8s ease 0.5s both;
 }
 
@@ -422,7 +425,7 @@ main::after {
 .info-box h3 svg { color: var(--accent-2); flex-shrink: 0; }
 
 .info-box h3::after {
-  content: "↗";
+  content: "\2197\FE0E";
   font-family: Arial, sans-serif;
   font-size: 14px;
   color: var(--muted);
@@ -524,7 +527,7 @@ footer {
       </svg>
     </div>
 
-    <h1 class="spooky">Presença confirmada!</h1>
+    <h1>Presença confirmada!</h1>
     <p class="subtitle">Seu pagamento foi aprovado pelo Mercado Pago. Mal podemos esperar para encontrar você no Baile Místico, no Onze Onze House!</p>
 
     <!-- DESTAQUE COMUNIDADE WHATSAPP -->
