@@ -29,11 +29,12 @@ const CONFIG = {
     { horario: '20:30', titulo: 'Hora do Networking.' },
     { horario: '22:00', titulo: 'Encerramento.' }
   ],
+  // Onze Onze House - Espaço Cultural: só as fotos, sem título (dono, 19/11) · fotos em 4:5 (960 × 1200); nome = texto alternativo
   ambientes: [
-    { nome: 'Rooftop', desc: 'Espaço principal para interações e networking', foto: '/img/espaços/img1.jpg' },
-    { nome: 'Jardim', desc: 'Ambiente aconchegante para conversas e trocas', foto: '/img/espaços/img2.jpg' },
-    { nome: 'Auditório', desc: 'Área reservada para experiências com marcas parceiras', foto: '/img/espaços/img3.jpg' },
-    { nome: 'Vista', desc: 'Ponto de encontro do Baile Místico, Casa da Diversidade', foto: '/img/espaços/img4.jpg' }
+    { nome: 'Luminária de cristal no balcão do Onze Onze House, com o palco ao fundo', foto: '/img/espaços/onze1.jpg' },
+    { nome: 'Bar do Onze Onze House com luz vermelha no balcão', foto: '/img/espaços/onze2.jpg' },
+    { nome: 'Escada iluminada em roxo e vermelho', foto: '/img/espaços/onze3.jpg' },
+    { nome: 'Salão com mesas e luminárias', foto: '/img/espaços/onze4.jpg' }
   ],
   feedbacks: [
     { autor: 'Carolina Queiroz', cargo: 'Videomaker', foto: '/img/feedbacks/carolina.jpeg', texto: 'Eu já fui em tanto evento grande e esse foi o que tive mais insights que realmente fizeram diferença, sabe?' },
@@ -165,10 +166,7 @@ function observeElements(selector, grupo) {
 (function renderStages() {
   document.getElementById('ambienteGrid').innerHTML = CONFIG.ambientes.map(p => `
     <div class="ambiente-card reveal">
-      <img class="ambiente-foto" src="${p.foto}" alt="${p.nome}">
-      <div class="ambiente-info">
-        <h3>${p.nome}</h3>
-      </div>
+      <img class="ambiente-foto" src="${p.foto}" alt="${p.nome}" loading="lazy" decoding="async">
     </div>
   `).join('');
   document.querySelectorAll('#ambienteGrid .ambiente-card').forEach(el => {
