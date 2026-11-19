@@ -33,7 +33,7 @@
     box.setAttribute('role', 'dialog');
     box.setAttribute('aria-label', 'Aviso de cookies');
     box.innerHTML = '<style>'
-      + '#gg-cookies{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:99999;max-width:560px;margin:0 auto;'
+      + '#gg-cookies{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:99999;max-width:560px;margin:0 auto;'
       + 'background:rgba(22,22,30,.96);color:#f4f4f7;border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:16px 18px;'
       + 'font:400 14px/1.5 Inter,system-ui,-apple-system,Arial,sans-serif;box-shadow:0 12px 40px rgba(0,0,0,.5)}'
       + '#gg-cookies p{margin:0 0 12px}#gg-cookies a{color:#f4f4f7;text-decoration:underline}'

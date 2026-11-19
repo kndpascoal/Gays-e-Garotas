@@ -631,8 +631,12 @@ header {
   .abertura-conteudo { padding-left: 24px; padding-right: 24px; }
   .abertura h1 { white-space: normal; line-height: 1; }
   .abertura-subtitulo { font-size: 14px; padding-bottom: 32px; }
-  .abertura-acoes { width: 100%; margin-top: 15px; gap: 12px; }
-  .abertura-acoes .btn { flex: 0 0 auto; min-height: 50px; }
+  /* os dois botões: lado a lado quando cabem com 20 px de margem; senão um embaixo do outro, cada um da largura toda
+     (dono, 19/11: com a letra nova passavam da borda nas telas estreitas) */
+  /* os títulos acompanham a largura (em 320 o "Programação" de 52 px passava da borda) */
+  h2 { font-size: clamp(34px, 10.5vw, 48px); }
+  .abertura-acoes { width: 100%; margin-top: 15px; gap: 12px; flex-wrap: wrap; padding: 0 20px; box-sizing: border-box; }
+  .abertura-acoes .btn { flex: 1 1 auto; min-height: 50px; padding: 0 20px; letter-spacing: .02em; white-space: nowrap; }
   .abertura-datas { margin-top: 24px; margin-bottom: 20px; }
   .countdown { display: none !important; }
   .marquee { top: -48px; }
