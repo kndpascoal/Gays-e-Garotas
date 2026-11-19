@@ -1,13 +1,7 @@
 /* ============================================================
-   1. FONTE CUSTOMIZADA
+   1. FONTES: Bricolage Grotesque (títulos) + Figtree (texto e botões), do Google Fonts (OFL, livres para uso
+   comercial), no lugar das antigas (dono, 19/11: "mais legível") · o Baile Místico segue na Cinzel Decorative
    ============================================================ */
-@font-face {
-  font-family: 'BootzyTM';
-  src: url('/BootzyTM.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
 
 /* ============================================================
    2. VARIÁVEIS GLOBAIS
@@ -21,9 +15,9 @@
   --muted: #9a9aab;
   --accent: #e0112b;
   --accent-2: #ff3b4f;
-  --font-display: 'Anton', Impact, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Figtree', system-ui, sans-serif;
   --font-spooky: 'Cinzel Decorative', Georgia, serif;
-  --font-body: 'Inter', system-ui, Arial, sans-serif;
+  --font-body: 'Figtree', system-ui, Arial, sans-serif;
   --radius: 10px;
   --container: 1180px;
   --liquid-border: rgba(255,255,255,.18);
@@ -100,7 +94,8 @@ section[id]:not(.abertura) {
   scroll-margin-top: 60px;
 }
 .bootzy {
-  font-family: 'BootzyTM', sans-serif !important;
+  font-family: var(--font-body) !important;
+  font-weight: 700;
   color: inherit;
 }
 
@@ -124,14 +119,15 @@ section[id]:not(.abertura) {
 }
 h1, h2, h3 {
   font-family: var(--font-display);
-  letter-spacing: .01em;
-  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  text-transform: none;
   line-height: 1.02;
 }
 h2 {
-  font-family: 'BootzyTM', sans-serif !important;
+  font-family: var(--font-display) !important;
   font-size: 52px;
-  letter-spacing: .08em;
+  letter-spacing: -.025em;
   margin-bottom: 20px;
   line-height: 1;
 }
@@ -312,7 +308,8 @@ header {
     color: #fff;
   }
   .nav-mobile-countdown .nav-cd-label {
-    font-family: 'BootzyTM', sans-serif;
+    font-family: var(--font-body);
+    font-weight: 700;
     font-size: 11px;
     color: var(--text);
     text-transform: uppercase;
@@ -667,7 +664,7 @@ header {
   align-items: center;
 }
 .marquee-track span {
-  font-family: 'BootzyTM', sans-serif !important;
+  font-family: var(--font-display) !important;
   font-size: 18px;
   text-transform: uppercase;
   display: inline-flex;
@@ -807,7 +804,7 @@ header {
    10. SEÇÃO EXPERIÊNCIA
    ============================================================ */
 .titulo-anos2000 {
-  font-family: 'BootzyTM', sans-serif !important;
+  font-family: var(--font-display) !important;
   font-size: 52px !important;
   font-weight: normal !important;
   letter-spacing: 0 !important;
@@ -826,9 +823,9 @@ header {
   justify-content: center;
 }
 .experiencia-texto h3 {
-  font-family: 'BootzyTM', sans-serif !important;
+  font-family: var(--font-display) !important;
   font-size: 34px;
-  letter-spacing: .08em !important;
+  letter-spacing: -.01em !important;
   line-height: 1.15;
   text-transform: none;
   margin-bottom: 20px;
@@ -1218,9 +1215,9 @@ header {
   object-fit: contain;
 }
 .empreenda-text h3 {
-  font-family: 'BootzyTM' !important;
+  font-family: var(--font-display) !important;
   font-size: 28px;
-  letter-spacing: .07em !important;
+  letter-spacing: -.01em !important;
   line-height: 1;
   text-transform: none;
   margin-bottom: 12px;
@@ -1326,9 +1323,9 @@ header {
 }
 .sobre-card:hover::after { left: 145%; opacity: .95; }
 .sobre-card h3 {
-  font-family: 'BootzyTM', sans-serif;
+  font-family: var(--font-display);
   font-size: 14px;
-  letter-spacing: .06em;
+  letter-spacing: -.01em;
   color: #fff;
   max-width: 100%;
   text-align: center;
@@ -1448,9 +1445,9 @@ header {
   letter-spacing: .08em;
 }
 .edicao-info h3 {
-  font-family: 'BootzyTM', sans-serif;
+  font-family: var(--font-display);
   font-size: 22px;
-  letter-spacing: .06em;
+  letter-spacing: -.01em;
   color: #fff;
 }
 .edicao-info p {
@@ -1563,13 +1560,12 @@ header {
 }
 
 .ticket-title-spooky {
-  font-family: 'BootzyTM', sans-serif !important;
+  font-family: var(--font-display) !important;
   font-size: 32px !important;
   color: #fff !important;
-  text-transform: uppercase;
-  letter-spacing: .05em;
+  text-transform: none;
+  letter-spacing: -.01em;
   line-height: 1;
-  text-shadow: 0 0 10px rgba(255,59,79, 0.4);
   margin-left: 14px;
 }
 
