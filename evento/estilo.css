@@ -262,11 +262,10 @@ header {
   position: relative;
 }
 .logo-img {
-  height: 36px;
+  /* Gspira: redondo e cheio, na altura do g antigo ficava grande demais — agora da altura da caixinha dos dias (dono, 19/11) */
+  height: 28px;
   width: auto;
   display: block;
-  transform: scale(1.15);
-  transform-origin: left center;
 }
 .nav-mobile-countdown { display: none; }
 .nav-links {
